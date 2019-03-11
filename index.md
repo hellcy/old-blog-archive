@@ -61,3 +61,21 @@ I used it to run long running SQL that updated millions of rows in the database.
 * Next comes, the Hibernate and its core interfaces, using which we could persist(store and retrieve) the objects of our business layer classes by communicating with the database server.
 
 * Hibernate uses the Java core API, Java Database Connectivity(JDBC), Java Transaction API(JTA), Java Naming and Directory Interface(JNDI) to communicate with database in order to persist the state of object by performing create, read, update, delete(CRUD) operations.
+
+## Continuous integration and Jenkins
+
+* Continuous integration is a process in which all development work is integrated as early as possible. The resulting artifacts are automatically created and tested. This process allows to identify errors as early as possible.
+
+* Jenkins is a popular open source tool to perform continuous integration and build automation. The basic functionality of Jenkins is to execute a predefined list of steps, e.g. to compile Java source code and build a JAR from the resulting classes. The trigger for this execution can be time or event based. For example, every 20 minutes or after a new commit in a Git repository.
+
+* Possible steps executed by Jenkins are for example:
+
+* perform a software build using a build system like Apache Maven or Gradle
+
+* execute a shell script
+
+* archive a build result
+
+* running software tests
+
+* Jenkins monitors the execution of the steps and allows to stop the process, if one of the steps fails. Jenkins can also send out notification in case of a build success or failure.
