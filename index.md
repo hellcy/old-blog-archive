@@ -52,4 +52,12 @@ Your project may not even be a web application to use Spring Framework. I used S
 
 I used it to run long running SQL that updated millions of rows in the database.
 
-* 
+## Hibernate
+
+* Hibernate is a middleware used for object-relational mapping and for performing efficient object persistence. To understand about the architecture of Hibernate, let's first take a look at how Hibernate fits in the development of an application, between an application and the database server.
+
+* A Java application code comprises of all the classes that define the business logic of application. These classes communicate with the Hibernate.
+
+* Next comes, the Hibernate and its core interfaces, using which we could persist(store and retrieve) the objects of our business layer classes by communicating with the database server.
+
+* Hibernate uses the Java core API, Java Database Connectivity(JDBC), Java Transaction API(JTA), Java Naming and Directory Interface(JNDI) to communicate with database in order to persist the state of object by performing create, read, update, delete(CRUD) operations.
