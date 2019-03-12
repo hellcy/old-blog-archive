@@ -54,13 +54,23 @@ I used it to run long running SQL that updated millions of rows in the database.
 
 ## Hibernate
 
-* Hibernate is a middleware used for object-relational mapping and for performing efficient object persistence. To understand about the architecture of Hibernate, let's first take a look at how Hibernate fits in the development of an application, between an application and the database server.
+* Hibernate is a middleware used for object-relational mapping(ORM) and for performing efficient object persistence. To understand about the architecture of Hibernate, let's first take a look at how Hibernate fits in the development of an application, between an application and the database server.
 
 * A Java application code comprises of all the classes that define the business logic of application. These classes communicate with the Hibernate.
 
 * Next comes, the Hibernate and its core interfaces, using which we could persist(store and retrieve) the objects of our business layer classes by communicating with the database server.
 
 * Hibernate uses the Java core API, Java Database Connectivity(JDBC), Java Transaction API(JTA), Java Naming and Directory Interface(JNDI) to communicate with database in order to persist the state of object by performing create, read, update, delete(CRUD) operations.
+
+## JPA
+
+* JPA is the interface while Hibernate is the implementation.
+
+* Traditionally there have been multiple Java ORM solutions: Hibernate, TopLink, JDO
+ 
+* each implementation defining its own mapping definition or client API. The JPA expert group gathered the best of all these tools and so they created the Java Persistence API standard.
+
+* A standard persistence API is very convenient from a client point of view, making it relatively easy to switch one implementation with the other (although in practice it's not that simple because on large projects you'll have to use specific non-standard features anyway).
 
 ## Continuous integration and Jenkins
 
@@ -87,3 +97,7 @@ I used it to run long running SQL that updated millions of rows in the database.
 * running software tests
 
 * Jenkins monitors the execution of the steps and allows to stop the process, if one of the steps fails. Jenkins can also send out notification in case of a build success or failure.
+
+## What is POJO
+
+* POJO stands for “Plain Old Java Object” — it’s a pure data structure that has fields with getters and possibly setters, and may override some methods from Object (e.g. equals) or some other interface like Serializable, but does not have behavior of its own. It’s the Java equivalent of a C struct
