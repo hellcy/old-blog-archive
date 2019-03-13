@@ -101,3 +101,9 @@ I used it to run long running SQL that updated millions of rows in the database.
 ## What is POJO
 
 * POJO stands for “Plain Old Java Object” — it’s a pure data structure that has fields with getters and possibly setters, and may override some methods from Object (e.g. equals) or some other interface like Serializable, but does not have behavior of its own. It’s the Java equivalent of a C struct
+
+## Angular 
+
+* Angular is an open source JavaScript framework which simplifies binding code between JavaScript objects and HTML UI elements.
+
+* Angular JS, Node.js and React.js are all front end framework.
