@@ -107,3 +107,10 @@ I used it to run long running SQL that updated millions of rows in the database.
 * Angular is an open source JavaScript framework which simplifies binding code between JavaScript objects and HTML UI elements.
 
 * Angular JS, Node.js and React.js are all front end framework.
+
+## Node.js
+
+* NodeJS is an open source JavaScript framework which does two things: -
+
+* It helps you to run JavaScript outside the browser. NodeJS uses the chrome JavaScript engine to execute JavaScript outside the browser so that we can create desktop and server based application using JavaScript.
+It also acts a central repository from where we can get any JavaScript framework using NPM (Node package manager).
