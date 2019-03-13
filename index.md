@@ -1,6 +1,17 @@
 ## Welcome to GitHub Pages
 
 * All IT related details will be put in here.
+ 
+## JavaScript
+* JavaScript is a high-level, dynamic, weakly typed, prototype-based, multi-paradigm, and interpreted programming language. It is commonly used as a part of web pages, whose implementations allow client-side script to interact with the user and make dynamic pages. It is an interpreted programming language with object-oriented capabilities.
+
+## jQuery
+* jQuery is a JavaScript library designed to simplify the scripting of HTML. It is free and open-source. The purpose of jQuery is to make it much easier to use JavaScript on your website. jQuery takes a lot of common tasks that require many lines of JavaScript code to accomplish, and wraps them into methods that you can call with a single line of code. jQuery also simplifies a lot of the complicated things from JavaScript, like AJAX calls and DOM manipulation.
+
+## Package Manager
+* NuGet focusses mainly on .NET (there are a lot of non-.NET packages on NuGet however), NPM (Node Package Manager), Yarn and Bower are JavaScript package managers.
+
+* Yarn was created by Facebook and Open Sourced. Speed comparisons found online show that Yarn is faster than NPM. Yarn is also able to install packages from a cache and does not require a connection to the Internet (only if a package was downloaded before).
 
 ## What is a Web Server?
 
@@ -113,4 +124,5 @@ I used it to run long running SQL that updated millions of rows in the database.
 * NodeJS is an open source JavaScript framework which does two things: -
 
 * It helps you to run JavaScript outside the browser. NodeJS uses the chrome JavaScript engine to execute JavaScript outside the browser so that we can create desktop and server based application using JavaScript.
-It also acts a central repository from where we can get any JavaScript framework using NPM (Node package manager).
+
+* It also acts a central repository from where we can get any JavaScript framework using NPM (Node package manager).
