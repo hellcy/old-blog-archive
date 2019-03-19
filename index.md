@@ -27,6 +27,20 @@
 
 * Unlike .NET Framework, .NET Core is both open source and cross-platform. It further comes with several new features to simplify development and testing of desktop, web, cloud, and mobile applications. Also, it allows developers to deploy the applications in a number of ways. But .NET Core does not support all features and functionalities of .NET Framework. Hence, it becomes essential for developers to understand the major differences between .NET Framework and .NET Core before switching to the most recent version of the popular software framework.
 
+## MVC (Model-View-Controller)
+
+* Model 
+ 
+* The Model in MVC is a set of classes or project that describe your business logic. It represents all the business logic, like manipulating of data for your business/application, and data access operations like how you connect with database and get the data. In MVC, Model directly communicates with the Controller.
+ 
+* View 
+ 
+* The View in MVC are pages which we display to users, i.e., UI part which may consist of HTML, CSS, jQuery, JavaScript, etc. View part is actually completely responsible for displaying data. It takes data from the Controller and also sends back data to the Controller. It does not communicate directly with the Model.
+ 
+* Controller 
+ 
+* The Controller in MVC is the base of MVC architecture. Every request comes first to Controller then Controller requests the required information from Model and then it sends that information (data) to View in various formats. It works as a communicator and validator between View and Model.
+
 ## What is Spring Framework
 
 * 1) You can use Spring Framework for writing web applications:
