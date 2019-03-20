@@ -73,6 +73,36 @@ $.ajax({
 
 * This jar is your framework. When we want to do lots of things on regular basis it just consumes time and a framework will not only save time it will also provide right components in ur applications. Fast and easy.
 
+## Framework vs Library
+* To understand this, let us see how we can use GSON library and Hibernate framework.
+
+* Framework
+* Consider we have to save student object in a database using Hibernate framework.
+
+* To do this we have to do the following things.
+* Create a file with name "hibernate.cfg.xml". And fill in the DB details in "hibernate.cfg.xml".
+* Make your student class a java bean.
+* Create a session object. Invoke the save method of session object. In save method pass the student object as an argument.
+* If you notice we made the student class a java bean because hibernate wanted that.
+* Hibernate has a rule. The object that hibernate persist should be an instance of Java bean. 
+* This means if we want to use a framework, we have to change our code so that it follows the rules given by that framework.
+The changes can be like 
+* Define a method in our class. (example write getter and setter methods in student class in hibernate)
+* Make our class implement an interface.
+
+* Library
+* Consider we have to convert our student object to json format using GSON Library.
+* To do this we have to do the following things.
+* Gson gson = new Gson();
+* String json = gson.toJson(student);
+* Please note we didn't change our student class to use GSON. 
+* This means if we want to use a library, we need not change our existing code.
+
+* So the difference is
+* Framework and library are the code written by some one else. This code give us a functionality.
+* In framework we change the structure of our code according to the rules given by them. In order to use the functionality provided by them.
+* In library we can use the functionality directly without changing our code.
+
 ## What is Spring Framework
 
 * 1) You can use Spring Framework for writing web applications:
