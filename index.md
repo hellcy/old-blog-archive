@@ -1,12 +1,38 @@
 ## Welcome to GitHub Pages
 
 * All IT related details will be put in here.
- 
+
+## DOM (Document Object Model)
+
+* The Document Object Model (DOM) is an application programming interface (API) for HTML and XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated.
+
 ## JavaScript
 * JavaScript is a high-level, dynamic, weakly typed, prototype-based, multi-paradigm, and interpreted programming language. It is commonly used as a part of web pages, whose implementations allow client-side script to interact with the user and make dynamic pages. It is an interpreted programming language with object-oriented capabilities.
 
 ## jQuery
 * jQuery is a JavaScript library designed to simplify the scripting of HTML. It is free and open-source. The purpose of jQuery is to make it much easier to use JavaScript on your website. jQuery takes a lot of common tasks that require many lines of JavaScript code to accomplish, and wraps them into methods that you can call with a single line of code. jQuery also simplifies a lot of the complicated things from JavaScript, like AJAX calls and DOM manipulation.
+
+* DOM manipulation: 
+* Get the <button> element with the class 'continue' and change its HTML to 'Next Step...'
+
+```
+$( "button.continue" ).html( "Next Step..." )
+```
+
+* Ajax
+* Call a local script on the server /api/getWeather with the query parameter zipcode=97201 and replace the element #weather-temp's html with the returned text.
+
+```
+$.ajax({
+  url: "/api/getWeather",
+  data: {
+    zipcode: 97201
+  },
+  success: function( result ) {
+    $( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+  }
+});
+```
 
 ## Package Manager
 * NuGet focusses mainly on .NET (there are a lot of non-.NET packages on NuGet however), NPM (Node Package Manager), Yarn and Bower are JavaScript package managers.
