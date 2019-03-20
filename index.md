@@ -67,6 +67,12 @@ $.ajax({
  
 * The Controller in MVC is the base of MVC architecture. Every request comes first to Controller then Controller requests the required information from Model and then it sends that information (data) to View in various formats. It works as a communicator and validator between View and Model.
 
+## Framework in Programming
+
+* Suppose you have to make a tea on daily basis with several ingredients like sugar, tea leaves , other spices , water etc. In doing so on daily basis most of the time u will find it is really difficult to put all ingredients in right ratio all time, u can forget some times u have to open several boxes one by one , one morning u come up with idea of mixing all ingredients in one jar in one ratio , such that every spoon will serve the right ratio mix to the tea. ( Off course milk and water remain aside :) )
+
+* This jar is your framework. When we want to do lots of things on regular basis it just consumes time and a framework will not only save time it will also provide right components in ur applications. Fast and easy.
+
 ## What is Spring Framework
 
 * 1) You can use Spring Framework for writing web applications:
@@ -157,7 +163,7 @@ I used it to run long running SQL that updated millions of rows in the database.
 
 * Angular is an open source JavaScript framework which simplifies binding code between JavaScript objects and HTML UI elements.
 
-* Angular JS, Node.js and React.js are all front end framework.
+* Angular JS, Node.js, Ember, Vue.js and React.js are all front end framework.
 
 ## Node.js
 
