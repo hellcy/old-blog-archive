@@ -208,3 +208,11 @@ I used it to run long running SQL that updated millions of rows in the database.
 * It helps you to run JavaScript outside the browser. NodeJS uses the chrome JavaScript engine to execute JavaScript outside the browser so that we can create desktop and server based application using JavaScript.
 
 * It also acts a central repository from where we can get any JavaScript framework using NPM (Node package manager).
+
+## SQL Profiler: check all reads and writes traffic on a server
+1. From SQL Server Management Studio, Click Tools -> SQL Server Profiler
+2. Enter Server login details
+3. Go to Event Selection tab -> Click Column Filters
+4. LoginName: like idsys
+5. ClientProcessID: 17136 (not sure if this will change)
+6. Click run and you will now trace all traffic.
