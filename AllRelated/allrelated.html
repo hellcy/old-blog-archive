@@ -32,16 +32,76 @@
 					</h2>
 					<p>The single most important difference between WinForms and WPF is the fact that while WinForms is simply a layer on top of the standard Windows controls (e.g. a TextBox), WPF is built from scratch and doesn't rely on standard Windows controls in almost all situations. This might seem like a subtle difference, but it really isn't, which you will definitely notice if you have ever worked with a framework that depends on Win32/WinAPI.</p>
 					<p>A great example of this is a button with an image and text on it. This is not a standard Windows control, so WinForms doesn't offer you this possibility out of the box. Instead you will have to draw the image yourself, implement your own button that supports images or use a 3rd party control. With WPF, a button can contain anything because it's essentially a border with content and various states (e.g. untouched, hovered, pressed). The WPF button is "look-less", as are most other WPF controls, which means that it can contain a range of other controls inside of it. You want a button with an image and some text? Just put an Image and a TextBlock control inside of the button and you're done! You simply don’t get this kind of flexibility out of the standard WinForms controls, which is why there's a big market for rather simple implementations of controls like buttons with images and so on.</p>
+					<h2 id="u6587_u7AE0_u7ED3_u6784">
+						<a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="DOM (Document Object Model)"></a>DOM (Document Object Model)
+					</h2>
+					<p>The Document Object Model (DOM) is an application programming interface (API) for HTML and XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated.</p>
+					<h2 id="u6587_u7AE0_u7ED3_u6784">
+						<a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="JavaScript"></a>JavaScript
+					</h2>
+					<p>JavaScript is a high-level, dynamic, weakly typed, prototype-based, multi-paradigm, and interpreted programming language. It is commonly used as a part of web pages, whose implementations allow client-side script to interact with the user and make dynamic pages. It is an interpreted programming language with object-oriented capabilities.</p>
+					<h2 id="u6587_u7AE0_u7ED3_u6784">
+						<a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="jQuery"></a>jQuery
+					</h2>
+					<p>jQuery is a JavaScript library designed to simplify the scripting of HTML. It is free and open-source. The purpose of jQuery is to make it much easier to use JavaScript on your website. jQuery takes a lot of common tasks that require many lines of JavaScript code to accomplish, and wraps them into methods that you can call with a single line of code. jQuery also simplifies a lot of the complicated things from JavaScript, like AJAX calls and DOM manipulation.</p>
+					<h2 id="u6587_u7AE0_u7ED3_u6784">
+						<a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="DOM manipulation"></a>DOM manipulation
+					</h2>
+					<p>Get the <button> element with the class 'continue' and change its HTML to 'Next Step...'</p>
+					<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$( "button.continue" ).html( "Next Step..." )</span><br></pre></td></tr></table></figure>	
+					<h2 id="u6587_u7AE0_u7ED3_u6784">
+						<a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Ajax"></a>Ajax
+					</h2>
+					<p>Call a local script on the server /api/getWeather with the query parameter zipcode=97201 and replace the element #weather-temp's html with the returned text.</p>
+					<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.ajax({
+					  url: "/api/getWeather",
+					  data: {
+					    zipcode: 97201
+					  },
+					  success: function( result ) {
+					    $( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+					  }
+					});</span><br></pre></td></tr></table></figure>	
+					<h2 id="u6587_u7AE0_u7ED3_u6784">
+						<a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Package Manager"></a>Package Manager
+					</h2>
+					<p>NuGet focusses mainly on .NET (there are a lot of non-.NET packages on NuGet however), NPM (Node Package Manager), Yarn and Bower are JavaScript package managers.</p>
+					<p>Yarn was created by Facebook and Open Sourced. Speed comparisons found online show that Yarn is faster than NPM. Yarn is also able to install packages from a cache and does not require a connection to the Internet (only if a package was downloaded before).</p>	
+					<h2 id="u6587_u7AE0_u7ED3_u6784">
+						<a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="What is a Web Server?"></a>What is a Web Server?
+					</h2>
+					<p>a web server is the software that receives your request to access a web page. It runs a few security checks on your HTTP request and takes you to the web page. Depending on the page you have requested, the page may ask the server to run a few extra modules while generating the document to serve you. It then serves you the document you requested.</p>
+					<p>Apache is the most widely used web server software. Developed and maintained by Apache Software Foundation, Apache is an open source software available for free. It runs on 67% of all webservers in the world. It is fast, reliable, and secure. It can be highly customized to meet the needs of many different environments by using extensions and modules. Most WordPress hosting providers use Apache as their web server software.</p>
+					<p>A web server like Apache, is also the Maitre D’ of the restaurant. It handles your communications with the website (the kitchen), handles your requests, makes sure that other staff (modules) are ready to serve you. It is also the bus boy, as it cleans the tables (memory, cache, modules) and clears them for new customers.</p>				
+					<h2 id="u6587_u7AE0_u7ED3_u6784">
+						<a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="What is the differences between .NET Framework and .NET Core?"></a>What is the differences between .NET Framework and .NET Core?
+					</h2>
+					<p>In 2002, Microsoft released .NET Framework 1.0 as a proprietary software framework for Windows platform. It has been updating the .NET Framework regularly to meet the emerging trends in software development. But Microsoft recently redesigned the core architecture of the .NET Framework to simplify development, testing, and deployment of modern software applications. The company released .NET Core 1.0 in June, along with ASP.NET Core 1.0 and Entity Framework.</p>
+					<p>Unlike .NET Framework, .NET Core is both open source and cross-platform. It further comes with several new features to simplify development and testing of desktop, web, cloud, and mobile applications. Also, it allows developers to deploy the applications in a number of ways. But .NET Core does not support all features and functionalities of .NET Framework. Hence, it becomes essential for developers to understand the major differences between .NET Framework and .NET Core before switching to the most recent version of the popular software framework.</p>					
+					<h2 id="u6587_u7AE0_u7ED3_u6784">
+						<a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="MVC (Model-View-Controller)"></a>MVC (Model-View-Controller)
+					</h2>
+					<p>Model</p>
+					<p>* The Model in MVC is a set of classes or project that describe your business logic. It represents all the business logic, like manipulating of data for your business/application, and data access operations like how you connect with database and get the data. In MVC, Model directly communicates with the Controller.</p>
+ 					<p>View</p> 
+ 					<p>The View in MVC are pages which we display to users, i.e., UI part which may consist of HTML, CSS, jQuery, JavaScript, etc. View part is actually completely responsible for displaying data. It takes data from the Controller and also sends back data to the Controller. It does not communicate directly with the Model.</p>
+ 					<p>Controller</p>
+					<p>The Controller in MVC is the base of MVC architecture. Every request comes first to Controller then Controller requests the required information from Model and then it sends that information (data) to View in various formats. It works as a communicator and validator between View and Model.</p>
+					<h2 id="u6587_u7AE0_u7ED3_u6784">
+						<a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Framework in Programming"></a>Framework in Programming
+					</h2>
+					<p>Suppose you have to make a tea on daily basis with several ingredients like sugar, tea leaves , other spices , water etc. In doing so on daily basis most of the time u will find it is really difficult to put all ingredients in right ratio all time, u can forget some times u have to open several boxes one by one , one morning u come up with idea of mixing all ingredients in one jar in one ratio , such that every spoon will serve the right ratio mix to the tea. ( Off course milk and water remain aside)</p>
+					<p>This jar is your framework. When we want to do lots of things on regular basis it just consumes time and a framework will not only save time it will also provide right components in ur applications. Fast and easy.</p>			
 				</div>
 			</article>
 		</div>
 	</section>
 	<footer>
 		<div class="paginator">
-			<a href="/2016/10/15/20161015_如何从美亚购买 Kindle 电子书/" class="next">下一篇</a>
+			<a href="/" class="next">下一篇</a>
 		</div>
 		<div id="disqus_thread"></div>
-		<script>
+<!-- 		<script>
 			var disqus_shortname = 'numbbbbb';
 			var disqus_identifier = '2018/01/01/20171231/';
 			var disqus_title = '对《WIRED》一篇文章的分析';
@@ -51,7 +111,25 @@
 			    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
 			    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 			})();</script><script id="dsq-count-scr" src="//numbbbbb.disqus.com/count.js" async></script><div class="copyright"><p>© undefined - 2019 <a href="http://yoursite.com">梁杰</a>, unless otherwise noted.</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-72406781-1",'auto');ga('send','pageview');
+		</script> -->
+		<script>
+		/**
+		*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+		/*
+		var disqus_config = function () {
+		this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		};
+		*/
+		(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = 'https://https-hellcy-github-io.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+		})();
 		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 		<script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	</body>
 </html>
