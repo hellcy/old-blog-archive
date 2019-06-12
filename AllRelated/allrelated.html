@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="X-UA-Compatible" content="IE=edge">
+	<title>乱七八糟的东西</title>
+	<meta name="description" content="乱七八糟的东西 - hellcy">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="short icon" href="/sitelogo.jpg">
+	<link rel="stylesheet" href="/css/apollo.css">
+</head>
+<body>
+	<header>
+		<a href="/" class="logo-link"><img src="/sitelogo.jpg"></a>
+		<ul class="nav nav-list">
+			<li class="nav-list-item">
+				<a href="/" target="_self" class="nav-list-link">博客</a>
+			</li>
+			<li class="nav-list-item">
+				<a href="https://github.com/hellcy" target="_blank" class="nav-list-link">Github</a>
+			</li>
+		</ul>
+	</header>
+	<section class="container">
+		<div class="post">
+			<article class="post-block">
+				<h1 class="post-title">All IT related stuff will be put in here</h1>
+				<div class="post-time">Jun 12, 2019</div>
+				<div class="post-content">
+					<h2 id="u6587_u7AE0_u7ED3_u6784">
+						<a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Winforms vs WPF"></a>Winforms vs WPF
+					</h2>
+					<p>The single most important difference between WinForms and WPF is the fact that while WinForms is simply a layer on top of the standard Windows controls (e.g. a TextBox), WPF is built from scratch and doesn't rely on standard Windows controls in almost all situations. This might seem like a subtle difference, but it really isn't, which you will definitely notice if you have ever worked with a framework that depends on Win32/WinAPI.</p>
+					<p>A great example of this is a button with an image and text on it. This is not a standard Windows control, so WinForms doesn't offer you this possibility out of the box. Instead you will have to draw the image yourself, implement your own button that supports images or use a 3rd party control. With WPF, a button can contain anything because it's essentially a border with content and various states (e.g. untouched, hovered, pressed). The WPF button is "look-less", as are most other WPF controls, which means that it can contain a range of other controls inside of it. You want a button with an image and some text? Just put an Image and a TextBlock control inside of the button and you're done! You simply don’t get this kind of flexibility out of the standard WinForms controls, which is why there's a big market for rather simple implementations of controls like buttons with images and so on.</p>
+				</div>
+			</article>
+		</div>
+	</section>
+	<footer>
+		<div class="paginator">
+			<a href="/2016/10/15/20161015_如何从美亚购买 Kindle 电子书/" class="next">下一篇</a>
+		</div>
+		<div id="disqus_thread"></div>
+		<script>
+			var disqus_shortname = 'numbbbbb';
+			var disqus_identifier = '2018/01/01/20171231/';
+			var disqus_title = '对《WIRED》一篇文章的分析';
+			var disqus_url = 'http://yoursite.com/2018/01/01/20171231/';
+			(function() {
+			    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();</script><script id="dsq-count-scr" src="//numbbbbb.disqus.com/count.js" async></script><div class="copyright"><p>© undefined - 2019 <a href="http://yoursite.com">梁杰</a>, unless otherwise noted.</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-72406781-1",'auto');ga('send','pageview');
+		</script>
+		<script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	</body>
+</html>
