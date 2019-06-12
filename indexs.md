@@ -216,3 +216,4 @@ I used it to run long running SQL that updated millions of rows in the database.
 4. LoginName: like idsys
 5. ClientProcessID: 17136 (not sure if this will change)
 6. Click run and you will now trace all traffic.
+fsfdsdfsd
