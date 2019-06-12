@@ -122,14 +122,17 @@
 		this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 		};
 		*/
+		var disqus_shortname = 'hellcy';
 		(function() { // DON'T EDIT BELOW THIS LINE
 		var d = document, s = d.createElement('script');
-		s.src = 'https://https-hellcy-github-io.disqus.com/embed.js';
+		s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		//s.src = 'https://https-hellcy-github-io.disqus.com/embed.js';
 		s.setAttribute('data-timestamp', +new Date());
 		(d.head || d.body).appendChild(s);
 		})();
 		</script>
 		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<script id="dsq-count-scr" src="//https-hellcy-github-io.disqus.com/count.js" async></script>
 		<script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	</body>
 </html>
