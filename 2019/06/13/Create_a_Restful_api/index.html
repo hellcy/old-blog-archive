@@ -30,21 +30,18 @@
           <h2 id="u6587_u7AE0_u7ED3_u6784">
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="今天拿到了一个任务"></a>今天拿到了一个任务
           </h2> 
-          <img src="../1.PNG" alt="Wrike Restful api Task">
+          <img src="1.PNG" alt="Wrike Restful api Task">
           <p>要写一个API，要求是每次学生登陆之后可以看到他的学生卡的相关信息，包括卡号，有效期，余额，还有可不可以自动充值等等。</p>
           <img src="20190613215735.png" alt="Wrike Scope of Work">
           <p>那么我们就要先写一个stored procedure把相关信息提取出来,这些信息牵扯到4个table来自于两个database。</p>
-          <img src="../1.png" alt="Stored Procedure">
-
-          <p>由于是第一次写这种Restful Api所以我要写看看这个Restful是什么意思。然后这个Microsoft的tutorial可以帮助我们写一个简单的api模版。</p>
-          <img src="../1.png" alt="Restful template">
-
-          <p>然后就是看看能不能把SQL server连接到这个api，这样每次api收到request的时候就会运行刚刚写的SQL query了。</p>
-          <img src="../1.png" alt="">
-
-          <p>之后用Postman检查一下看看能不能拿到数据。</p>
-          <img src="../1.png" alt="Postman request">
-
+          <img src="2.png" alt="Stored Procedure">
+          <p>随便打一个StudentID试一下看看能不能成功运行</p>
+          <img src="3.png" alt="Stored Procedure">
+          <p>接着在Microsoft Doc tutorial可以帮助我们写一个简单的api模版。在用connectionString连接上database然后用postman测试一下</p>
+          <img src="4.png" alt="Postman request">
+          <p>这样基本上api就算写的差不多了，接下来还要把格式改成要求的样子</p>
+          <img src="5.png" alt="Postman request">
+          <p>所以把它改成JSON Object这样好改一点，刚才都是直接return DataTable。</p>
           <p>要求中还说到要有基本的authentication。所以我们再看看这个在API中加authentication的tutorial。</p>
           <img src="../1.png" alt="authentication">
         </div>
