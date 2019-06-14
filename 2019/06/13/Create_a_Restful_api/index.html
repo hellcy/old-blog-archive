@@ -44,9 +44,12 @@
           <p>所以把它改成JSON Object这样好改一点，刚才都是直接return DataTable。</p>
           <img src="6.png" alt="VS Object structure">
           <p>结构基本就是这样，然后再测试一下看看能不能拿到相同的格式</p>
-          <img src="6.png" alt="Postman test">
-          <p>要求中还说到要有基本的authentication。所以我们再看看这个在API中加authentication的tutorial。</p>
-          <img src="../1.png" alt="authentication">
+          <img src="7.png" alt="Postman test">
+          <p>要求中还说到要有基本的authentication。有可能就是在function前面加上authorize attribute，等下周问问leader。另外就是要log所有的api calls。包括api整个的运行时间（response time），StudentID，现在的系统时间。我先把output写在debug console里了，回头再改看看要不要直接output到一个file里面。</p>
+          <img src="../1.png" alt="log screen">
+          <p>接下来就是要写一个console application来call我们的api了，毕竟不能一直用postman做测试啊。</p>
+          <p>用HttpClient去call api，已经成功了，但是有两个问题，一个是如果连续call10次的话每次用的时间都很长，用postman的时候很多时候只有20ms，但是现在有上千。。。第二个问题就是我还需要做一个simultaneously call。</p>
+          <img src="../1.png" alt="call api in a console app">
         </div>
       </article>
     </div>
