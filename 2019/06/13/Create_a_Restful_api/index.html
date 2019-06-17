@@ -50,7 +50,7 @@
           <p>接下来就是要写一个console application来call我们的api了，毕竟不能一直用postman做测试啊。</p>
           <p>用HttpClient去call api，已经成功了，但是有两个问题，一个是如果连续call10次的话每次用的时间都很长，用postman的时候很多时候只有20ms，但是现在有上千。。。第二个问题就是我还需要做一个simultaneously call。</p>
           <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="今天拿到了一个任务"></a>一个周末过去了。。
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="今天拿到了一个任务"></a>一个周末过去了。。17/06/2019
           </h2> 
           <p>改了改async，await现在call api没什么问题了</p>
           <img src="9.png" alt="call api in a console app">
@@ -59,12 +59,10 @@
           <p>这个async，await的意思是：如果task前面有await，那么程序会暂停直到拿到task的返回值或task结束运行之后才会继续。而如果task前面没有await，意味着在它被创建的时候程序可以继续运行之后的代码，只要它们不依靠task的结果。所以我们可以创建10个没有await的task，最后在一起await然后output。</p>
           <img src="11.png" alt="simultaneous api call">
           <p>这样的话虽然每次api call的时间比一次一次call要长很多但是如果计算500次call的总时间的话平行运算还是有优势的</p>
-          <ul>
-          <li><img src="12.png" alt="simultaneous api call time"><p>平行运算时每次api call的时间</p></li>
-          <li><img src="13.jpg" alt="simultaneous call total time"><p>500次call的总时间，总共算了10次，基本在8秒左右</p></li>
-          <li><img src="14.png" alt="single api call time"><p>单次运算时每次api call的时间</p></li>
-          <li><img src="15.png" alt="single api call total time"><p>单次运算时每500次的总时间，总共算了10次，基本都超过了10秒</p></li>
-          </ul>
+          <div><img src="12.png" alt="simultaneous api call time"><p>平行运算时每次api call的时间</p></div>
+          <div><img src="13.png" alt="simultaneous call total time"><p>500次call的总时间，总共算了10次，基本在8秒左右</p></div>
+          <div><img src="14.png" alt="single api call time"><p>单次运算时每次api call的时间</p></div>
+          <div><img src="15.png" alt="single api call total time"><p>单次运算时每500次的总时间，总共算了10次，基本都超过了10秒</p></div>
         </div>
       </article>
     </div>
