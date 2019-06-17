@@ -59,10 +59,10 @@
           <p>这个async，await的意思是：如果task前面有await，那么程序会暂停直到拿到task的返回值或task结束运行之后才会继续。而如果task前面没有await，意味着在它被创建的时候程序可以继续运行之后的代码，只要它们不依靠task的结果。所以我们可以创建10个没有await的task，最后在一起await然后output。</p>
           <img src="11.png" alt="simultaneous api call">
           <p>这样的话虽然每次api call的时间比一次一次call要长很多但是如果计算500次call的总时间的话平行运算还是有优势的</p>
-          <div><img src="12.png" alt="simultaneous api call time"><p>平行运算时每次api call的时间</p></div>
-          <div><img src="13.png" alt="simultaneous call total time"><p>500次call的总时间，总共算了10次，基本在8秒左右</p></div>
-          <div><img src="14.png" alt="single api call time"><p>单次运算时每次api call的时间</p></div>
-          <div><img src="15.png" alt="single api call total time"><p>单次运算时每500次的总时间，总共算了10次，基本都超过了10秒</p></div>
+          <div><img src="12.png" alt="simultaneous api call time"><p style="text-align: justify;">平行运算时每次api call的时间</p></div>
+          <div><img src="13.png" alt="simultaneous call total time"><p style="text-align: justify;">500次call的总时间，总共算了10次，基本在8秒左右</p></div>
+          <div><img src="14.png" alt="single api call time"><p style="text-align: justify;">单次运算时每次api call的时间</p></div>
+          <div><img src="15.png" alt="single api call total time"><p style="text-align: justify;">单次运算时每500次的总时间，总共算了10次，基本都超过了10秒</p></div>
         </div>
       </article>
     </div>
