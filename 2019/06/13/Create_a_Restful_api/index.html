@@ -63,6 +63,8 @@
           <div><img src="13.png" alt="simultaneous call total time"><p style="text-align: justify;">500次call的总时间，总共算了10次，基本在8秒左右</p></div>
           <div><img src="14.png" alt="single api call time"><p style="text-align: justify;">单次运算时每次api call的时间</p></div>
           <div><img src="15.png" alt="single api call total time"><p style="text-align: justify;">单次运算时每500次的总时间，总共算了10次，基本都超过了10秒</p></div>
+          <p>关于在api中加入basic authenticaiton：To access the web API method, we have to pass the user credentials in the request header. If we do not pass the user credentials in the request header, then the server returns 401 (unauthorized) status code indicating the server supports Basic Authentication.</p>
+          <p>新建一个class， inhert from IHttpModule，这样就可以让api support <a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/basic-authentication" class="next">basic authentication</a>了。但是我们还要让console在request中加入auth header。</p>
         </div>
       </article>
     </div>
