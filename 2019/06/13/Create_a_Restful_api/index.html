@@ -14,7 +14,7 @@
     <a href="/" class="logo-link"><img src="/sitelogo.jpg"></a>
     <ul class="nav nav-list">
       <li class="nav-list-item">
-        <a href="/" target="_self" class="nav-list-link">博客</a>
+        <a href="/" target="_self" class="nav-list-link">Blog</a>
       </li>
       <li class="nav-list-item">
         <a href="https://github.com/hellcy" target="_blank" class="nav-list-link">Github</a>
@@ -65,14 +65,21 @@
           <div><img src="15.png" alt="single api call total time"><p style="text-align: justify;">单次运算时每500次的总时间，总共算了10次，基本都超过了10秒</p></div>
           <p>关于在api中加入basic authenticaiton：To access the web API method, we have to pass the user credentials in the request header. If we do not pass the user credentials in the request header, then the server returns 401 (unauthorized) status code indicating the server supports Basic Authentication.</p>
           <p>新建一个class， inhert from IHttpModule，这样就可以让api support <a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/basic-authentication" class="next">basic authentication</a>了。但是我们还要让console在request中加入auth header。</p>
+          <img src="16.png" alt="add authentication to header">
+          <p>试了一下可以运行，那么这个task到现在就基本完成了。看看leader有什么别的要求再说吧。</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="More information"></a>More information
+          </h2> 
+          <p>load and stress testing. Load testing verifies how the system function under a heavy number of concurrent clients sending requests over a certain period of time. However, the main goal of that type of tests is to simulate the standard traffic similar to that, which may arise on production. Stress testing takes load testing and pushes your app to the limits to see how it handles an extremely heavy load.</p>
         </div>
       </article>
     </div>
   </section>
   <footer>
     <div class="paginator">
-      <a href="/" class="next">下一篇</a>
+      <a href="https://hellcy.github.io/2019/06/18/How_to_use_Gatling_load_testing_tools/" class="next">下一篇</a>
     </div>
+  </footer>
     <div id="disqus_thread"></div>
 <!--    <script>
       var disqus_shortname = 'numbbbbb';
