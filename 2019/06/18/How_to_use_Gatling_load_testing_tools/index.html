@@ -58,13 +58,18 @@
           <p>找到logback.xml,然后更改成这样，这样每次报错就会生成gatling.log</p>
           <p>打开log发现他说：value over is not a member of io.gatling.core.Predef.RampBuilder。 说明没有识别关键词over，google一下这句话。发现是因为这个是旧版本的语法了。。。可是官方guide居然还没有更新。。。</p>
           <p>好吧找到migration guide，发现over被替换成during了。。嗯。。真好</p>
-          <img src="7.png" alt="export error log">
+          <img src="7.png" alt="migration guide">
           <p>重新运行一下gatling.bat，现在行了，还挺像模像样的</p>
-          <img src="8.png" alt="export error log">
+          <img src="8.png" alt="gatling console output">
           <p>现在大部分request都小于800ms</p>
-          <img src="9.png" alt="export error log">
+          <img src="9.png" alt="gatling report">
           <p>细看的话，同时在线人数基本在50以上，我们用不到那么多。。。并且将近一半的request其实只用了36ms。。</p>
-          <img src="10.png" alt="export error log">
+          <img src="10.png" alt="gatling report 2">
+          <p>ok，还有一个问题就是这个report中response time的上下限太高了，我们平均都不会超过100所以要更改一下上下限</p>
+          <p>同样，还是去gatling.conf</p>
+          <img src="11.png" alt="gatling config">
+          <p>改一下lowerBound, higherBound, 记住一定要把#去掉，不然这会被算作comment而没有实际作用</p>
+          <img src="12.png" alt="gatling config guide">
 
         </div>
       </article>
