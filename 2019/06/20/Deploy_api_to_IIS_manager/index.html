@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="X-UA-Compatible" content="IE=edge">
+  <title>Deploy API to client IIS manager</title>
+  <meta name="description" content="Deploy API to client IIS manager - hellcy">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="short icon" href="/sitelogo.jpg">
+  <link rel="stylesheet" href="/css/apollo.css">
+</head>
+<body>
+  <header>
+    <a href="/" class="logo-link"><img src="/sitelogo.jpg"></a>
+    <ul class="nav nav-list">
+      <li class="nav-list-item">
+        <a href="/" target="_self" class="nav-list-link">Blog</a>
+      </li>
+      <li class="nav-list-item">
+        <a href="https://github.com/hellcy" target="_blank" class="nav-list-link">Github</a>
+      </li>
+    </ul>
+  </header>
+  <section class="container">
+    <div class="post">
+      <article class="post-block">
+        <h1 class="post-title">Deploy API to client IIS manager</h1>
+        <div class="post-time">Jun 20, 2019</div>
+        <div class="post-content">
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="What is load testing"></a>Publish API using visual studio
+          </h2> 
+          <p>API 完成之后，我们还需要把它deploy到client server里。所以我们先用visual studio publish它</p>
+          <img src="1.png" alt="API publish">
+          <p>go to Build->Publish API, 然后点publish，记住publis的路径</p>
+          <img src="2.png" alt="API publish files">
+          <p>这些文件就是一会要copy到client server的文件，也就是api</p>
+          <p>用remote desktop连接到client server</p>
+          <img src="3.png" alt="remote desktop connection">
+          <p>这个就是client server的IIS manager了，可以看到已经有很多API和app在列表中了</p>
+          <img src="4.png" alt="client server IIS manager">
+          <p>接下来新建一个app connection，路径上新建一个文件夹，把刚才的api文件放进去</p>
+          <img src="5.png" alt="client server app connection">
+          <p>更改一下web.config，连接到正确的client database，database name也要一致</p>
+          <p>测试一下，api有反应，那么就算deploy成功了</p>
+          <img src="6.png" alt="Postman test">
+        </div>
+      </article>
+    </div>
+  </section>
+  <footer>
+    <div class="paginator">
+      <a href="/2019/06/18/How_to_use_Gatling_load_testing_tools/" class="next">下一篇</a>
+    </div>
+  </footer>
+    <div id="disqus_thread"></div>
+    <script>
+  var disqus_shortname = 'hellcy';
+  
+  var disqus_url = 'https://hellcy.github.io/2019/06/20/Deploy_api_to_IIS_manager/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script id="dsq-count-scr" src="//https-hellcy-github-io.disqus.com/count.js" async></script>
+    <script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>
