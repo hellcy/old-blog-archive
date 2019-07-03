@@ -62,6 +62,33 @@
           <h2 id="u6587_u7AE0_u7ED3_u6784">
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="The Second app: Checklist"></a>Checklist
           </h2> 
+          <p>第二个app就没有那么简单了，他先讲了table view和navigation bar</p>
+          <img src="14.png" alt="table view and navigation bar">
+          <p>跟普通的view不同的是它由一行行的cell组成，这些cell可以被重复使用，当用户往下滑动时，更多的内容会被显示但是并不是每一行data都被存放在一个新的table cell里。离开显示范围的cell会重新出现在底部，并显示出新的data。</p>
+          <img src="15.png" alt="UITable view protocol">
+          <p>Protocol</p>
+          <p>什么是protocol？他其实是一种已经被写好了的methods的集合，UITableView就是一个protocol，我们通过它来显示table view，但是如果我们想改变一些显示方式，让他更适应我们自己的app，那么就要override其中一些method，这很常见</p>
+          <img src="16.png" alt="UITableView method override">
+          <p>一般让一个table view更好的显示，我们需要override三个methods</p>
+          <ul>
+            <li>override func tableView(_ tableView: UITableView,
+            numberOfRowsInSection section: Int) -> Int</li>
+            <li>override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell</li>
+            <li>override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)</li>
+          </ul>
+          <p>MVC model</p>
+          <p>MVC model是一种常见的设计模式，将代码分割成三个部分，每一个部分只负责他自己的任务，这样让程序结构更清晰。Model主要负责储存数据，view负责显示数据给用户，而controller负责显示正确的数据，包括运算等等</p>
+          <img src="17.png" alt="MVC model">
+          <p>Array</p>
+          <p>这个app将table cells中的数据储存在一个array中，新建了一个checklistItem model,这样的话每次如果有数据变动就只需要增加和删除array中的数据。</p>
+          <p>Initializer</p>
+          <p>在Swift语言中，所有的variable， obejct都必须被初始化，所以很多时候我们需要一个初始化器来负责检查漏掉的变量。注意当我们有两个view controller需要传递data时，method的执行顺序是：假设A呼叫B</p>
+          <ul>
+            <li>init() from B</li>
+            <li>prepare() from A</li>
+            <li>viewDidLoad() from B</li>
+          </ul>
+          <img src="18.png" alt="Initializer">
 <!--           <img src="1.png" alt="Mitools">
         	<p>因为我们用的是<a href="https://www.identisource.net/26_bit_format_layout.cfm" target="_blank">26 bit format</a> 所以取前26位数</p> -->
         </div>
