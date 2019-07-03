@@ -28,22 +28,30 @@
         <div class="post-time">Jul 3, 2019</div>
         <div class="post-content">
           <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="What is iOS apprentice"></a>Mitools
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="What is iOS apprentice"></a>什么是iOS apprentice？
           </h2> 
-          <p>Mifare卡是一种卡片类型，它的安全等级不是特别的高，现在已经有可以破解的软件，Mitools就是其中一种。它的界面如下</p>
-          <img src="1.png" alt="Mitools">
-          <p>Mifare卡片总共有16个sector，每一个sector中又有4个block，其中第一个sector是用来卡片生产的过程中记录卡片信息的，一般来说我们不去动他。剩下的15个sector可以给我们用来记录我们想要的信息，其中每个sector的前3个block可以自由使用，而第4个block是用来记录两个密码Key A和Key B。中间的7为则用来记录密码的形式，一般我们也不去动他。密码层在图中用粉色表示。</p>
-        	<img src="2.png" alt="Mitools read">
-        	<p>这是其中一张卡片读取后显示的信息</p>
-        	<p>现在我们来看看怎么从sector7中提取出这张卡片的site code和card number</p>
-        	<img src="3.png" alt="Mitools read">
-        	<p>可以看到第一个block中含有我们需要的信息，而剩下的block2，block3都是0.</p>
-        	<img src="4.png" alt="Mitools read">
-        	<p>我们需要做的就是拿出block1中的信息，这个信息是Hexadecimal也就是16进制的，所以我们先把它变成2进制。1101 1000 1010 0011 1111 1000 0000 0000‬</p>
-        	<p>因为我们用的是<a href="https://www.identisource.net/26_bit_format_layout.cfm" target="_blank">26 bit format</a> 所以取前26位数</p>
-        	<p>除去第一位even parity，取第二位往后8位：1011 0001，换成十进制就是177</p>
-        	<p>再往后取16位：0100 0111 1111 0000. 十进制就是18416</p>
-        	<p>这样我们就得到了site code: 177, card number: 18416</p>
+          <p>在完成了上一个任务之后，我总算迎来了又一个更加巨大的挑战，这次直接换了一个新的平台：iOS。我从来没有接触过iOS的编程，之前只是听说过Swift和Cocoa Touch，但是Xcode完全没有用过。于是经过一番上网查找，我发现了一个非常适合新手入门的教材： raywenderlich的iOS apprentice！</p>
+          <img src="1.png" alt="iOS apprentice book">
+          <p>他总共包括四个部分，每一个部分教你编写一个app，难度从低到高。</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="First app: Bull's Eye"></a>第一个app: Bull's Eye
+          </h2> 
+          <img src="2.png" alt="Bull Eye app">
+          <img src="3.png" alt="Bull Eye app 2">
+          <p>从怎么样创建一个新的single view app说起，非常容易上手</p>
+          <ul>
+            <li><img src="4.png" alt="Project Navigator">Project Navigator</li>
+            <li><img src="5.png" alt="Obejct Library">Obejct Library</li>
+            <li><img src="6.png" alt="Drag item to view">Drag item to view</li>
+            <li><img src="7.png" alt="Make connections from object item to View Controller">Make connections from object item to View Controller</li>
+            <li><img src="8.png" alt="Attributes Inspector">Attributes Inspector</li>
+            <li><img src="9.png" alt="Item Outlet"><img src="10.png" alt="Item Outlet 2">Item Outlet</li>
+            <li><img src="11.png" alt="Another view controller">Another view controller</li>
+            <li><img src="12.png" alt="Segue">Segue</li>
+            <li><img src="13.png" alt="Add Constraints">Add Constraints</li>
+          </ul>
+<!--           <img src="1.png" alt="Mitools">
+        	<p>因为我们用的是<a href="https://www.identisource.net/26_bit_format_layout.cfm" target="_blank">26 bit format</a> 所以取前26位数</p> -->
         </div>
       </article>
     </div>
