@@ -89,6 +89,61 @@
             <li>viewDidLoad() from B</li>
           </ul>
           <img src="18.png" alt="Initializer">
+          <p>Delegates</p>
+          <p>Delegates是ios编程中非常重要的一个概念，当你需要把一些值从一个view传到另一个view时，你通常不希望这两个view相互知道太多除了需要值之外的其他东西，如果两个view之间的联系太紧密，那么他们和其他view再建立关联就会更麻烦。所以一种通常的办法是写一个protocol，包含所有delegate methods，再让另外一个view成为它的delegate。这种办法称为loose coupling。 A是B的delegate，然而B根本不知道A的存在，只知道他有一个delegate可以接受他想要传递的值。</p>
+          <img src="19.png" alt="Delegate">
+          <p>建立delegate的步骤</p>
+          <ul>
+          	<li>在B中建立delegate protocol</li>
+          	<li>在B中建立一个delegate optional variable</li>
+          	<li>在B中，需要传递信息时呼叫delegate method</li>
+          	<li>在A中conformB的delegate protocol（inheritance）</li>
+          	<li>告诉B，A是自己的delegate，一般在A的prepare method中做这一步</li>
+          </ul>
+          <p>Optionals</p>
+          <p>Optional variable在declare的时候用？来表示，表明这个变量有可能是nil，在使用的时候也需要加？在varibale name的后面，如果使用了exclamation mark叹号！，则表示在此时不管变量是什么，强行取得其中的值，此时程序员保证变量在此时不可能是nil，风险也由程序员承担。是用叹号叫做force unwrapping</p>
+          <p>Weak</p>
+          <p>Weak表示两个objects之间的关系，当A对B的关系是strong时表示A是B的owner。当两个obejcts之间都是strong的关系我们可能会产生ownership cycle的问题从而导致memroy leak，因为没有人有资格destroy它的owner。所以我们尽量要维护一种一强一弱的对应关系。</p>
+          <img src="20.png" alt="strong-strong relationship">
+          <img src="21.png" alt="strong-weak relationship">
+          <p>一般来说，A如果是B的owner，A给B传值时在A的prepare method中，此时B的instance已经被建立，A很容易把值传给B的properties，并指认成为B的delegate，B给A传值则需要在合适的时候呼叫delegate methods</p>
+          <img src="22.png" alt="Views pass value">
+          <p>Save data</p>
+          <p>app会在合适的时候将用户数据保存到手机本地，每一个app都有一个属于自己的folder，也叫做sandbox，每个sandbox之间不能访问，这就预防了一些恶意软件在用户不知情的情况下窃取保存在用户手机其他地方的数据。</p>
+          <img src="23.png" alt="Saving data">
+          <p>数据一般会保存在这样的一个path中，我们可以看到application后面接着一串32的字母的应用ID</p>
+          <img src="24.png" alt="data path">
+          <p>.plist file</p>
+          <p>什么是.plist文件？它是一种ios用来储存数据的文件，它遵循XML格式，每一个app都有一个info.plist file，他就是用来保存这个app的配置信息</p>
+          <p>Special comments</p>
+          <p>在编写代码时我们可以使用 // MARK：- 的形式来告诉Xcode我们开始了一个section，这样在jump bar中我们就可以快速定位variable，methods的位置。</p>
+          <img src="25.png" alt="MARK comments">
+          <img src="26.png" alt="Jump bar for MARK comments">
+          <p>Type casts</p>
+          <p>我们使用 as! 来给一个variable赋予一种data type，告诉Swift以后把它当成某一种type来处理，因为有时候我们知道它的type，可是Swift却不知道。</p>
+          <img src="27.png" alt="Type casts">
+          <p>Array of arrays</p>
+          <p>当app的结构变得复杂时，数据的结构也要相应的变化以适应这些变化，我们可以使用嵌套的array来储存更多的数据</p>
+          <img src="28.png" alt="nested arrays">
+          <p>AppDelegate.swift</p>
+          <p>这个文件用来负责当app刚启动时或快要结束时的一些情况，我们不需要每过一会就储存数据，只需要每当用户退出app或者切换app时，所以这些method需要在AppDelegate里面修改</p>
+          <img src="29.png" alt="AppDelegate file">
+          <p>Dictionary</p>
+          <p>和array类似，dictionary也是一种储存数据的类型，只不过它是将数据按照key-value pair来排列的，当需要拿到某一个数据时，我们需要给dictionary相应的key。</p>
+          <img src="30.png" alt="dictionary">
+          <p>User Defaults</p>
+          <p>User Defaults就是一个dictionary类型的数据储存文件，它包含户用的配置信息，我们使用它储存一些app刚开始时的默认配置。</p>
+          <p>Local Notifications</p>
+          <p>当获得用户许可后，app可以定时在app不活跃时像互用手机发送提醒</p>
+          <img src="31.png" alt="Notification authorization">
+          <img src="32.png" alt="Permission dialog">
+          <img src="33.png" alt="Notification message">
+          <p>这些基本就是第二个app的全部内容了，关于代码的部分可以在我的github的iOSApprenticePratice里面找到，下面是整个app的final storyboard</p>
+		  <img src="34.png" alt="final storyboard">
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="The thrid app: MyLocations"></a>第三个app：MyLocation
+          </h2> 
+
 <!--           <img src="1.png" alt="Mitools">
         	<p>因为我们用的是<a href="https://www.identisource.net/26_bit_format_layout.cfm" target="_blank">26 bit format</a> 所以取前26位数</p> -->
         </div>
