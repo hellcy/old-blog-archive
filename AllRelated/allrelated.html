@@ -105,6 +105,11 @@
 					</h2>	
 					<img src="Kotlin.png" alt="Kotlin overview">
 					<p>Kotlin是JetBrains开发的一种新的面向安卓开发的语言，他的第一个正式版本发布与2016年，2019年五月google宣布Kotlin取代Java成为他们偏向的安卓开发语言。Kotlin会不会完全取代Java还不确定，但是学习Kotlin肯定是明智的。我感觉它刚看上去和Swift差不多，都是使用？作为Nullable instance，也取消了句尾的分号。至于Android Studio和Intellij IDEA这两个IDE使用哪个作为安卓开发呢，我觉得Android Studio肯定是面向Andoird更多，如果你的Project需要用到其他语言，javascript，或者server side，可能使用Intellij IDEA会更加好。但是我们随时可以在这两个IDE里切换着来。</p>
+					<h2 id="u6587_u7AE0_u7ED3_u6784">
+						<a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="xcode Zombie objects"></a>Zombie objects
+					</h2>	
+					<img src="xcode zombie object.png" alt="xcode zombie object">
+					<p>Zombie objects are a wonderful feature of Xcode that every developer should know about. When zombie objects are enabled, any object that is released to a reference count of 0 gets replaced by a zombie object. That way, if during your testing an object thats been released gets sent a message, a helpful logging message appears after the program crashes. Now, anytime a dealloc’ed object gets sent a message during testing, you’ll know about it! However, make sure that when its time to release the application you disable (un-tick the checkbox) Zombie Objects.</p>
 				</div>
 			</article>
 		</div>
