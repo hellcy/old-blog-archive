@@ -24,7 +24,7 @@
   <section class="container">
     <div class="post">
       <article class="post-block">
-        <h1 class="post-title">Payment Gateway</h1>
+        <h1 class="post-title">Payment Gateway API</h1>
         <div class="post-time">Jul 23, 2019</div>
         <div class="post-content">
           <h2 id="u6587_u7AE0_u7ED3_u6784">
@@ -32,6 +32,11 @@
           </h2> 
           <p>现在很多公司都允许客户通过信用卡在网上直接付款购买公司的服务和产品，那么必不可少的就是公司需要对用户输入的信用卡信息和其他个人隐私保护，使得外人不能窃取这些信息，<a href="https://www.cio.com.au/article/400300/what_pci_compliance_/">PCI DSS</a>是一种数据安全协议，通过参与这个协议，客户就可以放心的将信用卡信息填在公司的网站上而不用担心泄露。因为如果客户的信息泄露了，公司将会受到严重的利息损失，其他客户也将不再愿意相信此公司的信誉。</p>
           <img src="1.jpg" alt="PCI compliance">
+          <p>WestPac QuickStream是一个第三方的payment gateway。我们可以使用这个API来管理用户的付款，他们提供一种trusted frame，使用它，所有的敏感信息将不会经过公司的服务器，而是直接从用户的电脑到Westpac的服务器，由他们来负责保护这些关键信息。</p>
+          <img src="2.png" alt="Westpac quickstream">
+          <p>Trusted Frame将用户信息加密(tokenize)，并将加密后的token发送到公司服务器，这样即使公司也无法知道用户信息了。</p>
+          <img src="3.png" alt="Trusted frame">
+          <p>详细的API使用可以在<a href="https://quickstream.westpac.com.au/docs/quickstreamapi/v1/transactions/#transactions-api">这里</a>找到。</p>
         </div>
       </article>
     </div>
