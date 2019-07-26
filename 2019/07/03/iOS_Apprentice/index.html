@@ -41,8 +41,12 @@
           <p>在完成了上一个任务之后，我总算迎来了又一个更加巨大的挑战，这次直接换了一个新的平台：iOS。我从来没有接触过iOS的编程，之前只是听说过Swift和Cocoa Touch，但是Xcode完全没有用过。于是经过一番上网查找，我发现了一个非常适合新手入门的教材： raywenderlich的iOS apprentice！</p>
           <img src="1.png" alt="iOS apprentice book">
           <p>他总共包括四个部分，每一个部分教你编写一个app，难度从低到高。</p>
-          <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="First app: Bull's Eye"></a>第一个app: Bull's Eye
+          <h3><a href="#Bull Eye">Bull's Eye</a></h3>
+          <h3><a href="#Checklist">Checklist</a></h3>
+          <h3><a href="#MyLocation">MyLocation</a></h3>
+          <h3><a href="#StoreSearch">StoreSearch</a></h3>
+          <h2 id="Bull Eye">
+            <a href="#Bull Eye" class="headerlink" title="First app: Bull's Eye"></a>第一个app: Bull's Eye
           </h2> 
           <img src="2.png" alt="Bull Eye app">
           <img src="3.png" alt="Bull Eye app 2">
@@ -59,8 +63,8 @@
             <li><img src="13.png" alt="Add Constraints">Add Constraints</li>
           </ul>
           <p>第一个app基本上解决了很多界面上的问题，storyboard和editor之前的交流也讲了很多，@IBAction， @IBOutlet，segue等等一切都有涉及。之后第二个app就会更深层次的接触到iOS特有的模式了，比如delegate，还有一切经典的design pattern，比如MVC</p>
-          <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="The Second app: Checklist"></a>Checklist
+          <h2 id="Checklist">
+            <a href="#Checklist" class="headerlink" title="The Second app: Checklist"></a>Checklist
           </h2> 
           <p>第二个app就没有那么简单了，他先讲了table view和navigation bar</p>
           <img src="14.png" alt="table view and navigation bar">
@@ -140,28 +144,51 @@
           <img src="33.png" alt="Notification message">
           <p>这些基本就是第二个app的全部内容了，关于代码的部分可以在我的github的iOSApprenticePratice里面找到，下面是整个app的final storyboard</p>
 		      <img src="34.png" alt="final storyboard">
-          <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="The thrid app: MyLocations"></a>第三个app：MyLocation
+          <h2 id="MyLocation">
+            <a href="#MyLocation" class="headerlink" title="The thrid app: MyLocations"></a>第三个app：MyLocation
           </h2>
 
-          <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="The fourth app: StoreSearch"></a>第四个app：StoreSearch
+          <h2 id="StoreSearch">
+            <a href="#StoreSearch" class="headerlink" title="The fourth app: StoreSearch"></a>第四个app：StoreSearch
           </h2>
-          <p>Git Version Control using Xcode</p>
+          <p>这本书的最后一个app将用到向apple store发送request获取信息，使用version contorl tools，对iPad等大屏幕设备的适配，异步通信以及把app上传到app store，可以说是一个简单的软件开发流程了。最终完成的结果如下</p>
+          <img src="4-1.png" alt="final storyboard">
+          <p>Git Version Control是一个代码管理软件，当我们完成一个阶段的代码后，希望把他保存成一个副本，以后可以随时返回到这个地方。Xcode可以接连到github等网站进行更好的代码管理，也可以使用terminal。我比较喜欢使用terminal，常用的几个指令是：</p>
+          <img src="4-2.png" alt="Xcode git version control">
+          <img src="4-3.png" alt="terminal version control">
+          <p>git add *</p>
+          <p>git commit -m "commit message"</p>
+          <p>git push -u origin master</p>
+          <p>当我们想在已经工作的代码中新加一些功能却又害怕出错，然后又改不回来，我们可以使用git创建一个新的branch，然后在新的branch中肆意更改，不用害怕出问题，这就相当于一个副本，如果改不会去了可以直接删掉，git会保存最后工作的版本。若果一切顺利，也可以将新的branch与master合并</p>
+          <img src="4-15.png" alt="git merch branch">
+          <p>当我们在View Controller中创建outlet时，应该使用weak relationship，这是因为每一个view都基本是从另一个super view中继承而来的，所以如果使用strong relationship，将导致view无法被摧毁。</p>
+          <img src="4-4.png" alt="view relationship">
           <p>Create branch and merge</p>
-          <p>Custom table cells and nib files, use it with identifier</p>
-          <p>Debug using Xcode, p indexPath.row in debug console, breakpoints</p>
-          <p>calling the web service</p>
-          <p>encode the url text to escape special characters</p>
-          <p>Parse JSON data</p>
-          <p>Asynchronous networking</p>
-          <p>using network link conditioner</p>
-          <p>URLSession</p>
-          <p>Segmented Control</p>
+          <p>NeXT Interface Builder: nib file or xib file, 是一种局部storyboard，比如如果我们想设计一种table cell，就可以创建一个新的nib file，然后将这种custom table cell发给任何一个storyboard中的table view， nib file给我们提供多的灵活性</p>
+          <img src="4-5.png" alt="create new nib file">
+          <img src="4-6.png" alt="nib storyboard">
+          <p>Debug using Xcode, 与其他IDE相似，可以设置breakpoint来暂停程序，查看此时各个变量的值。在debug console中输入p instanceName 可以print出想要查看的object的值</p>
+          <img src="4-7.png" alt="Xcode debug">
+          <img src="4-8.png" alt="debug console">
+          <p>calling the web service: 这个app的第一个重头戏就是send API request, 这也是软件开发中最常见的也是必不可少的技能，API request最常见的有两种，GET 和 POST， GET一般用来从远端提取数据，POST一般用来添加或改变远端数据，而API就是本地程序和远端数据连接的接口。本书使用了最简单的没有任何限制的GET request。</p>
+          <img src="4-9.png" alt="call web service">
+          <img src="4-10.png" alt="data response">
+          <p>encode the url text to escape special characters: 在向API发送请求时我们经常需要一同发送一些parameters，但是space和很多其他它特殊符号都是不能被正常处理的，所以我们需要encode url再发送</p>
+          <p>Parse JSON data: 返回的数据一般是以JSON的形式组成的，所以我们需要deserilize，Swift有提供官方的decoder可以直接使用</p>
+          <img src="4-11.png" alt="JSON format">
+          <p>using network link conditioner: 从发送API请求到收到数据总会有那么几秒钟时间，这时如果你的程序是在主线程上，你将无法执行任何操作。直到获取数据。如果网络速度很慢，那么结果将非常糟糕，我们可以使用network link conditioner这一额外开发工具来模拟网速极慢的状态。</p>
+          <img src="4-12.png" alt="network link conditioner">
+          <p>Asynchronous networking: 那么如果解决这几秒钟的类似于死机的状态呢？我们可以使用多线程，并将API请求的操作放到另外一个线程中，这样主线程将不受影响，注意，所有和界面变化相关的操作都应该放在主线程。所以即使数据没有收到，用户也可以进行其他操作，比如取消请求。。。</p>
+          <img src="4-14.png" alt="asynchronous networking overview">
+          <img src="4-13.png" alt="asynchronous networking code">
+          <p>URLSession: 这是一个专门用来负责多线程的API。他可以负责下载请求，数据请求等很多工作。本书使用URLSession来处理异步通信问题。</p>
+          <p>Segmented Control: 这是一个很常用的UI模块, 每次切换时可以把segmentedIndex的值传给controller来负责update UI</p>
+          <img src="4-16.png" alt="segmented control">
           <p>DownloadTask</p>
-          <p>Show DetailView with Present Modally segue</p>
-          <p>Gesture recognizer</p>
-          <p>Dynamic type text</p>
+          <p>Show DetailView with Present Modally segue: 当点击每个table cell时，会出现这样的一个显示详细信息的窗口，并且也可以看到下面的table view，这个做法其实很简单，每当swift切换到一个新的view时，之前的view默认会被摧毁，但是我们可以改变delegate method，让之前的view保留，并把新的view背景设置成透明。</p>
+          <img src="4-17.png" alt="details view">
+          <p>Dynamic type text: 一些app的字体可以根据用户的系统设置而改变，这就要求我们使用默认字体大小，类似于headline</p>
+          <img src="4-18.png" alt="dynamic type">
           <p>Animation fade in/out</p>
           <p>Landscape</p>
           <p>Enums with associated values</p>
