@@ -189,21 +189,33 @@
           <img src="4-17.png" alt="details view">
           <p>Dynamic type text: 一些app的字体可以根据用户的系统设置而改变，这就要求我们使用默认字体大小，类似于headline</p>
           <img src="4-18.png" alt="dynamic type">
-          <p>Animation fade in/out</p>
-          <p>Landscape</p>
-          <p>Enums with associated values</p>
-          <p>internationalization</p>
-          <p>split view contorlle for iPad</p>
-          <p>compact and regular size mode</p>
-          <p>config elements in storyboard based on size class</p>
-          <p>popovers view controller</p>
-          <p>email compose sheet</p>
-          <p>beta testing: test flight</p>
-          <p>App store connect, internal and external testers</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>对于一款手机app来说，好的排版是非常重要的，因为涉及到不同的屏幕尺寸，使用auto-resizing让排版适应所有类型的手机可以扩大目标受众，而不是只为一款手机开发</p>
+          <img src="4-19.png" alt="app constraints">
+          <img src="4-20.png" alt="detail popup view">
+          <p>Landscape: 对于像iPad和iPhone Plus的机型来说，很多时候我们会把手机横置，这个时候因为屏幕的宽度和高度变化，我们希望app可以呈现出另一种不同的layout以适应变化的屏幕。</p>
+          <img src="4-21.png" alt="landscape mode">
+          <p>对于这种情况，swift定义了size classes，我们可以通过查看size class区分手机什么时候是横置的。拿iPhone 6 Plus来举例。如下图，当手机竖置的时候，手机屏幕的高度（vertical）是regular模式，而宽度是compact模式，而当手机处于横置的状态时，手机的高度变成了compact模式，而宽度变成了regular模式。这样，我们在写代码的时候，就可以对每一种situation，制定不同的显示模式了。</p>
+          <img src="4-22.png" alt="size classes">
+          <p>Enums with associated values: 在StoreSearch这个app中，用户有没有perform search action一共有四种状态，1.还没有search。 2.正在searching。 3. search结束，并且没有找到任何结果。 4.search结束，并且找到了至少一种结果。 那么对于这样一种状态，与其定义四个变量然后在viewcontroller里面查看这四个变量的true/false值，不如直接定义一个enum然后只需查看这一个enum的值即可。</p>
+          <img src="4-23.png" alt="enum">
+          <img src="4-24.png" alt="enum code">
+          <p>internationalization: 有时候，我们希望让我们的app被来自不同国家使用不同语言的人使用，那么我们就需要将我们的app翻译成不同的语言。我们可以在info tab里新加一种语言。</p>
+          <img src="4-25.png" alt="localization add a new language">
+          <p>另外，针对不同的view，我们还需要对每个view新加对应的语言文件。</p>
+          <img src="4-26.png" alt="add new language file for each view">
+          <p>至于那些不在storyboard里显示的语言信息，我们需要使用NSLocalizedString把所有的语言文本标记出来，再添加到strings文件中去</p>
+          <img src="4-27.png" alt="localized strings">
+          <p>split view contorlle for iPad: split view是大屏幕设备常用的显示模式，例如iPad和iPhone plus。它可以轻松的利用空间，显示出原本需要两个view才能显示出的内容。</p>
+          <img src="4-28.png" alt="split view">
+          <img src="4-29.png" alt="split view app">
+          <p>config elements in storyboard based on size class: 但如果我们用之前的view size，在iPad等设备上就会显得很小，所以我们需要针对大屏幕设备进行优化。我们可以在attribute tab找到constant，点击加号来增加一个针对不同情况的尺寸，之前说到iPad设备在横置模式（landscape）下高度和宽度都是regular的，所以这里wR hR就是width Regular, height Regular。这种情况下我们将view size改为500.</p>
+          <img src="4-30.png" alt="wR hR constant size">
+          <p>popovers view controller: 如图所示，这是一个在一个view之上的popover view,可以用来表示一个新的menu</p>
+          <img src="4-31.png" alt="popover view">
+          <p>email compose sheet: 这是一个可以在app中打开的内建email系统，提前设置好标题和收件人，当用户执行这个method，直接输入email的内容，就可以发送到开发者的邮箱，前提是用户必须提前设置好email账户。</p>
+          <img src="4-32.png" alt="email sheet">
+          <p>beta testing: test flight: 当你完成一个app之后，可以把它发布到app store，这需要几个步骤，首先你需要提交一个build，在进入iTunes connect查看提交的app，在这里你可以分配给同一个team的其他测试者，这一步称为internal testing，如果一切都没问题，你可以submit app to app store. 如果app通过apple的审查，就可以进行external testing，将app的测试码发给任何人，他们可以通过测试码下载并测试app。</p>
+          <img src="4-33.png" alt="distributing app to store">
 <!--           <img src="1.png" alt="Mitools">
         	<p>因为我们用的是<a href="https://www.identisource.net/26_bit_format_layout.cfm" target="_blank">26 bit format</a> 所以取前26位数</p> -->
         </div>
