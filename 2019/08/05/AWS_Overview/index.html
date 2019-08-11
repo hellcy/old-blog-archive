@@ -38,12 +38,25 @@
           <img src="3.png" alt="Proxy integration">
           <p>再下一个部分是Integration Request，在这里可以选择对应的Lambda function，让request知道该去往哪个Lambda，并且可以勾选Use Lambda Proxy integration, 如果勾选，它代表着AWS会帮你把request中的信息(包括query parameter, header, body等)保存到一个类似Dictionary的结构中，在lambda里面可以直接通过key name调用，不用手动提取信息。在下一部分就是运行相应的Lambda function了，这个在接下来的Lambda部分中讲。当Lambda运行完之后会生成一个response，如果勾选了之前的Proxy integration，这个地方就是灰色的，不能查看，因为它会帮你把response里的信息自动填充到header，body。。。并且使用自带的response template model，所以你就不用操心这个了。不然的话你可以手动设置response的格式。最后一个部分是Method response，当设置好reponse格式之后，你可以把response status code，连同optional的header和body返回给用户。还可以设置body的格式，比如JSON。</p>
           <p>Lambda function</p>
-          <p>这里是你真正处理请求并返回数据的地方，AWS支持很多种语言的function</p>
-          <p>AWS ToolKits for Visual Studio</p>
-          <p>publish Lambda function to AWS</p>
+          <p>这里是你真正处理请求并返回数据的地方，AWS支持很多种语言的function。</p>
+          <img src="5.png" alt="Lambda function">
+          <img src="12.png" alt="Lambda Runtime language">
+          <p>我是用C#，这需要在Visual Studio中安装AWS package，在unget manager里面搜索AWS就可以找到AWS SDK了。安装之后就可以新建AWS solution并publish到AWS Lambda中。</p>
+          <p>这次我需要写的function就是调用Westpac API，所以其实是用户先调用AWS API，然后这个API再调用Westpac API。。。</p>
+          <p>如果request中含有parameter或者body信息，那么在function中的APIGatewayProxyRequest中就会含有这些参数信息，这就是之前勾选了proxy integration的好处</p>
+          <img src="6.png" alt="code1">
+          <img src="7.png" alt="code2">
+          <p>在上传时新建一个Lambda function，另外下面的Method name要对应刚刚C#中的method name，因为有时候我们会在一个solution中写多个method，连接多个Lambda function，所以要一一对应。</p>
+          <img src="9.png" alt="upload Lambda function">
           <p>Test API Gateway and Lambda function</p>
+          <p>之后就是用AWS测试刚刚写好的API了，注意测试之前要先deploy API Gateway，确保与Lambda function对应，这个可以在lambda function中的API Gateway endpoint里看到，如果能看到endpoint url，就说明对应成功了。</p>
+          <img src="4.png" alt="API Gateway endpoint url">
+          <p>测试的时候可以加query strings，就是request中的parameters，右边可以看到测试结果，因为这个是GET request，所以我们不能加Request Body。在POST request中是可以的。</p>
+          <img src="8.png" alt="test API Gateway">
+          <p>这个是另外一个POST request with JSON body</p>
+          <img src="11.png" alt="POST request with JSON body">
           <p>Calling trusted frame from swift</p>
-          <p>Calling swift function from javascript</p>
+          <p>另外一个任务是，因为我们不能经受任何信用卡信息，所以我们需要用到westpac trusted frame，通过调用这个Javascript library来让用户将信用卡信息直接发送到westpac的服务器，然后处理westpac的response就可以了。但是有一个问题是，我们希望用户能在我们的手机app上也可以调用westpac API，可以这个trusted frame是一个只支持web application的Javascript library，这就需要我们在Swift中加入WebKit，同时在用户在含有trusted frame的web page中submit form时，将返回的信息发送到Swift的某个Method中。简而言之，我们需要在javascript中调用Swift</p>
           <p></p>
           <p></p>
           <p></p>
