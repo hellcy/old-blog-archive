@@ -30,14 +30,15 @@
           <h2 id="u6587_u7AE0_u7ED3_u6784">
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Whis is AWS"></a>什么是AWS？
           </h2>
+          <p>AWS是Amazon的云服务，我现在用到的是其中的API Gateway和Lambda，API Gateway就是API网关，当网关收到request时，可以运行对应的Lambda function，生成response，然后返回。</p>
+          <img src="1.png" alt="create API Gateway">
+          <img src="2.png" alt="API Gateway Overview">
           <p>API Gateway</p>
-          <p>Client</p>
-          <p>Method Request: request received by the API gateway</p>
-          <p>Integration Request: request that is passed to the backend, based on your settings, it will modify the request, adding path parameters, query string parameters, HTTP headers...then pass the modified request to the integrated lambda function</p>
-          <p>Lambda function: handle the request and prepare the response</p>
-          <p>Integration response: if you choose to use proxy integration, it will return the lambda function's output as is. For a Lambda non-proxy integration, you can configure the integration response to transform the Lambda function's output into a form that's appropriate for the client application. </p>
-          <p>Method response: represents the method response that's returned to the client as an HTTP status code, an optional response header, and an optional response body. By default, the response body that's returned by your Lambda function is passed through as is as a JSON document, so the response body default setting is application/json with an empty model (indicating that the body is passed through as is). </p>
+          <p>他总共分成6个部分，第一个部分是Test，也就是send test request的地方，sample request会先到达Method Request，在这里你可以往request里面加入Query string parameters, Http headers, Request body来让request符合Lambda的要求。</p>
+          <img src="3.png" alt="Proxy integration">
+          <p>再下一个部分是Integration Request，在这里可以选择对应的Lambda function，让request知道该去往哪个Lambda，并且可以勾选Use Lambda Proxy integration, 如果勾选，它代表着AWS会帮你把request中的信息(包括query parameter, header, body等)保存到一个类似Dictionary的结构中，在lambda里面可以直接通过key name调用，不用手动提取信息。在下一部分就是运行相应的Lambda function了，这个在接下来的Lambda部分中讲。当Lambda运行完之后会生成一个response，如果勾选了之前的Proxy integration，这个地方就是灰色的，不能查看，因为它会帮你把response里的信息自动填充到header，body。。。并且使用自带的response template model，所以你就不用操心这个了。不然的话你可以手动设置response的格式。最后一个部分是Method response，当设置好reponse格式之后，你可以把response status code，连同optional的header和body返回给用户。还可以设置body的格式，比如JSON。</p>
           <p>Lambda function</p>
+          <p>这里是你真正处理请求并返回数据的地方，AWS支持很多种语言的function</p>
           <p>AWS ToolKits for Visual Studio</p>
           <p>publish Lambda function to AWS</p>
           <p>Test API Gateway and Lambda function</p>
@@ -46,7 +47,7 @@
           <p></p>
           <p></p>
           <p></p>
-        </div>
+        </div> 
       </article>
     </div>
   </section>
