@@ -67,12 +67,36 @@
           <p>public(for frameworks only): can be used by object outside this framework</p>
           <p>open(for frameworks only): public AND can sub-class(override)</p>
           <p>assertion: a method that in your program when you assert something is true, is not, the app will crash. It is a good way to protect your API.</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>Extension</p>
+          <p>Add vars and methods to other classes even if you don't have the source.</p>
+          <p>But there are restrictions: you can't re-implement the methods that are already there. You can only add new ones. And, properties you add can have no stroage associated with them.(computed only)</p>
+          <p>Enum</p>
+          <p>Another variety of data structrue apart from struct and class. It can only have discrete states. Enum is a VALUE type, like structs, so it gets copied as it is passed around. Enum in Swift can have an associated data.</p>
+          <img src="9.png" alt="Enum with associated value">
+          <p>Enum with associated value</p>
+          <img src="10.png" alt="Enum">
+          <p>Checking enum's state with Switch cases syntax</p>
+          <img src="11.png" alt="Enum">
+          <p>using associated value in switch cases</p>
+          <img src="12.png" alt="Enum">
+          <p>Enum can have methods, and you can test a enum's state within that method with self keyword</p>
+          <img src="13.png" alt="Enum">
+          <p>You can even change the enum's state in its methods, by giving that method a mutating keyword to let Swift know.</p>
+          <p>Optionals</p>
+          <p>Optional is just an enum, it has two cases, one is nil, which measns it is not set yet, the other is some, which means it has some associated value with it. If you are trying to force unwrap an optional, what Swift really do it just throw an exception when that enum is in case nil, and do whatever you want to do with that enum in case 'some'.</p>
+          <img src="14.png" alt="Optional">
+          <img src="15.png" alt="Optional">
+          <img src="16.png" alt="Optional">
+          <img src="17.png" alt="Optional">
+          <p>Memory Management</p>
+          <p>Automatic reference counting: Reference types are stored in the heap, everytime you create a pointer to a reference type in the heap, Swift will add One to a counter for that reference type, everytime when a pointer goes out of scope, Swift decrement the counter. And when the counter decrement to zero, Swift will instantly remove that reference type out of heap.</p>
+          <p>Influence ARC by using 'strong', 'weak' and 'unowned'</p>
+          <p>Data Structures</p>
+          <p>Class</p>
+          <img src="17.png" alt="Class">
+          <p>Struct</p>
+          <p>Enum</p>
+          <p>Protocol</p>
           <p></p>
         </div> 
       </article>
