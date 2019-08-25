@@ -34,9 +34,15 @@
           <h2 id="u6587_u7AE0_u7ED3_u6784">
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Notes"></a>CS193P open course notes
           </h2>
+          <h3><a href="#Lectrue_2">Lectrue 2: MVC Communication</a></h3>
+          <h3><a href="#Lectrue_3">Lectrue 3: Swift Programming Language</a></h3>
+          <h3></h3>
+          <h3></h3>
+          <h3></h3>
+          <h3></h3>
           <p>Please find all relevant materials for Standford Programming course cs193p in <a href="https://github.com/hellcy/cs193p-Fall-2017">here</a></p>
           <img src="1.png" alt="MVC communication">
-          <h3>MVC communication</h3>
+          <h3 id="Lectrue_2">MVC communication</h3>
           <p>Controller can talk to both Model and View. But Model and View should never speak to each other. For the View, it can communicate to the Controller, but in certain ways. Because View are all generic UI objects, to change some of its properties to fits the app's objective, we need to send the UI objects, like buttons and labels back to the controller, let controller to implement its properties like background color, label content etc... so we use Action method to target the function that will be calling when certain UI objects are triggered. Another way to talk to controller is to use Delegate, for more complicated objects like scroll view or tables, we need to let controller know what we are doing at the moment, and controller is responsible for implementing the extra tasks while we are doing this things. Another important thing is that views do not own the data they display, they ask for the controller and controller grab the data from Data source and give it to the View, because if you have 50000 songs in a table, if table owns the data, it will be too big and costy to create such table object. So instead we use Data Source to provide data to the view.</p>
           <img src="2.png" alt="MVC communication">
           <p>What about Model, can Model talk to the Controller? Yes, but not directly, because Model is UI independent, and Controller is UI dependent, so if a Model is updated and he wants everybody that is interested to be informed, it will broadcast this information to all the controllers, and those controllers that are listening will be notified and talk to Model and grab the changes. This way is called notifications</p>
@@ -51,6 +57,7 @@
           <p>stride</p>
           <p>In swift, we don't have for(; ;) structrue, so we need stride method for a range with specific count value</p>
           <img src="6.png" alt="tuples">
+          <h3 id="Lectrue_3">Swift Programming Language</h3>
           <p>tuples</p>
           <p>They are nothing but a group of values, different types of values could be inside the same tuple, vars and methods are not allowed in tuples, its good for return multiple values from a method because a method can only return a single thing.</p>
           <img src="7.png" alt="Computed properties">
