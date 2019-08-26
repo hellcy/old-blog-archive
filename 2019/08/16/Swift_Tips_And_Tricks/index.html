@@ -97,15 +97,53 @@
           <img src="16.png" alt="Optional">
           <img src="17.png" alt="Optional">
           <p>Memory Management</p>
+          <img src="18.png" alt="Class">
           <p>Automatic reference counting: Reference types are stored in the heap, everytime you create a pointer to a reference type in the heap, Swift will add One to a counter for that reference type, everytime when a pointer goes out of scope, Swift decrement the counter. And when the counter decrement to zero, Swift will instantly remove that reference type out of heap.</p>
           <p>Influence ARC by using 'strong', 'weak' and 'unowned'</p>
           <p>Data Structures</p>
           <p>Class</p>
-          <img src="17.png" alt="Class">
+          <img src="19.png" alt="structs">
           <p>Struct</p>
           <p>Enum</p>
           <p>Protocol</p>
           <h3 id="Lectrue_4"><a href="title_lecture_4">Swift Programming Language</a></h3>
+          <p>Protocol</p>
+          <img src="20.png" alt="protocol">
+          <p>Protocol is the fourth data structure in Swift. It is basically a type, which contains a list of variables and a list of methods, without implementation. Any class or structs or enum that want to inherit protocol must implement all methods declared in that protocol. But, for objective C methods, implementations are optional. This is why when we override some will, did, set methods for some UI obejcts, we dont need to implement all methods from that protocol.</p>
+          <img src="21.png" alt="protocol mutating">
+          <p>Mutating functions: in protocol, some functions may be marked as mutating, when structs trying to inherit a protocol, because structs are value types, so structs get copied when we want to use it. However, it would be very inefficient if we make a copy every time we see it. So Swift uses copy-on-write system, we only make a copy of that struct when we are trying to modify it, in other words, mutating it. So we a struct is trying to change something in a function, and that function is inherted from a protocol, then this function has to be marked as mutating.</p>
+          <img src="22.png" alt="protocol init">
+          <img src="23.png" alt="protocol init requried">
+          <p>Init: init functions are allowed to exist in protocol, however, in a class inherited that protocol, we need to add requried keyword before init function, this is because this class could have some other subclasses, and these classes also have to implement init function.</p>
+          <img src="24.png" alt="protocol type">
+          <p>Use protocol as a type</p>
+          <img src="25.png" alt="protocol delegation">
+          <p>Delegation: a very important use of protocol is delegation.</p>
+          <img src="27.png" alt="protocol multiple inheritance">
+          <p>Mutiple inheritance: if you want to use certain functions in some protocols, you could inherit that protocol and implement the functions you want to use. </p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
           <p></p>
         </div> 
       </article>
