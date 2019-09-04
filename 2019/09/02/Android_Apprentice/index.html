@@ -27,17 +27,52 @@
         <h1 class="post-title">Learn Android Apprentice in 10 days</h1>
         <div class="post-time">Sep 02, 2019</div>
         <div class="post-content">
-          <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Your first Android App">Your first Android App</a>
+          <h2 id="Title">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Your first Android App">开始学习使用Android Studio</a>
           </h2>
-          <img src="1.png" alt="MVC communication">
-          <p>Setting up Android Studio</p>
-          <p>Create your first app</p>
+          <p>在iOS的学习告一段落了之后，现在开始学习Android应用的开发。</p>
+          <p>他总共包括六个部分，前四个部分每一部分教你编写一个app，难度从低到高。后面两部分会告诉你怎么向下兼容和发布。跟之前的iOS教程很像。</p>
+          <h3><a href="#TimeFighter">TimeFighter</a></h3>
+          <h3><a href="#Checklist">Checklist</a></h3>
+          <h3><a href="#MapBasedApp">MapBasedApp</a></h3>
+          <h3><a href="#PodcaseManager">PodcaseManager</a></h3>
+          <h3><a href="#Conclusion">Conclusion</a></h3>
+          <h2 id="TimeFighter">
+            <a href="#Title" class="headerlink" title="TimeFighter">第一个App: TimeFighter</a>
+          </h2>
+          <p>这个app会从怎么set up Android Studio开始，我们直接跳过，到最开始写代码的部分</p>
           <p>Constraint Layouts</p>
+          <p>和iOS App很像，手机app必须考虑到对象在手机屏幕上的位置问题，Android有提供很多种layoutdexuanze，其中Constraint是最常用的一种，他可以规定目标到屏幕的相对位置</p>
+          <img src="1.png" alt="Constraint Layouts">
+          <img src="2.png" alt="Constraint Layouts">
           <p>Activities</p>
-          <p>Oriendtation changes. save properties, destroys the activity, recreates the activity for the new orientation by calling onCreate and resets any properties specified by the developer</p>
-          <p></p>
-          <p></p>
+          <p>在确定了诸如Textview，Button等对象的位置之后，我们需要在代码层面对其进行操作，我们可以在Aciticity中创建这些变量对象，然后通过在Layout中设置的ID找到他们，Activity其实就是iOS中的ViewController。</p>
+          <img src="3.png" alt="Activities TextView and Button">
+          <img src="4.png" alt="Activities find by id">
+          <p>Strings</p>
+          <p>我们会将一个app中用到的所有文字集中在一个文件中，这个文件叫做Strings.xml，这样以后本地化加其他语言或者更改一个单词，这个单词虽然在app中可能出现了很多次，但是我们只需要在Strings里面改一次就可以了</p>
+          <img src="5.png" alt="Strings">
+          <p>Oriendtation changes</p>
+          <p>在手机屏幕方向改变时，系统会做三件事，1.save properties, 2. destroys current activity, 3. recreates the activity for the new orientation by calling onCreate and resets any properties specified by the developer</p>
+          <p>所以在改变方向时，我们需要及时保存需要用到的变量，在接下来现实的Activity中显示，保证过程不会丢失。</p>
+          <img src="6.png" alt="Save properties">
+          <img src="7.png" alt="pass properties to next screen">
+          <p>App colors and styles</p>
+          <p>Android project中有许多文件夹，其中res包含着app需要用到的所有资源resources，常用的Strings，Animations，Menus，Colors and Styles都在这里, 通过直接更改Colors里面颜色的hex值来改变app中元素的颜色，更方便的管理同一种类型的东西</p>
+          <img src="8.png" alt="Colors and styles">
+          <p>Animations</p>
+          <p>Animations也在res文件夹里，她负责调用以及调配动画，图片里的动画效果是使用内置的bounce_interpolator，在2秒钟内把目标元素增大2倍，以50%处为中心，并缩小至原来的大小。</p>
+          <img src="9.png" alt="Animations">
+          <p>Menu</p>
+          <p>Menu同样他也在res文件夹中，他管理所有跟系统菜单相关的元素，比如我们想在屏幕上方的菜单栏中加入一个button，就需要在这里定义</p>
+          <img src="10.png" alt="Menu">
+          <p>我们加了一个Menu，当点击时会冒出一个AlertDialog</p>
+          <img src="11.png" alt="AlertDialog">
+          <img src="12.png" alt="AlertDialog in app">
+          <p>这就是第一个app所讲的全部内容了，基本就是把project中需要用到的功能讲了一遍，没有用到任何复杂的语法，更多的讲的是Android Studio这个IDE的使用。接下来进行第二个app</p>
+          <h2 id="Checklist">
+            <a href="#Title" class="headerlink" title="Checklist">第二个App: Checklist</a>
+          </h2>
         </div> 
       </article>
     </div>
