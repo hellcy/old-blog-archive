@@ -73,6 +73,56 @@
           <h2 id="Checklist">
             <a href="#Title" class="headerlink" title="Checklist">第二个App: Checklist</a>
           </h2>
+          <img src="13.png" alt="ListMaker">
+          <p>RecyclerView</p>
+          <p>1. The RecyclerView asks the Adapter for an item, or a ViewHolder at a given position. 2. The Adapter reaches into a pool of ViewHolders that have been created. 3. Either a a new ViewHolder is returned, or a new one is created. 4. The Adapter then binds this ViewHolder to a data item at the given position. 5. The ViewHolder is returned back to the RecyclerView for display</p>
+          <img src="15.png" alt="RecyclerView">
+          <p>In general, Adapters give your RecyclerView the data it wants to show. They have a clever way to calculate how many rows of data you want to show, which you’ll cover
+            shortly. ViewHolders are the visual containers for your item. Think of them as cells in the table. This is where you tell your RecyclerView what each item should look like. These are basically little tiny layout items used to display the data at any given position in the list of data. As you scroll through a RecyclerView, instead of creating new ViewHolders, RecyclerView will recycle ViewHolders that have moved offscreen and populate them with new data, ready to be shown at the bottom of the list. This process repeats endlessly as you scroll through your RecyclerView. This recycling of ViewHolder to display list items helps to avoid janking in your app.</p>
+          <p>RecycleView 的本质是循环使用table中的cell，当一个cell网上滑出屏幕时，我们可以让他重新出现在底部，但是显示不同的数据，这就要求我们在写代码时要把table，cell和数据分开来，每个部分各司其职。</p>
+          <img src="16.png" alt="cell">
+          <p>这个是cell部分，它由两个textview组成。对应上图中的viewHolder</p>
+          <img src="14.png" alt="table">
+          <p>这个是table部分，它包含多个cell，并可以循环利用cell。对应上图中的adapter。我们需要在adapter中implement recycleview必须的成分例如包含多少个viewholder，每个viewholder的数据应该从哪里取。。</p>
+          <img src="17.png" alt="data input">
+          <p>除了recycleview本身，我们应该把data source设置成动态的，也就是说我们可以输入自己的数据，并加进recycleview中。</p>
+          <img src="18.png" alt="data input 2">
+          <p>SharedPreferences</p>
+          <p>SharedPreferences lets you save small collections of key-value pairs that you can retrieve later. If you need a way to quickly save small bits of data in your app,
+          SharedPreferences is one of the first solutions you should consider</p>
+          <p>这就需要用到sharedpreference，它类似于一个dictionary，里面由key-value pairs组成。可以储存size较小的数据。类似于表格信息</p>
+          <img src="19.png" alt="SharedPreferences">
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
         </div> 
       </article>
     </div>
