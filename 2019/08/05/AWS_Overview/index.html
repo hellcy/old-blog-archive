@@ -31,11 +31,11 @@
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Whis is AWS"></a>什么是AWS？
           </h2>
           <p>AWS是Amazon的云服务，我现在用到的是其中的API Gateway和Lambda，API Gateway就是API网关，当网关收到request时，可以运行对应的Lambda function，生成response，然后返回。</p>
-          <h3 id="Title"><a href="#part1">Part1: 使用Visual Studio编写lambda function并与API Gateway关联</a></h3>
+          <h3 id="Title"><a href="#part1">Part1: 编写lambda function并与API Gateway关联</a></h3>
           <h3 id="Title"><a href="#part2">Part2: 给API增加Authentication</a></h3>
           <h2 id="part1">
-            <a href="#Title" class="headerlink" title="使用Visual Studio编写lambda function并与API Gateway关联">使用Visual Studio编写lambda function并与API Gateway关联</a>
-          </h2>
+            <a href="#Title" class="headerlink" title="使用Visual Studio编写lambda function并与API Gateway关联">Part1: 编写lambda function并与API Gateway关联</a>
+          </h2>dio
           <img src="1.png" alt="create API Gateway">
           <img src="2.png" alt="API Gateway Overview">
           <p>API Gateway</p>
@@ -63,7 +63,7 @@
           <p>Calling trusted frame from swift</p>
           <p>另外一个任务是，因为我们不能经受任何信用卡信息，所以我们需要用到westpac trusted frame，通过调用这个Javascript library来让用户将信用卡信息直接发送到westpac的服务器，然后处理westpac的response就可以了。但是有一个问题是，我们希望用户能在我们的手机app上也可以调用westpac API，可以这个trusted frame是一个只支持web application的Javascript library，这就需要我们在Swift中加入WebKit，同时在用户在含有trusted frame的web page中submit form时，将返回的信息发送到Swift的某个Method中。简而言之，我们需要在javascript中调用Swift</p>
           <h2 id="part2">
-            <a href="#Title" class="headerlink" title="给API增加Authentication">给API增加Authentication</a>
+            <a href="#Title" class="headerlink" title="给API增加Authentication">Part2: 给API增加Authentication</a>
           </h2>
           <p>HTTP basic authentication是一种保护API免受外界攻击的方式，当我们尝试打开某些URL时，有时会出现这个界面让我们输入用户名和密码，这就是一种Basic authentication</p>
           <img src="13.png" alt="browser pop up authentication window">
@@ -89,7 +89,25 @@
           <p>最后别忘了Deploye API，不然所有的设置并不会生效</p>
           <p>我们可以测试一下看看访问相同的URL，如果不添加authentication information的话，服务器就会返回401 Unauthorized</p>
           <img src="19.png" alt="test Unauthorized">
+          <p>除了使用自定义的Authorizer，AWS也内置有IAM (Identity Access Management),在之前的Method Request如果我们选择使用AWS_IAM的话，也可以限制用户对于API的访问</p>
+          <img src="21.png" alt="AWS_IAM">
+          <p>但是我们必须在request中添加AWS signature，这需要使用到AWS给每个account的access key和secret key，其中secret key只有在一开始generate的时候才会看到，之后就看不到了，所以一定要保存在一个安全的地方，要不然的话只能重新generate一对新的key</p>
+          <img src="22.png" alt="AWS access key">
+          <img src="24.png" alt="AWS signature">
+          <p>另外我们可以在resource policy中限制可以访问API的ip address，所以即使用户输入了正确的Authentication information，我们也不能让没有权限的区域访问API</p>
+          <img src="23.png" alt="resource policy">
+          <p>这种IP address limitation也可以在自定义的lambda function中使用</p>
           <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p>本节参考了<a href="https://medium.com/@Da_vidgf/http-basic-auth-with-api-gateway-and-serverless-5ae14ad0a270" target="_blank">HTTP Basic Auth with API Gateway and Serverless</a>这篇文章，可以点击以获取更多信息。</p>
           <p></p>
           <p></p>
           <p></p>
