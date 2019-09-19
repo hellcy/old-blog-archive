@@ -31,6 +31,11 @@
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Whis is AWS"></a>什么是AWS？
           </h2>
           <p>AWS是Amazon的云服务，我现在用到的是其中的API Gateway和Lambda，API Gateway就是API网关，当网关收到request时，可以运行对应的Lambda function，生成response，然后返回。</p>
+          <h3 id="Title"><a href="#part1">Part1: 使用Visual Studio编写lambda function并与API Gateway关联</a></h3>
+          <h3 id="Title"><a href="#part2">Part2: 给API增加Authentication</a></h3>
+          <h2 id="part1">
+            <a href="#Title" class="headerlink" title="使用Visual Studio编写lambda function并与API Gateway关联">使用Visual Studio编写lambda function并与API Gateway关联</a>
+          </h2>
           <img src="1.png" alt="create API Gateway">
           <img src="2.png" alt="API Gateway Overview">
           <p>API Gateway</p>
@@ -57,6 +62,56 @@
           <img src="11.png" alt="POST request with JSON body">
           <p>Calling trusted frame from swift</p>
           <p>另外一个任务是，因为我们不能经受任何信用卡信息，所以我们需要用到westpac trusted frame，通过调用这个Javascript library来让用户将信用卡信息直接发送到westpac的服务器，然后处理westpac的response就可以了。但是有一个问题是，我们希望用户能在我们的手机app上也可以调用westpac API，可以这个trusted frame是一个只支持web application的Javascript library，这就需要我们在Swift中加入WebKit，同时在用户在含有trusted frame的web page中submit form时，将返回的信息发送到Swift的某个Method中。简而言之，我们需要在javascript中调用Swift</p>
+          <h2 id="part2">
+            <a href="#Title" class="headerlink" title="给API增加Authentication">给API增加Authentication</a>
+          </h2>
+          <p>HTTP basic authentication是一种保护API免受外界攻击的方式，当我们尝试打开某些URL时，有时会出现这个界面让我们输入用户名和密码，这就是一种Basic authentication</p>
+          <img src="13.png" alt="browser pop up authentication window">
+          <p>这种机制依赖于HTTP Authentication Framework，他的步骤是：</p>
+          <ol>
+            <li>某些人尝试访问一个受保护的URL</li>
+            <li>服务器返回401未授权的HTTP code，包括一个WWW-Authenticate header with value Basic</li>
+            <li>浏览器弹出要求用户输入用户名和密码的窗口</li>
+            <li>请求再次被发送，包括用户输入的授权信息在header中</li>
+          </ol>
+          <img src="14.png" alt="API authentication procedure">
+          <p>那么这个简单的API authentication怎么实现呢？</p>
+          <p>首先我们去到已经建好的API Gateway中，点击Gateway responses选项，选中Unauthorized，在这里我们可以设置返回什么样的信息给用户当他们尝试访问这个URL时。</p>
+          <img src="15.png" alt="set 401 response">
+          <p>当我们添加了WWW-Authenticate header，浏览器就会弹出窗口要求用户自证身份</p>
+          <img src="20.png" alt="test pop up window">
+          <p>之后我们需要写一个Lambda function去检查用户提交的信息是否是正确的，也就是检查用户名和密码。这个function也叫做custom authorizer</p>
+          <img src="16.png" alt="authentication lambda function">
+          <p>接下来我们需要让我们的API知道当他接收到Authentication信息时需要调用哪个lambda function来检查，所以去到API gateway的Authorizer选项，新建一个Authorizer，在lambda function中选中我们刚刚写好的lambda function</p>
+          <img src="17.png" alt="create authorizer">
+          <p>最后我们还需要让API gateway知道哪个URL endpoint是需要保护的，因为一个API gatewat往往包括很多个URL，我们需要指定一个或多个URL调用刚刚新建的Authorizer</p>
+          <img src="18.png" alt="set authorizer">
+          <p>最后别忘了Deploye API，不然所有的设置并不会生效</p>
+          <p>我们可以测试一下看看访问相同的URL，如果不添加authentication information的话，服务器就会返回401 Unauthorized</p>
+          <img src="19.png" alt="test Unauthorized">
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
           <p></p>
           <p></p>
           <p></p>
