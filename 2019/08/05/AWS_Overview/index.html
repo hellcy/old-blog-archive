@@ -97,17 +97,16 @@
           <p>另外我们可以在resource policy中限制可以访问API的ip address，所以即使用户输入了正确的Authentication information，我们也不能让没有权限的区域访问API</p>
           <img src="23.png" alt="resource policy">
           <p>这种IP address limitation也可以在自定义的lambda function中使用</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p>本节参考了<a href="https://medium.com/@Da_vidgf/http-basic-auth-with-api-gateway-and-serverless-5ae14ad0a270" target="_blank">HTTP Basic Auth with API Gateway and Serverless</a>这篇文章，可以点击以获取更多信息。</p>
+          <p>另外，如果要blacklist or whitelist a range of ip addresses，可以使用CIDR notation net mask，在ip address后面加一个斜杠和一个数字，数字表示从左往右有多少bit是在范围外的。</p>
+          <p>例如“110.142.216.1/24" 就表示了ip range from 110.142.216.1 to 110.142.216.255</p>
+          <p>本节参考了这些文章，可以点击以获取更多信息。</p>
+          <ol>
+            <li><a href="https://medium.com/@Da_vidgf/http-basic-auth-with-api-gateway-and-serverless-5ae14ad0a270" target="_blank">HTTP Basic Auth with API Gateway and Serverless</a></li>
+            <li><a href="https://aws.amazon.com/blogs/compute/control-access-to-your-apis-using-amazon-api-gateway-resource-policies/" target="_blank">Control access to your APIs using Amazon API Gateway resource policies</a></li>
+            <li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-resource-policy-whitelist/" target="_blank">How do I use a resource policy to whitelist certain IP addresses to access my API Gateway API?</a></li>
+            <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies-examples.html#apigateway-resource-policies-source-ip-address-example" target="_blank">API Gateway Resource Policy Examples</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">Classless Inter-Domain Routing</a></li>
+          </ol>
           <p></p>
           <p></p>
           <p></p>
