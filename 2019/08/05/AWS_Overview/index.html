@@ -31,10 +31,11 @@
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Whis is AWS"></a>什么是AWS？
           </h2>
           <p>AWS是Amazon的云服务，我现在用到的是其中的API Gateway和Lambda，API Gateway就是API网关，当网关收到request时，可以运行对应的Lambda function，生成response，然后返回。</p>
-          <h3 id="Title"><a href="#part1">Part1: 编写lambda function并与API Gateway关联</a></h3>
-          <h3 id="Title"><a href="#part2">Part2: 给API增加Authentication</a></h3>
+          <h3 id="Title"><a href="#part1">Part1: Lambda function and API Gateway</a></h3>
+          <h3><a href="#part2">Part2: 使用IAM保护API</a></h3>
+          <h3><a href="#part3">Part3: Use S3 to host webpage</a></h3>
           <h2 id="part1">
-            <a href="#Title" class="headerlink" title="使用Visual Studio编写lambda function并与API Gateway关联">Part1: 编写lambda function并与API Gateway关联</a>
+            <a href="#Title" class="headerlink" title="使用Visual Studio编写lambda function并与API Gateway关联">Part1: Lambda function and API Gateway</a>
           </h2>
           <img src="1.png" alt="create API Gateway">
           <img src="2.png" alt="API Gateway Overview">
@@ -107,11 +108,23 @@
             <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies-examples.html#apigateway-resource-policies-source-ip-address-example" target="_blank">API Gateway Resource Policy Examples</a></li>
             <li><a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">Classless Inter-Domain Routing</a></li>
           </ol>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <h2 id="part3">
+            <a href="#Title" class="headerlink" title="Part3: Use S3 to host webpage">Part3: Use S3 to host webpage</a>
+          </h2>
+          <p>S3是一个储存文件的服务，一般来说我们需要把网页放到服务器里去host它，但是S3也提供了host webpage的功能，我们只需要新建一个bucket。</p>
+          <img src="25.png" alt="AWS S3 create bucket">
+          <p>上传我们需要host的webpage</p>
+          <img src="26.png" alt="AWS S3 upload file">
+          <p>注意在设置里面关闭block public access，毕竟我们需要访问它来获得数据</p>
+          <img src="27.png" alt="AWS S3 block access">
+          <p>最后我们需要打开hosting</p>
+          <img src="28.png" alt="AWS S3 hosting">
+          <p>这样的话我们就可以通过AWS S3来host webpage，不需要使用自己的服务器了</p>
+          <p>本节参考了这些文章，可以点击以获取更多信息。</p>
+          <ol>
+            <li><a href="https://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html" target="_blank">AWS S3 Getting Started</a></li>
+            <li><a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html" target="_blank">What is AWS S3?</a></li>
+          </ol>
           <p></p>
           <p></p>
           <p></p>
