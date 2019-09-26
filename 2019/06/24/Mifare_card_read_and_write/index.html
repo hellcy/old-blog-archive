@@ -28,9 +28,19 @@
         <div class="post-time">Jun 24, 2019</div>
         <div class="post-content">
           <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="What is load testing"></a>Mitools
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Mifare card families">Mifare card families</a>
+          </h2>
+          <p>Mifare卡片有很多种类，每一种卡都有不用的读写方式</p>
+          <ul>
+            <li>Mifare Classic</li>
+            <li>Mifare Plus</li>
+            <li>Mifare Ultralight</li>
+            <li>Mifare DESFire</li>
+          </ul>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Classic and Mitools"></a>Classic and Mitools
           </h2> 
-          <p>Mifare卡是一种卡片类型，它的安全等级不是特别的高，现在已经有可以破解的软件，Mitools就是其中一种。它的界面如下</p>
+          <p>Mifare Classic卡是一种卡片类型，它的安全等级不是特别的高，现在已经有可以破解的软件，Mitools就是其中一种。它的界面如下</p>
           <img src="1.png" alt="Mitools">
           <p>Mifare卡片总共有16个sector，每一个sector中又有4个block，其中第一个sector是用来卡片生产的过程中记录卡片信息的，一般来说我们不去动他。剩下的15个sector可以给我们用来记录我们想要的信息，其中每个sector的前3个block可以自由使用，而第4个block是用来记录两个密码Key A和Key B。中间的7为则用来记录密码的形式，一般我们也不去动他。密码层在图中用粉色表示。</p>
         	<img src="2.png" alt="Mitools read">
@@ -44,6 +54,22 @@
         	<p>除去第一位even parity，取第二位往后8位：1011 0001，换成十进制就是177</p>
         	<p>再往后取16位：0100 0111 1111 0000. 十进制就是18416</p>
         	<p>这样我们就得到了site code: 177, card number: 18416</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Ultralight card"></a>Ultralight card
+          </h2>
+          <p>与Classic相似的是，Ultralight卡也有很多可以读写的分区，只是不叫sector，而叫做page，从第四个到第15个page是提供给使用者读写的，其他则是与卡本身相关的信息。</p>
+          <p>每一个page可以保存四个byte的信息</p>
+          <p>需要注意的是，page2的第2，3个byte保存有lock bits，可以lock其他的page，而且一旦lock，就不能在改变回unlock的状态，比如，0是unlock，1是lock，如果把第二个byte中的第4个bit从0改变为1，那么page4就会被lock，我们不再拥有write page4的权利，但是可以read，page2中的lock bit也无法从1再变回成0.</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="DESFire card"></a>DESFire card
+          </h2>
+          <p>DESFire卡的保护机制更加复杂，其中存储信息的空间叫做application，我们需要先选择正确的application和adpu command，然后伴随sw1, sw2两个parameter，最后还有加上一个expected response length</p>
+          <p>如果要write，就要再加上想要写入的data和数据长度。随着iOS13对于NFC的开放，使用iphone读写DESFire card有可能实现。</p>
+          <ol>
+            <li><a href="https://stackoverflow.com/questions/34198923/mifare-ultralight-lock-specific-pages" target="_blank">Mifare Ultralight lock bits</a></li>
+            <li><a href="https://www.eftlab.com/knowledge-base/complete-list-of-apdu-responses/" target="_blank">apdu response code list</a></li>
+            <li><a href="https://stackoverflow.com/questions/40663460/use-apdu-commands-to-get-some-information-for-a-card" target="_blank">Use APDU commands to get some information for a card</a></li>
+          </ol>
         </div>
       </article>
     </div>
