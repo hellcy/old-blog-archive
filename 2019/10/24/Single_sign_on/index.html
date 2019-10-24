@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="X-UA-Compatible" content="IE=edge">
+  <title>What is Single-sign-on</title>
+  <meta name="description" content="AWS Overview - hellcy">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="short icon" href="/sitelogo.jpg">
+  <link rel="stylesheet" href="/css/apollo.css">
+</head>
+<body>
+  <header>
+    <a href="/" class="logo-link"><img src="/sitelogo.jpg"></a>
+    <ul class="nav nav-list">
+      <li class="nav-list-item">
+        <a href="/" target="_self" class="nav-list-link">Blog</a>
+      </li>
+      <li class="nav-list-item">
+        <a href="https://github.com/hellcy" target="_blank" class="nav-list-link">Github</a>
+      </li>
+    </ul>
+  </header>
+  <section class="container">
+    <div class="post">
+      <article class="post-block">
+        <h1 class="post-title">What is Single-sign-on</h1>
+        <div class="post-time">Oct 24, 2019</div>
+        <div class="post-content">
+          <h2>
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="What is Single-sign-on">什么是Single sign on？</a>
+          </h2>
+          <p>Single-sign-on是一个很方便的东西，现在无论什么网站都需要登陆，而记住每个网站不同的用户名和密码又非常困难，那么作为一个好的产品，从用户的角度出发，就应该想到，如果我们只需要让用户登陆一次，就可以去到同一个平台下任何其他的产品，而不需要重复登陆，那该多好。</p>
+          <p>比如说Google Chrome，当你在浏览器中登陆了，那么你再去到Youtube或者Gmail等其他Google公司的产品，你将不再需要再次登陆。这是因为Google在你登陆的时候保存了</p>
+          <p>那么，这是怎么做到的呢，在single sign on with SAML的世界中，有两个非常重要的概念，一个是IDP，identity provider，另一个是SP，service provider。我们还是拿Google来举例子，当你需要登陆Youtube时，Youtube会将你跳转到一个Google登陆界面，登陆后他会保存你的登陆信息，然后再将你跳转回Youtube，你就发现你已经登陆上了，这时你需要查看Gmail，Gmail也会将你跳转到Google登陆界面，但是界面发现因为你已经登陆了Youtube，所以你所有的登陆信息已经被保存了，不需要你再次输入，于是自动把你跳转到Gmail，你就以为你什么都没做就自动登陆了Gmail。(虽然Google可能不是用SAML来登陆的)</p>
+          <img src="1.png" alt="IDP and SP">
+          <h2>
+            <a href="#Title" class="headerlink" title="SAML">什么是SAML?</a>
+          </h2>
+          <p>SAML可以认为是IDP和SP之间转递用户信息的一种格式规范，为了方便接收方能够理解传递过去的信息，必须规定一种规范使接收方很容易解码信息。</p>
+          <h2>
+            <a href="#Title" class="headerlink" title="broker">中间人</a>
+          </h2>
+          <p>现在我们要做的是一个中间人的角色，用户所有的请求都会先到我们这里，我们会检查request header，如果我们发现这是一个GET request，我们就会直接把用户跳转到SSO的登陆界面。</p>
+          <p>如果我们发现这是一个POST request，并且成功解码了一起发过来的SAML，我们就要重新加密用户信息，并把用户跳转到相应的网页，由最终的Service provider来再次解码用户信息。</p>
+          <p>如果SAML解码失败，我们也会将用户跳转到SSO登陆界面。让用户再次登陆</p>
+          <p>加密信息的方法有很多，我用的是windows自带的RijndaelManaged Class</p>
+          <p></p>
+          <p>本节参考了这些文章，可以点击以获取更多信息。</p>
+          <ol>
+            <li><a href="https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rijndaelmanaged?view=netframework-4.8" target="_blank">Microsoft RijndaelManaged Class</a></li>
+            <li><a href="https://developers.onelogin.com/saml" target="_blank">SAML</a></li>
+            <li><a href="https://dzone.com/articles/sso-login-key-benefits-and-implementation" target="_blank">How SSO works</a></li>
+          </ol>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div> 
+      </article>
+    </div>
+  </section>
+  <footer>
+    <div class="paginator">
+      <a href="/2019/09/02/Android_Apprentice/" class="next">下一篇</a>
+    </div>
+  </footer>
+    <div id="disqus_thread"></div>
+    <script>
+  var disqus_shortname = 'hellcy';
+  
+  var disqus_url = 'https://hellcy.github.io/2019/10/24/Single_sign_on/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script id="dsq-count-scr" src="//https-hellcy-github-io.disqus.com/count.js" async></script>
+    <script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>
