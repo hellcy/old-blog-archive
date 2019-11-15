@@ -61,6 +61,25 @@
           <img src="8.png" alt="test API Gateway">
           <p>这个是另外一个POST request with JSON body</p>
           <img src="11.png" alt="POST request with JSON body">
+          <h3>创建AWS Serverless Application</h3>
+          <img src="29.png" alt="AWS Serverless Application">
+          <p>这更像是一个Lambda project，可以让API gateway一次连接多个Lambda functions，也可以在Visual Studio里调整API Gateway的一些设置</p>
+          <img src="30.png" alt="API gatewat settings">
+          <p>这是project包含的template文件，我们可以设置API的类型，Request的类型，路径，以及这个API对AWS的可操作权限等</p>
+          <img src="31.png" alt="API Gateway sturcture">
+          <p>发布后在API Gateway中就可以看到这个层级结构和template是完全一样的</p>
+          <p>之前讲到我们可以在API Gateway中测试API，其实在Visual Studio里，发布之前我们就可以debug他，就是debug所在的位置，只不过现在显示的是Mock test tool</p>
+          <img src="32.png" alt="Mock test tool">
+          <p>他长这个样子</p>
+          <p>其中有两个需要注意的地方，第一个是我们需要调用的function，因为这是一个lambda projects，包含多个lambda functions，所以调用哪一个必须提前声明</p>
+          <img src="33.png" alt="execute lambda function">
+          <p>还有一个就是input，因为我使用的proxy，所以在列表中选择proxy，会生成一个template，然后我们需要什么input就在相应的地方加就可以了</p>
+          <p>比如如果要在request body里加，就找到body所在的位置，query parameter和path parameter同理</p>
+          <img src="34.png" alt="proxy template">
+          <p>最后说一下如何发布，跟之前的lambda function一样，只不过我们需要创建一个S3 bucket来存放所有的历史版本。</p>
+          <img src="35.png" alt="publish S3 bucket">
+          <p>他会自动清理之前旧版的project，当状态显示的是update complete，我们就知道他已经可以使用了</p>
+          <img src="36.png" alt="publish complete">
           <p>Calling trusted frame from swift</p>
           <p>另外一个任务是，因为我们不能经受任何信用卡信息，所以我们需要用到westpac trusted frame，通过调用这个Javascript library来让用户将信用卡信息直接发送到westpac的服务器，然后处理westpac的response就可以了。但是有一个问题是，我们希望用户能在我们的手机app上也可以调用westpac API，可以这个trusted frame是一个只支持web application的Javascript library，这就需要我们在Swift中加入WebKit，同时在用户在含有trusted frame的web page中submit form时，将返回的信息发送到Swift的某个Method中。简而言之，我们需要在javascript中调用Swift</p>
           <h2 id="part2">
