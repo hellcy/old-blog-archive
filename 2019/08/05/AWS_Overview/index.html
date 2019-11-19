@@ -31,9 +31,12 @@
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Whis is AWS"></a>什么是AWS？
           </h2>
           <p>AWS是Amazon的云服务，我现在用到的是其中的API Gateway和Lambda，API Gateway就是API网关，当网关收到request时，可以运行对应的Lambda function，生成response，然后返回。</p>
-          <h3 id="Title"><a href="#part1">Part1: Lambda function and API Gateway</a></h3>
-          <h3><a href="#part2">Part2: 使用IAM保护API</a></h3>
-          <h3><a href="#part3">Part3: Use S3 to host webpage</a></h3>
+          <ul>
+            <li><h5 id="Title"><a href="#part1">Part1: Lambda function and API Gateway</a></h5></li>
+            <li><h5><a href="#part2">Part2: 使用IAM保护API</a></h5></li>
+            <li><h5><a href="#part3">Part3: Use S3 to host webpage</a></h5></li>
+          </ul>
+          <hr>
           <h2 id="part1">
             <a href="#Title" class="headerlink" title="使用Visual Studio编写lambda function并与API Gateway关联">Part1: Lambda function and API Gateway</a>
           </h2>
@@ -61,6 +64,7 @@
           <img src="8.png" alt="test API Gateway">
           <p>这个是另外一个POST request with JSON body</p>
           <img src="11.png" alt="POST request with JSON body">
+          <hr>
           <h3>创建AWS Serverless Application</h3>
           <img src="29.png" alt="AWS Serverless Application">
           <p>这更像是一个Lambda project，可以让API gateway一次连接多个Lambda functions，也可以在Visual Studio里调整API Gateway的一些设置</p>
@@ -82,6 +86,26 @@
           <img src="36.png" alt="publish complete">
           <p>Calling trusted frame from swift</p>
           <p>另外一个任务是，因为我们不能经受任何信用卡信息，所以我们需要用到westpac trusted frame，通过调用这个Javascript library来让用户将信用卡信息直接发送到westpac的服务器，然后处理westpac的response就可以了。但是有一个问题是，我们希望用户能在我们的手机app上也可以调用westpac API，可以这个trusted frame是一个只支持web application的Javascript library，这就需要我们在Swift中加入WebKit，同时在用户在含有trusted frame的web page中submit form时，将返回的信息发送到Swift的某个Method中。简而言之，我们需要在javascript中调用Swift</p>
+          <hr>
+          <h3>更改API域名 Custom Domain Names</h3>
+          <p>AWS API的标准名字是这样的格式 <code>https://api-id.execute-api.region.amazonaws.com/stage</code> 这很复杂而且跟API的功能也没有任何联系</p>
+          <p>我们可以更改他的域名，让他的名字更有意义</p>
+          <img src="37.png" alt="Costom domain name">
+          <p>在新建域名时，我们可以给域名增加certificate，这需要通过在AWS ACM(certificate manager)中新增certificate来实现</p>
+          <p>我们还需要在internet中新建一个我们想要的域名，然后用route 53来把这个域名和API关联起来，上图中的Target domain name就是自定义域名需要关联的域名。在route 53中找到hosted zones，然后新增一行record，把target domain name填入，再自定义一个域名就可以了</p>
+          <img src="38.png" alt="domain settings">
+          <p>AWS API分为两种，一种是Edge Optimized，另一个是Regional，在API Gateway中每一个API的settings中可以看到，也可以更改其Endpoint type</p>
+          <img src="39.png" alt="API Endpoint Type">
+          <p>最后测试一下看看域名是不是成功了，记住route 53需要一点时间才能把域名建好并且go live，所以等几分钟再试</p>
+          <img src="40.png" alt="test domain">
+          <p>本节参考了这些文章，可以点击以获取更多信息。</p>
+          <ol>
+            <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html" target="_blank">Set Up a Custom Domain Name for an API in API Gateway</a></li>
+            <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-edge-optimized-custom-domain-name.html" target="_blank">How to Create an Edge-Optimized Custom Domain Name</a></li>
+            <li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-resource-policy-whitelist/" target="_blank">How do I use a resource policy to whitelist certain IP addresses to access my API Gateway API?</a></li>
+            <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies-examples.html#apigateway-resource-policies-source-ip-address-example" target="_blank">API Gateway Resource Policy Examples</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">Classless Inter-Domain Routing</a></li>
+          </ol>
           <h2 id="part2">
             <a href="#Title" class="headerlink" title="给API增加Authentication">Part2: 给API增加Authentication</a>
           </h2>
@@ -127,6 +151,7 @@
             <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies-examples.html#apigateway-resource-policies-source-ip-address-example" target="_blank">API Gateway Resource Policy Examples</a></li>
             <li><a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">Classless Inter-Domain Routing</a></li>
           </ol>
+          <hr>
           <h2 id="part3">
             <a href="#Title" class="headerlink" title="Part3: Use S3 to host webpage">Part3: Use S3 to host webpage</a>
           </h2>
