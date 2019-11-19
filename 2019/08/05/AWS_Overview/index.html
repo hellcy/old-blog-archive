@@ -33,6 +33,11 @@
           <p>AWS是Amazon的云服务，我现在用到的是其中的API Gateway和Lambda，API Gateway就是API网关，当网关收到request时，可以运行对应的Lambda function，生成response，然后返回。</p>
           <ul>
             <li><h5 id="Title"><a href="#part1">Part1: Lambda function and API Gateway</a></h5></li>
+            <ul>
+              <li><a href="#part1">Introduction</a></li>
+              <li><a href="#part1.2">创建AWS Serverless Application</a></li>
+              <li><a href="#part1.3">更改API域名 Custom Domain Names</a></li>
+            </ul>
             <li><h5><a href="#part2">Part2: 使用IAM保护API</a></h5></li>
             <li><h5><a href="#part3">Part3: Use S3 to host webpage</a></h5></li>
           </ul>
@@ -65,7 +70,7 @@
           <p>这个是另外一个POST request with JSON body</p>
           <img src="11.png" alt="POST request with JSON body">
           <hr>
-          <h3>创建AWS Serverless Application</h3>
+          <h3 id="part1.2"><a href="#Title">创建AWS Serverless Application</a></h3>
           <img src="29.png" alt="AWS Serverless Application">
           <p>这更像是一个Lambda project，可以让API gateway一次连接多个Lambda functions，也可以在Visual Studio里调整API Gateway的一些设置</p>
           <img src="30.png" alt="API gatewat settings">
@@ -87,7 +92,7 @@
           <p>Calling trusted frame from swift</p>
           <p>另外一个任务是，因为我们不能经受任何信用卡信息，所以我们需要用到westpac trusted frame，通过调用这个Javascript library来让用户将信用卡信息直接发送到westpac的服务器，然后处理westpac的response就可以了。但是有一个问题是，我们希望用户能在我们的手机app上也可以调用westpac API，可以这个trusted frame是一个只支持web application的Javascript library，这就需要我们在Swift中加入WebKit，同时在用户在含有trusted frame的web page中submit form时，将返回的信息发送到Swift的某个Method中。简而言之，我们需要在javascript中调用Swift</p>
           <hr>
-          <h3>更改API域名 Custom Domain Names</h3>
+          <h3 id="part1.3"><a href="#Title">更改API域名 Custom Domain Names</a></h3>
           <p>AWS API的标准名字是这样的格式 <code>https://api-id.execute-api.region.amazonaws.com/stage</code> 这很复杂而且跟API的功能也没有任何联系</p>
           <p>我们可以更改他的域名，让他的名字更有意义</p>
           <img src="37.png" alt="Costom domain name">
