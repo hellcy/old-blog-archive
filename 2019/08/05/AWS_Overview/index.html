@@ -111,33 +111,46 @@
           </ol>
           <hr>
           <h3 id="part1.4"><a href="#Title">change lambda function outbound IP address to static</a></h3>
-          <p>我们还可以设置API outbound request的IP，有些时候，一些外部</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>我们还可以设置API outbound request的IP，有些时候，当我们需要调用外部API时，他们会有IP地址的限制，只有来自特定whitelist的IP地址发送的请求才会被接受。所以我们需要设置我们发送API时请求的IP地址。因为Lambda function是通过AWS发送的，在被发送时它的IP地址是随机的，虽然不是动态IP，但是每次发送的地址都不一样，我们没办法把所有的IP都加近whitelist。</p>
+          <p>针对这个问题，我们可以通过把lambda function加入VPC来解决，VPC可以看作是包含一组IP地址的内部云，我们给它加上一个出口，让所有在此VPC的请求都通过这个出口发送出去，这样所有的lambda都会只有一个我们指定的IP了。</p>
+          <p>我们具体来解释一下AWS VPC的构造</p>
+          <p>如果AWS EC2是一个云服务器，那么VPC就是这个云服务器的网络层，负责设备之间的信息传输。它由几个重要部分构成</p>
+          <img src="44.png" alt="VPC">
+          <ul>
+            <li>Subnet: 包含一组指定范围的IP，IP格式参照<a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">CIDR</a></li>
+            <li>Route table: 包含信息传输的规则，什么地方来的请求应该到什么地方去，类似一个交通枢纽，负责指挥数据的方向</li>
+            <li>Internet gateway: VPC的一个重要组成部分，负责VPC内部信息和外部网络的交流，就是这个VPC的出口</li>
+            <li>Elastic IP: 一个公开的IPv4地址，我们要把它赋给NAT，这样就可以让外部和NAT内部通过这个公开IP进行交流</li>
+            <li>NAT Gateway: Network Address Translator Gateway, 与Internet Gateway类似，不同的是它可以让private subnet中的数据通过它与外部网络交流</li>
+          </ul>
+          <p>具体做法</p>
+          <ol>
+            <li>新建一个VPC</li>
+            <li>新建一个Internet Gateway，与VPC相连</li>
+            <li>新建一个Public subnet，并在route table中新建一个规则，让所有通过这个public subnet的数据流向Internet Gateway</li>
+            <li>新建一个Elastic IP</li>
+            <li>新建一个NAT Gateway，把Elastic IP赋给它，并将它放入public subnet中</li>
+            <li>新建一个private subnet，并在route table中新建一个规则，让所有通过这个private subnet的数据流向NAT Gateway</li>
+            <li>将lambda function放入private subnet</li>
+          </ol>
+          <p>这样一切就设置完成了，当lambda被执行时，数据会通过private subnet，根据route table的规则流向NAT gateway</p>
+          <p>NAT Gateway将数据赋予Elastic IP，因为NAT在public subnet中，根据route table规则流向Internet Gateway</p>
+          <p>Internet Gateway将数据发给外部网络，此时所有数据都会来自同一个Elastic IP</p>
+          <hr>
+          <p>需要注意的点</p>
+          <p>在将lambda function放入subnet时，只给它private subnet，不要给public subnet，因为这样他就有可能不通过NAT gateway</p>
+          <img src="41.png" alt="add VPC to lambda">
+          <p>给lambda function加VPC需要一个AWS permission</p>
+          <img src="42.png" alt="add VPC permission to lambda">
+          <p>可以创建另一个lambda function，只接受特定IP来测试整个流程是否成功。图为限制IP的policy</p>
+          <img src="43.png" alt="whitelist ip">
           <ol>
             <li><a href="https://medium.com/@matthewleak/aws-lambda-functions-with-a-static-ip-89a3ada0b471" target="_blank">AWS Lambda functions with a static IP</a></li>
             <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html" target="_blank">Configuring a Lambda Function to Access Resources in a VPC</a></li>
+            <li><a href="https://medium.com/awesome-cloud/aws-vpc-difference-between-internet-gateway-and-nat-gateway-c9177e710af6" target="_blank">AWS — Difference between Internet gateway and NAT gateway</a></li>
+            <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html" target="_blank">What Is Amazon VPC?</a></li>
+            <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html" target="_blank">What Is Amazon EC2?</a></li>
+            <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html" target="_blank">Elastic IP Addresses</a></li>
           </ol>
           <h2 id="part2">
             <a href="#Title" class="headerlink" title="给API增加Authentication">Part2: 给API增加Authentication</a>
