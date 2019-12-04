@@ -77,8 +77,7 @@
           <p>RecyclerView</p>
           <p>1. The RecyclerView asks the Adapter for an item, or a ViewHolder at a given position. 2. The Adapter reaches into a pool of ViewHolders that have been created. 3. Either a a new ViewHolder is returned, or a new one is created. 4. The Adapter then binds this ViewHolder to a data item at the given position. 5. The ViewHolder is returned back to the RecyclerView for display</p>
           <img src="15.png" alt="RecyclerView">
-          <p>In general, Adapters give your RecyclerView the data it wants to show. They have a clever way to calculate how many rows of data you want to show, which you’ll cover
-            shortly. ViewHolders are the visual containers for your item. Think of them as cells in the table. This is where you tell your RecyclerView what each item should look like. These are basically little tiny layout items used to display the data at any given position in the list of data. As you scroll through a RecyclerView, instead of creating new ViewHolders, RecyclerView will recycle ViewHolders that have moved offscreen and populate them with new data, ready to be shown at the bottom of the list. This process repeats endlessly as you scroll through your RecyclerView. This recycling of ViewHolder to display list items helps to avoid janking in your app.</p>
+          <p>In general, Adapters give your RecyclerView the data it wants to show. They have a clever way to calculate how many rows of data you want to show, which you’ll cover shortly. ViewHolders are the visual containers for your item. Think of them as cells in the table. This is where you tell your RecyclerView what each item should look like. These are basically little tiny layout items used to display the data at any given position in the list of data. As you scroll through a RecyclerView, instead of creating new ViewHolders, RecyclerView will recycle ViewHolders that have moved offscreen and populate them with new data, ready to be shown at the bottom of the list. This process repeats endlessly as you scroll through your RecyclerView. This recycling of ViewHolder to display list items helps to avoid janking in your app.</p>
           <p>RecycleView 的本质是循环使用table中的cell，当一个cell网上滑出屏幕时，我们可以让他重新出现在底部，但是显示不同的数据，这就要求我们在写代码时要把table，cell和数据分开来，每个部分各司其职。</p>
           <img src="16.png" alt="cell">
           <p>这个是cell部分，它由两个textview组成。对应上图中的viewHolder</p>
@@ -92,12 +91,14 @@
           SharedPreferences is one of the first solutions you should consider</p>
           <p>这就需要用到sharedpreference，它类似于一个dictionary，里面由key-value pairs组成。可以储存size较小的数据。类似于表格信息</p>
           <img src="19.png" alt="SharedPreferences">
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>EditText</p>
+          <code>val listTitleEditText = EditText(this)</code>
+          <code>listTitleEditText.inputType = InputType.TYPE_CLASS_TEXT</code>
+          <p>创建一个input text field，并给它指明一个InputType， 这样Android就会显示合适的keyboard</p>
+          <p>Intent</p>
+          <p>Parcelable</p>
+          <p>Callback</p>
+          <p>Fragment</p>
           <p></p>
           <p></p>
           <p></p>

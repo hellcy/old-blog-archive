@@ -123,7 +123,7 @@
             <li>Elastic IP: 一个公开的IPv4地址，我们要把它赋给NAT，这样就可以让外部和NAT内部通过这个公开IP进行交流</li>
             <li>NAT Gateway: Network Address Translator Gateway, 与Internet Gateway类似，不同的是它可以让private subnet中的数据通过它与外部网络交流</li>
           </ul>
-          <p>具体做法</p>
+          <p><b>具体做法</b></p>
           <ol>
             <li>新建一个VPC</li>
             <li>新建一个Internet Gateway，与VPC相连</li>
@@ -137,13 +137,14 @@
           <p>NAT Gateway将数据赋予Elastic IP，因为NAT在public subnet中，根据route table规则流向Internet Gateway</p>
           <p>Internet Gateway将数据发给外部网络，此时所有数据都会来自同一个Elastic IP</p>
           <hr>
-          <p>需要注意的点</p>
+          <p><b>需要注意的点</b></p>
           <p>在将lambda function放入subnet时，只给它private subnet，不要给public subnet，因为这样他就有可能不通过NAT gateway</p>
           <img src="41.png" alt="add VPC to lambda">
           <p>给lambda function加VPC需要一个AWS permission</p>
           <img src="42.png" alt="add VPC permission to lambda">
           <p>可以创建另一个lambda function，只接受特定IP来测试整个流程是否成功。图为限制IP的policy</p>
           <img src="43.png" alt="whitelist ip">
+          <p>本节参考了这些文章，可以点击以获取更多信息。</p>
           <ol>
             <li><a href="https://medium.com/@matthewleak/aws-lambda-functions-with-a-static-ip-89a3ada0b471" target="_blank">AWS Lambda functions with a static IP</a></li>
             <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html" target="_blank">Configuring a Lambda Function to Access Resources in a VPC</a></li>
