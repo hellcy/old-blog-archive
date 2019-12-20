@@ -34,8 +34,6 @@
           <p>他总共包括六个部分，前四个部分每一部分教你编写一个app，难度从低到高。后面两部分会告诉你怎么向下兼容和发布。跟之前的iOS教程很像。</p>
           <h3><a href="#TimeFighter">TimeFighter</a></h3>
           <h3><a href="#Checklist">Checklist</a></h3>
-          <h3><a href="#MapBasedApp">MapBasedApp</a></h3>
-          <h3><a href="#PodcaseManager">PodcaseManager</a></h3>
           <h3><a href="#Conclusion">Conclusion</a></h3>
           <h2 id="TimeFighter">
             <a href="#Title" class="headerlink" title="TimeFighter">第一个App: TimeFighter</a>
@@ -85,6 +83,46 @@
           <p>这个是table部分，它包含多个cell，并可以循环利用cell。对应上图中的adapter。我们需要在adapter中implement recycleview必须的成分例如包含多少个viewholder，每个viewholder的数据应该从哪里取。。</p>
           <img src="17.png" alt="data input">
           <p>除了recycleview本身，我们应该把data source设置成动态的，也就是说我们可以输入自己的数据，并加进recycleview中。</p>
+          <p>下面我们在代码层面解释一下如何构建一个recycleView</p>
+          <img src="22.png" alt="recycleView functions">
+          <p>首先我们需要继承RecyclerView Adapter并implement这三个function，RecyclerView还有很多其他function可以override但是这三个是必须的</p>
+          <pre>
+            override fun getItemCount(): Int {
+                return accounts.size
+            }
+          </pre>
+          <p>getItemCount return一个Int，它表示这个表格中有几行，一般是return数据的size</p>
+          <pre>
+            override fun onCreateViewHolder(
+                parent: ViewGroup,
+                viewType: Int
+            ): CustomViewHolder {
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.view_holder_custom, parent, false)
+
+                return CustomViewHolder(view)
+            }
+          </pre>
+          <p>onCreateViewHolder定义一个table cell的layout，我们返回一个layout文件，所以对于每个不同的recyclerView，我们还需要新建一个Layout file用于储存cell的layout</p>
+          <pre>
+            override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+                holder.label.text = "Some text"
+                holder.itemView.setOnClickListener {
+                    clickListener.listItemClicked(position)
+                }
+            }
+          </pre>
+          <p>onBindViewHolder会把我们的数据放到我们新建的cell layout中，另外注意到我加了一个ClickListener，所以之后我们点击每行的时候就会运行listItemClicked function，然后在那里就可以添加另外的代码，可以跳到另一个View等。</p>
+          <pre>
+            class CustomViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+                val sampleData = itemView.findViewById(R.id.sampleData) as TextView
+            }
+          </pre>
+          <p>我们还需要一个class去连接table cell layout file</p>
+          <p>这样基本上一个RecyclerView就完成了，之后我们只需要将数据从Activity或者Fragment传入RecyclerView Adapter就可以了</p>
+          <pre>
+            view.CustomTable.adapter = CustomTableViewAdapter(sampleData, this)
+            view.CustomTable.layoutManager = LinearLayoutManager(activity)
+          </pre>
           <img src="18.png" alt="data input 2">
           <p>SharedPreferences</p>
           <p>SharedPreferences lets you save small collections of key-value pairs that you can retrieve later. If you need a way to quickly save small bits of data in your app,
@@ -92,15 +130,134 @@
           <p>这就需要用到sharedpreference，它类似于一个dictionary，里面由key-value pairs组成。可以储存size较小的数据。类似于表格信息</p>
           <img src="19.png" alt="SharedPreferences">
           <p>EditText</p>
-          <code>val listTitleEditText = EditText(this)</code>
-          <code>listTitleEditText.inputType = InputType.TYPE_CLASS_TEXT</code>
+          <pre>
+            val listTitleEditText = EditText(this) 
+            listTitleEditText.inputType = InputType.TYPE_CLASS_TEXT
+          </pre>
           <p>创建一个input text field，并给它指明一个InputType， 这样Android就会显示合适的keyboard</p>
           <p>Intent</p>
+          <img src="20.png" alt="Intent communication">
+          <p>当我们需要让一个页面与另一个页面进行交流时，我们需要通过Intent将数据传送过去。</p>
+          <pre>
+            private fun showListDetail(list: TaskList) {
+             val listDetailIntent = Intent(this, ListDetailActivity::class.java)
+             listDetailIntent.putExtra(INTENT_LIST_KEY, list)
+             startActivity(listDetailIntent)
+            }
+
+            // get from other Activity
+            list = intent.getParcelableExtra(MainActivity.INTENT_LIST_KEY)
+          </pre>
+          <p>在上面这个function中，this是我们现在所在的Activity，ListDetailActivity是我们将要过去的Activity，TaskList是我们要传送的数据。</p>
+          <p>我们需要规定一个Key，这样的新的页面中我们就知道用Key来获取相应的数据。</p>
+          <p>但是还有一个问题，就是自定义的object不能直接通过intent传送，我们需要把他变成Parcelable的object</p>
           <p>Parcelable</p>
-          <p>Callback</p>
+          <img src="21.png" alt="Implement Parcelable">
+          <p>在定义object的class中，implement parcelable，Android Studio会自动把需要的function写好</p>
           <p>Fragment</p>
-          <p></p>
-          <p></p>
+          <p>Fragment是android语言中一个非常重要的部分，他必须附属于一个Activity，Fragment的本质是可以让相同的部分用同一个Fragment表示，并在多处使用，以节省代码长度，让App保持整洁一致。</p>
+          <img src="25.png" alt="Create Fragment">
+          <pre>
+            class ListSelectionFragment : Fragment() {
+             // 1
+             private var listener: OnListItemFragmentInteractionListener? = null
+             interface OnListItemFragmentInteractionListener {
+             fun onListItemClicked(list: TaskList)
+             }
+             // 2
+             companion object {
+             fun newInstance(): ListSelectionFragment {
+             val fragment = ListSelectionFragment()
+             return fragment
+             }
+             }
+            // 3
+            override fun onAttach(context: Context) {
+             super.onAttach(context)
+             if (context is OnListItemFragmentInteractionListener) {
+             listener = context
+             } else {
+             throw RuntimeException(context.toString() + " must implement
+            OnListItemFragmentInteractionListener")
+             }
+            }
+             // 4
+             override fun onCreate(savedInstanceState: Bundle?) {
+             super.onCreate(savedInstanceState)
+             }
+             // 5
+             override fun onCreateView(inflater: LayoutInflater, container:
+            ViewGroup?,
+             savedInstanceState: Bundle?): View? {
+             return inflater.inflate(R.layout.fragment_list_selection, container,
+            false)
+             }
+             // 6
+             override fun onDetach() {
+             super.onDetach()
+             listener = null
+             }
+            }
+          </pre>
+          <img src="26.png" alt="Fragment lifecycle">
+          <p>Fragment由几个重要部分组成，首先，当Fragment第一次被附属于某个Activity时onAttach会被执行。然后onCreate， 在这两个地方你可以initialize一些变量等。</p>
+          <pre>
+            override fun onCreate(savedInstanceState: Bundle?) {
+                super.onCreate(savedInstanceState)
+
+                transactions = arguments?.getParcelableArrayList<WestpacTransaction>("Transactions")!!
+                refundedAmount = arguments?.getDouble("RefundedAmount")!!
+                refundAmount = arguments?.getDouble("RefundAmount")!!
+                updatedBalance = arguments?.getDouble("UpdatedBalance")!!
+                primaryAccount = paperCutAccountManager.readPrimaryAccount()
+            }
+          </pre>
+          <p>之后onCreateView，这个地方会把数据等object显示在View中，所以需要在这里把变量和UI object绑定。</p>
+          <pre>
+            override fun onCreateView(
+                inflater: LayoutInflater, container: ViewGroup?,
+                savedInstanceState: Bundle?
+            ): View? {
+                val activity = activity as AppCompatActivity?
+                if (activity != null) {
+                    activity.supportActionBar!!.show()
+                    activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    activity.supportActionBar?.title = "Refund Complete"
+                    activity.nav_view.isVisible = false
+                }
+
+                // Inflate the layout for this fragment
+                val view = inflater.inflate(R.layout.fragment_refund_complete, container, false)
+                view.AccountNameLabel.text = primaryAccount.AccountName
+                view.AccountBalanceLabel.text = "$" + "%.2f".format(updatedBalance)
+                view.refundAmount.text = "$" + "%.2f".format(refundedAmount)
+                view.DoneButton.setOnClickListener { v ->
+                    doneButtonPressed()
+                }
+
+                view.refundCompleteTable.adapter = RefundCompleteTableViewAdapter(transactions, this)
+                view.refundCompleteTable.layoutManager = LinearLayoutManager(activity)
+
+                return view
+            }
+          </pre>
+          <p>之后是Companion object，当这个Fragment被创建时，如果你需要给它传值，它需要在这里被定义，有点像是Fragment的Constructor</p>
+          <pre>
+            companion object {
+                val TAG = RefundCompleteFragment::class.java.simpleName
+                @JvmStatic
+                fun newInstance(transactions: ArrayList<WestpacTransaction>, refundedAmount: Double, refundAmount: Double, updatedBalance: Double): RefundCompleteFragment {
+                    val fragment = RefundCompleteFragment()
+                    val args = Bundle()
+                    args.putParcelableArrayList("Transactions", transactions)
+                    args.putDouble("RefundedAmount", refundedAmount)
+                    args.putDouble("RefundAmount", refundAmount)
+                    args.putDouble("UpdatedBalance", updatedBalance)
+                    fragment.arguments = args
+                    return fragment
+                }
+            }
+          </pre>
           <p></p>
           <p></p>
           <p></p>
