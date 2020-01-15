@@ -241,8 +241,8 @@
                 String SUBJECT = "Email Subject";
 
                 String BODY =
-                    "<h1>Email Title</h1>" +
-                    "<p>Email Content</p>";
+                    "&lth1&gtEmail Title&lt/h1&gt" +
+                    "&ltp&gtEmail Content&lt/p&gt";
 
                 MailMessage message = new MailMessage();
                 message.IsBodyHtml = true;
@@ -272,6 +272,7 @@
             }
           </pre>
           <p>执行这个function几次看看能不能收到邮件，如何可以的话就成功了</p>
+          <img src="49.png" alt="Emails">
           <p>AWS 还有统计邮件成功率的工具，也在SES tab里面</p>
           <p>另外就是Configuration set是一个optional的设置，可以在AWS里面添加</p>
           <p>除了用SMTP，我们还可以用AWS SDK发送邮件，这里就不介绍了，大致都是一样的，代码需要改一下</p>
