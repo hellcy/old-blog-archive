@@ -41,6 +41,7 @@
             </ul>
             <li><h5><a href="#part2">Part2: 使用IAM保护API</a></h5></li>
             <li><h5><a href="#part3">Part3: Use S3 to host webpage</a></h5></li>
+            <li><h5><a href="#part4">Part4: AWS Simple Email Services</a></h5></li>
           </ul>
           <hr>
           <h2 id="part1">
@@ -123,7 +124,7 @@
             <li>Elastic IP: 一个公开的IPv4地址，我们要把它赋给NAT，这样就可以让外部和NAT内部通过这个公开IP进行交流</li>
             <li>NAT Gateway: Network Address Translator Gateway, 与Internet Gateway类似，不同的是它可以让private subnet中的数据通过它与外部网络交流</li>
           </ul>
-          <p>具体做法</p>
+          <p><b>具体做法</b></p>
           <ol>
             <li>新建一个VPC</li>
             <li>新建一个Internet Gateway，与VPC相连</li>
@@ -137,13 +138,14 @@
           <p>NAT Gateway将数据赋予Elastic IP，因为NAT在public subnet中，根据route table规则流向Internet Gateway</p>
           <p>Internet Gateway将数据发给外部网络，此时所有数据都会来自同一个Elastic IP</p>
           <hr>
-          <p>需要注意的点</p>
+          <p><b>需要注意的点</b></p>
           <p>在将lambda function放入subnet时，只给它private subnet，不要给public subnet，因为这样他就有可能不通过NAT gateway</p>
           <img src="41.png" alt="add VPC to lambda">
           <p>给lambda function加VPC需要一个AWS permission</p>
           <img src="42.png" alt="add VPC permission to lambda">
           <p>可以创建另一个lambda function，只接受特定IP来测试整个流程是否成功。图为限制IP的policy</p>
           <img src="43.png" alt="whitelist ip">
+          <p>本节参考了这些文章，可以点击以获取更多信息。</p>
           <ol>
             <li><a href="https://medium.com/@matthewleak/aws-lambda-functions-with-a-static-ip-89a3ada0b471" target="_blank">AWS Lambda functions with a static IP</a></li>
             <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html" target="_blank">Configuring a Lambda Function to Access Resources in a VPC</a></li>
@@ -215,15 +217,74 @@
             <li><a href="https://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html" target="_blank">AWS S3 Getting Started</a></li>
             <li><a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html" target="_blank">What is AWS S3?</a></li>
           </ol>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <h2 id="part4">
+            <a href="#Title" class="headerlink" title="Part4: AWS Simple Email Services">Part4: AWS Simple Email Services</a>
+          </h2>
+          <p>使用AWS发送Email是一件非常简单的事情，通过以下步骤可以创建一个AWS User with email sending policyies并使用C#发送邮件</p>
+          <p>首先我们需要创建一个AWS User，拿到发送Email的Credentials</p>
+          <img src="45.png" alt="SMTP Credentials">
+          <p>然后我们需要设置想用什么邮箱地址发送邮件，我们需要验证，并登陆对应邮箱点击验证链接</p>
+          <img src="46.png" alt="Verify sender Email address">
+          <p>之后我们可以测试一下能不能发送Test Email，这里不需要用到Credentials</p>
+          <img src="47.png" alt="Send Test Emails">
+          <p>然后我们就可以看代码了</p>
+          <pre>
+            public void SendEmail()
+            {
+                String FROM = "sender email address";
+                String FROMNAME = "Your Name";
+                String TO = "receiver email address";
+                String SMTP_USERNAME = "Credentials Username";
+                String SMTP_PASSWORD = "Credentials Password";
+                String HOST = "Your AWS host location";
+                int PORT = 587;
+                String SUBJECT = "Email Subject";
+
+                String BODY =
+                    "&lth1&gtEmail Title&lt/h1&gt" +
+                    "&ltp&gtEmail Content&lt/p&gt";
+
+                MailMessage message = new MailMessage();
+                message.IsBodyHtml = true;
+                message.From = new MailAddress(FROM, FROMNAME);
+                message.To.Add(new MailAddress(TO));
+                message.Subject = SUBJECT;
+                message.Body = BODY;
+
+                using (var client = new System.Net.Mail.SmtpClient(HOST, PORT))
+                {
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new NetworkCredential(SMTP_USERNAME, SMTP_PASSWORD);
+                    client.EnableSsl = true;
+
+                    try
+                    {
+                        Console.WriteLine("Attempting to send email...");
+                        client.Send(message);
+                        Console.WriteLine("Email sent!");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("The email was not sent.");
+                        Console.WriteLine("Error message: " + ex.Message);
+                    }
+                }
+            }
+          </pre>
+          <p>执行这个function几次看看能不能收到邮件，如何可以的话就成功了</p>
+          <img src="49.png" alt="Emails">
+          <p>AWS 还有统计邮件成功率的工具，也在SES tab里面</p>
+          <p>另外就是Configuration set是一个optional的设置，可以在AWS里面添加</p>
+          <p>除了用SMTP，我们还可以用AWS SDK发送邮件，这里就不介绍了，大致都是一样的，代码需要改一下</p>
+          <img src="48.png" alt="Configuration Sets">
+          <p>当你新建一个AWS用户时，你的邮件功能可以会受到限制，也就是说在Sandbox里面，收发数量，频率都会受限，可以给Amazon发送请求移除Sandbox，具体做法可以参考下面链接</p>
+          <p>本节参考了这些文章，可以点击以获取更多信息。</p>
+          <ol>
+            <li><a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-an-email-from-console.html" target="_blank">Sending a test email</a></li>
+            <li><a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-using-smtp-net.html" target="_blank">Send an email using SMTP</a></li>
+            <li><a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/using-configuration-sets.html" target="_blank">Using AWS SES Configuration sets</a></li>
+            <li><a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html" target="_blank">Moving out of sandbox</a></li>
+          </ol>
           <p></p>
           <p></p>
           <p></p>
