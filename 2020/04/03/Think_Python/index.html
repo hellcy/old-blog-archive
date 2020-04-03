@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="X-UA-Compatible" content="IE=edge">
-  <title>Data Structures</title>
-  <meta name="description" content="Data Structures - hellcy">
+  <title>Think Python</title>
+  <meta name="description" content="Think Python - hellcy">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="short icon" href="/sitelogo.jpg">
   <link rel="stylesheet" href="/css/apollo.css">
@@ -24,21 +24,27 @@
   <section class="container">
     <div class="post">
       <article class="post-block">
-        <h1 class="post-title">Data Structures</h1>
-        <div class="post-time">Mar 20, 2020</div>
+        <h1 class="post-title">Think Python</h1>
+        <div class="post-time">April 03, 2020</div>
         <div class="post-content">
           <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Binary Tree"></a>Binary Tree
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="The First Program"></a>The First Program
           </h2> 
-          <h3>Traverse a tree</h3>
-          <p>There are two general strategies to traverse a tree:</p>
-          <p>Breadth First Search (BFS)</p>
-          <p>We scan through the tree level by level, following the order of height, from top to bottom. The nodes on higher level would be visited before the ones with lower levels.</p>
-          <p>Depth First Search (DFS)</p>
-          <p>In this strategy, we adopt the depth as the priority, so that one would start from a root and reach all the way down to certain leaf, and then back to root to reach another branch.</p>
-          <p>The DFS strategy can further be distinguished as preorder, inorder, and postorder depending on the relative order among the root node, left node and right node.Pre-order traversal is to visit the root first. Then traverse the left subtree. Finally, traverse the right subtree.In-order traversal is to traverse the left subtree first. Then visit the root. Finally, traverse the right subtree.Typically, for binary search tree, we can retrieve all the data in sorted order using in-order traversal.Post-order traversal is to traverse the left subtree first. Then traverse the right subtree. Finally, visit the root.It is worth noting that when you delete nodes in a tree, deletion process will be in post-order. That is to say, when you delete a node, you will delete its left child and its right child before you delete the node itself. Also, post-order is widely use in mathematical expression.</p>
-          <p></p>
-          <p></p>
+          <h3>Python interpreter</h3>
+          <p>Type python in the command line to start interpreter</p>
+          <code>Python 3.4.0 (default, Jun 19 2015, 14:20:21)
+          [GCC 4.8.2] on linux
+          Type "help", "copyright", "credits" or "license" for more information.
+          >>>
+          The first three lines contain information about the interpreter and the operating system it’s
+          running on, so it might be different for you. But you should check that the version number,
+          which is 3.4.0 in this example, begins with 3, which indicates that you are running Python
+          3. If it begins with 2, you are running (you guessed it) Python 2.
+          The last line is a prompt that indicates that the interpreter is ready for you to enter code. If
+          you type a line of code and hit Enter, the interpreter displays the result:
+          >>> 1 + 1
+          2
+          </code>
           <p></p>
           <p></p>
           <p></p>
@@ -81,14 +87,14 @@
   </section>
   <footer>
     <div class="paginator">
-      <a href="/2019/10/24/Single_sign_on/" class="next">下一篇</a>
+      <a href="/2020/03/02/Data_Structures/" class="next">下一篇</a>
     </div>
   </footer>
     <div id="disqus_thread"></div>
     <script>
   var disqus_shortname = 'hellcy';
   
-  var disqus_url = 'https://hellcy.github.io/2020/03/02/Data_Structures/';
+  var disqus_url = 'https://hellcy.github.io/2020/04/03/Think_Python/';
   
   (function(){
     var dsq = document.createElement('script');
