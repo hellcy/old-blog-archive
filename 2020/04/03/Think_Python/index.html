@@ -30,7 +30,7 @@
           <h2 id="u6587_u7AE0_u7ED3_u6784">
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="The First Program"></a>The First Program
           </h2> 
-          <h3>Python interpreter</h3>
+          <h4>Python interpreter</h4>
           <p>Type python in the command line to start interpreter</p>
           <code>Python 3.4.0 (default, Jun 19 2015, 14:20:21)
           [GCC 4.8.2] on linux
@@ -47,7 +47,7 @@
           >>> 1 + 1
           2
           </code>
-          <h3>Basic Arthmetic</h3>
+          <h4>Basic Arthmetic</h4>
           <code>>>> 40 + 2
           42
           >>> 43 - 1
@@ -78,7 +78,7 @@
           >>> 6 ^ 2
           4
           </code>
-          <h3>Values and Types</h3>
+          <h4>Values and Types</h4>
           <p>If you are not sure what type a value has, the interpreter can tell you:</p>
           <code>
           >>> type(2)
@@ -91,14 +91,14 @@
           <h2 id="u6587_u7AE0_u7ED3_u6784">
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Chapter 2: Variables Expressions and Statements"></a>Chapter 2: Variables Expressions and Statements
           </h2>
-          <h3>Statement</h3>
+          <h4>Statement</h4>
           <p>An assignment statement creates a new variable and gives it a value:</p>
           <code>
             >>> message = 'And now for something completely different'
             >>> n = 17
             >>> pi = 3.1415926535897932
           </code>
-          <h3>Expressions</h3>
+          <h4>Expressions</h4>
           <p>An expression is a combination of values, variables, and operators. A value all by itself is considered an expression, and so is a variable, so the following are all legal expressions:</p>
           <code>
             >>> 42
@@ -113,7 +113,7 @@
           value 42.
           A statement is a unit of code that has an effect, like creating a variable or displaying a
           value.</p>
-          <h3>Order of operations</h3>
+          <h4>Order of operations</h4>
           <p>Parentheses have the highest precedence and can be used to force an expression to
           evaluate in the order you want. Since expressions in parentheses are evaluated first,
           2 * (3-1) is 4, and (1+1)**(5-2) is 8. You can also use parentheses to make an
@@ -127,7 +127,7 @@
           <p>Operators with the same precedence are evaluated from left to right (except exponentiation). So in the expression degrees / 2 * pi, the division happens first and the
           result is multiplied by pi. To divide by 2π, you can use parentheses or write degrees
           / 2 / pi.</p>
-          <h3>Comments</h3>
+          <h4>Comments</h4>
           <p>comments, and they start with
           the # symbol. """fdsfsdfsd""" for multiple lines of comments
           </p>
@@ -145,7 +145,7 @@
           Before we can use the functions in a module, we have to import it with an import statement:
           </p>
           <code>>>> import math</code>
-          <h3>Adding new functions</h3>
+          <h4>Adding new functions</h4>
           <p>So far, we have only been using the functions that come with Python, but it is also possible
           to add new functions. A function definition specifies the name of a new function and the
           sequence of statements that run when the function is called.</p>
@@ -156,19 +156,462 @@
           header has to end with a colon and the body has to be indented. By convention, indentation
           is always four spaces. The body can contain any number of statements.</p>
           <p>A function can be inside another function</p>
-          <h3>Parameters and arguments</h3>
+          <h4>Parameters and arguments</h4>
           <p>Some of the functions we have seen require arguments. For example, when you call
           math.sin you pass a number as an argument. Some functions take more than one argument: math.pow takes two, the base and the exponent.
           </p>
           <p>When you create a variable inside a function, it is local, which means that it only exists
           inside the function</p>
-          <h3>Encapsulation</h3>
+          <h4>Encapsulation</h4>
           <p>Wrapping a piece of code up in a function is called encapsulation. One of the benefits of
           encapsulation is that it attaches a name to the code, which serves as a kind of documentation. Another advantage is that if you re-use the code, it is more concise to call a function
           twice than to copy and paste the body!</p>
           <h2 id="u6587_u7AE0_u7ED3_u6784">
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Chapter 5: Conditionals and recursion"></a>Chapter 5: Conditionals and recursion
           </h2>
+          <h4>Floor divisions and modulus</h4>
+          <p>The floor division operator, //, divides two numbers and rounds down to an integer</p>
+          <p>e the modulus operator, %, which divides two numbers and returns the remainder</p>
+          <h4>Boolean expressions</h4>
+          <p>A boolean expression is an expression that is either true or false. The following examples
+          use the operator ==, which compares two operands and produces True if they are equal
+          and False otherwise:</p>
+          <code>
+            >>> 5 == 5
+            True
+            >>> 5 == 6
+            False
+          </code>
+          <h4>Logical operators</h4>
+          <p>and</p>
+          <p>or</p>
+          <p>not</p>
+          <h4>Conditional execution</h4>
+          <p>if else</p>
+          <code>
+            if x % 2 == 0:
+              print('x is even')
+            else:
+              print('x is odd')
+          </code>
+          <h4>Chained conditions</h4>
+          <code>
+            if x < y:
+              print('x is less than y')
+            elif x > y:
+              print('x is greater than y')
+            else:
+              print('x and y are equal')
+          </code>
+          <h4>Recursion</h4>
+          <p>It is legal for one function to call another; it is also legal for a function to call itself. </p>
+          <code>
+            def countdown(n):
+              if n <= 0:
+                print('Blastoff!')
+              else:
+                print(n)
+                countdown(n-1)
+          </code>
+          <h4>Keyboard input</h4>
+          <p>Python provides a built-in function called input that stops the program and waits for the
+          user to type something. When the user presses Return or Enter, the program resumes and
+          input returns what the user typed as a string</p>
+          <code>
+            >>> text = input()
+            What are you waiting for?
+            >>> text
+            'What are you waiting for?'
+          </code>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Chapter 6: Fruitful functions"></a>Chapter 6: Fruitful functions
+          </h2>
+          <p>Functions that return a value</p>
+          <code>
+            def absolute_value(x):
+              if x < 0:
+                return -x
+              else:
+                return x
+          </code>
+          <h4>Incremental development</h4>
+          <p> Start with a working program and make small incremental changes. At any point, if
+            there is an error, you should have a good idea where it is.</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Chapter 7: Iteration"></a>Chapter 7: Interation
+          </h2>
+          <p>The ability to run a block of statements repeatedly</p>
+          <h4>The while statement</h4>
+          <code>
+            def countdown(n):
+              while n > 0:
+                print(n)
+                n = n - 1
+              print('Blastoff!')
+          </code>
+          <p>1. Determine whether the condition is true or false.</p>
+          <p>2. If false, exit the while statement and continue execution at the next statement.</p>
+          <p>3. If the condition is true, run the body and then go back to step 1.</p>
+          </p>
+          <h4>Break</h4>
+          <p>Sometimes you don’t know it’s time to end a loop until you get half way through the body.
+          In that case you can use the break statement to jump out of the loop</p>
+          <code>
+            while True:
+              line = input('> ')
+              if line == 'done':
+                break
+              print(line)
+            print('Done!')
+          </code>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Chapter 8: Strings"></a>Chapter 8: Strings
+          </h2>
+          <p>Strings are not like integers, floats, and booleans. A string is a sequence of characters, which means it is
+          an ordered collection of other values. In this chapter you’ll see how to access the characters
+          that make up a string, and you’ll learn about some of the methods strings provide</p>
+          <code>
+            >>> fruit = 'banana'
+            >>> letter = fruit[1]
+            >>> letter
+            'a'
+            >>> len(fruit)
+            6
+          </code>
+          <h4>Traversal with a for loop</h4>
+          <p>A lot of computations involve processing a string one character at a time. Often they start
+          at the beginning, select each character in turn, do something to it, and continue until the
+          end. This pattern of processing is called a traversal. One way to write a traversal is with a
+          while loop:</p>
+          <code>
+            index = 0
+            while index < len(fruit):
+              letter = fruit[index]
+              print(letter)
+              index = index + 1
+          </code>
+          <p>another way to traverse is to use a for loop</p>
+          <code>
+            for letter in fruit:
+              print(letter)
+          </code>
+          <h4>Strings slices</h4>
+          <p>A segment of a string is called a slice. Selecting a slice is similar to selecting a character:</p>
+          <code>
+            >>> s = 'Monty Python'
+            >>> s[0:5]
+            'Monty'
+            >>> s[6:12]
+            'Python'
+          </code>
+          <p>The operator [n:m] returns the part of the string from the “n-eth” character to the “m-eth”
+          character, including the first but excluding the last</p>
+          <p>If you omit the first index (before the colon), the slice starts at the beginning of the string.
+          If you omit the second index, the slice goes to the end of the string:</p>
+          <code>
+            >>> fruit = 'banana'
+            >>> fruit[:3]
+            'ban'
+            >>> fruit[3:]
+            'ana'
+            >>> fruit = 'banana'
+            >>> fruit[3:3]
+            ''
+          </code>
+          <h4>Strings are immutable</h4>
+          <code>
+            >>> greeting = 'Hello, world!'
+            >>> greeting[0] = 'J'
+            TypeError: 'str' object does not support item assignment
+          </code>
+          <h4>The in operator</h4>
+          <p>The word in is a boolean operator that takes two strings and returns True if the first appears as a substring in the second:</p>
+          <code>
+            >>> 'a' in 'banana'
+            True
+            >>> 'seed' in 'banana'
+            False
+          </code>
+          <h4>String comparison</h4>
+          <p>Upper case letters come before lower case letters, we can use > or < or == to compare strings</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Chapter 10: Lists"></a>Chapter 10: Lists
+          </h2>
+          <h4>List is a sequence</h4>
+          <p>Like a string, a list is a sequence of values. In a string, the values are characters; in a list,
+          they can be any type. The values in a list are called elements or sometimes items.
+          </p>
+          <p>There are several ways to create a new list; the simplest is to enclose the elements in square
+          brackets ([ and ]):</p>
+          <p>The elements
+          of a list don’t have to be the same type.</p>
+          <code>
+            >>> cheeses = ['Cheddar', 'Edam', 'Gouda']
+            >>> numbers = [42, 123]
+            >>> empty = []
+            >>> print(cheeses, numbers, empty)
+            ['Cheddar', 'Edam', 'Gouda'] [42, 123] []
+          </code>
+          <h4>Lists are mutable</h4>
+          <code>
+            >>> numbers = [42, 123]
+            >>> numbers[1] = 5
+            >>> numbers
+            [42, 5]
+          </code>
+          <h4>Traversing a list</h4>
+          <code>
+            for i in range(len(numbers)):
+              numbers[i] = numbers[i] * 2
+          </code>
+          <h4>List operations</h4>
+          <code>
+            >>> a = [1, 2, 3]
+            >>> b = [4, 5, 6]
+            >>> c = a + b
+            >>> c
+            [1, 2, 3, 4, 5, 6]
+            >>> [0] * 4
+            [0, 0, 0, 0]
+            >>> [1, 2, 3] * 3
+            [1, 2, 3, 1, 2, 3, 1, 2, 3]
+          </code>
+          <h4>List slices</h4>
+          <code>
+            >>> t = ['a', 'b', 'c', 'd', 'e', 'f']
+            >>> t[1:3]
+            ['b', 'c']
+            >>> t[:4]
+            ['a', 'b', 'c', 'd']
+            >>> t[3:]
+            ['d', 'e', 'f']
+          </code>
+          <h4>List methods</h4>
+          <p>append adds a new element to the end of a list:</p>
+          <p>extend takes a list as an argument and appends all of the elements:</p>
+          <p>sort arranges the elements of the list from low to high:</p>
+          <code>
+            >>> t = ['a', 'b', 'c']
+            >>> t.append('d')
+            >>> t
+            ['a', 'b', 'c', 'd']
+            >>> t1 = ['a', 'b', 'c']
+            >>> t2 = ['d', 'e']
+            >>> t1.extend(t2)
+            >>> t1
+            ['a', 'b', 'c', 'd', 'e']
+            >>> t = ['d', 'c', 'e', 'b', 'a']
+            >>> t.sort()
+            >>> t
+            ['a', 'b', 'c', 'd', 'e']
+          </code>
+          <h4>Deleting elements</h4>
+          <p>If you know the index of the element you want, you can use pop:</p>
+          <p>pop modifies the list and returns the element that was removed. If you don’t provide an
+index, it deletes and returns the last element.</p>
+          <code>
+            >>> t = ['a', 'b', 'c']
+            >>> x = t.pop(1)
+            >>> t
+            ['a', 'c']
+            >>> x
+            'b'
+          </code>
+          <p>If you don’t need the removed value, you can use the del operator:</p>
+          <code>
+            >>> t = ['a', 'b', 'c']
+            >>> del t[1]
+            >>> t
+            ['a', 'c']
+          </code>
+          <p>If you know the element you want to remove (but not the index), you can use remove:</p>
+          <code>
+            >>> t = ['a', 'b', 'c']
+            >>> t.remove('b')
+            >>> t
+            ['a', 'c']
+          </code>
+          <h4>Objects and values</h4>
+          <p>In one case, a and b refer to two different objects that have the same value. In the second
+            case, they refer to the same object.</p>
+            <code>
+              >>> a = "word1"
+              >>> b = "word1"
+              >>> a is b
+              True
+              >>> a = [1,2,3]
+              >>> b = [1,2,3]
+              >>> a is b
+              False
+              >>> a == b
+              True
+            </code>
+          <h4>Aliasing</h4>
+          <p>If a refers to an object and you assign b = a, then both variables refer to the same object, even for a list</p>
+          <p>Its also called shallow copy</p>
+          <code>
+            >>> a = [1, 2, 3]
+            >>> b = a
+            >>> b is a
+            True
+          </code>
+          <p>For objects that may take lots of memory space, the program will prefer to only make a reference to its original object when you create another variable to points to it.</p>
+          <h4>List arguments</h4>
+          <p>When you pass a list to a function, the function gets a reference to the list. If the function
+          modifies the list, the caller sees the change.</p>
+          <code>
+            def delete_head(t):
+              del t[0]
+
+            >>> letters = ['a', 'b', 'c']
+            >>> delete_head(letters)
+            >>> letters
+            ['b', 'c']
+          </code>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Chapter 11: Dictionaries"></a>Chapter 11: Dictionaries
+          </h2>
+          <p>A dictionary contains a collection of indices, which are called keys, and a collection of
+          values. Each key is associated with a single value. The association of a key and a value is
+          called a key-value pair or sometimes an item</p>
+          <p>The function dict creates a new dictionary with no items. Because dict is the name of a
+          built-in function, you should avoid using it as a variable name</p>
+          <code>
+            >>> eng2sp = dict()
+            >>> eng2sp
+            {}
+            >>> eng2sp['one'] = 'uno' # add an item with key = 'one' and value = 'uno'
+            >>> eng2sp
+            {'one': 'uno'}
+          </code>
+          <p>The order of the key-value pairs might not be the same. If you type the same example
+          on your computer, you might get a different result. In general, the order of items in a
+          dictionary is unpredictable. This is because when we insert items into the dictionary, it randomly put items into buckets, so it could be different everytime. (Hash)</p>
+          <p>check whether a dictionary contains some key</p>
+          <code>
+            >>> 'one' in eng2sp
+            True
+            >>> 'uno' in eng2sp
+            False
+          </code>
+          <p>check whether a dictionary contains some value</p>
+          <code>
+            >>> vals = eng2sp.values()
+            >>> 'uno' in vals
+            True
+          </code>
+          <p>Python dictionaries use a data structure called a hashtable that has a remarkable property:
+          the in operator takes about the same amount of time no matter how many items are in the
+          dictionary. Instant lookup time!</p>
+          <h4>Dictionary as a collection of counters</h4>
+          <p>Suppose you are given a string and you want to count how many times each letter appears.
+          There are several ways you could do it</p>
+          <p>1. You could create 26 variables, one for each letter of the alphabet. Then you could traverse the string and, for each character, increment the corresponding counter, probably using a chained conditional.</p>
+          <p>2. You could create a list with 26 elements. Then you could convert each character to
+          a number (using the built-in function ord), use the number as an index into the list,
+          and increment the appropriate counter.</p>
+          <p>3. You could create a dictionary with characters as keys and counters as the corresponding values. The first time you see a character, you would add an item to the dictionary.
+          After that you would increment the value of an existing item.
+          </p>
+          <p>An implementation is a way of performing a computation; some implementations are
+          better than others. For example, an advantage of the dictionary implementation is that we
+          don’t have to know ahead of time which letters appear in the string and we only have to
+          make room for the letters that do appear.
+          </p>
+          <code>
+            def histogram(s):
+              d = dict()
+              for c in s:
+                if c not in d:
+                  d[c] = 1
+                else:
+                  d[c] += 1
+              return d
+          </code>
+          <h4>Looping and dictionaries</h4>
+          <code>
+            def print_hist(h):
+              for c in h:
+                print(c, h[c])
+          </code>
+          <p>Given a dictionary d and a key k, it is easy to find the corresponding value v = d[k]. This
+          operation is called a lookup.
+          But what if you have v and you want to find k? You have two problems: first, there might
+          be more than one key that maps to the value v. Depending on the application, you might
+          be able to pick one, or you might have to make a list that contains all of them. Second,
+          there is no simple syntax to do a reverse lookup; you have to search</p>
+          <code>
+            def reverse_lookup(d, v):
+              for k in d:
+                if d[k] == v:
+                  return k
+              raise LookupError()
+          </code>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Chapter 12: Tuples"></a>Chapter 12: Tuples
+          </h2>
+          <h4>Tuples are immutable</h4>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
           <p></p>
           <p></p>
           <p></p>
