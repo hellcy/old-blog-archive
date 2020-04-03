@@ -36,12 +36,14 @@
           [GCC 4.8.2] on linux
           Type "help", "copyright", "credits" or "license" for more information.
           >>>
-          The first three lines contain information about the interpreter and the operating system it’s
+          </code>
+          <p>The first three lines contain information about the interpreter and the operating system it’s
           running on, so it might be different for you. But you should check that the version number,
           which is 3.4.0 in this example, begins with 3, which indicates that you are running Python
           3. If it begins with 2, you are running (you guessed it) Python 2.
           The last line is a prompt that indicates that the interpreter is ready for you to enter code. If
-          you type a line of code and hit Enter, the interpreter displays the result:
+          you type a line of code and hit Enter, the interpreter displays the result:</p>
+          <code>
           >>> 1 + 1
           2
           </code>
@@ -52,36 +54,121 @@
           42
           >>> 6 * 7
           42
+          </code>
+          <p>
           The operator / performs division:
+          </p>
+          <code>
           >>> 84 / 2
           42.0
+          </code>
+          <p>
           You might wonder why the result is 42.0 instead of 42. I’ll explain in the next section.
           Finally, the operator ** performs exponentiation; that is, it raises a number to a power:
+          </p>
+          <code>
           >>> 6**2 + 6
           42
+          </code>
+          <p>
           In some other languages, ^ is used for exponentiation, but in Python it is a bitwise operator
           called XOR. If you are not familiar with bitwise operators, the result will surprise you:
+          </p>
+          <code>
           >>> 6 ^ 2
           4
           </code>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <h3>Values and Types</h3>
+          <p>If you are not sure what type a value has, the interpreter can tell you:</p>
+          <code>
+          >>> type(2)
+          < class 'int'>
+          >>> type(42.0)
+          < class 'float'>
+          >>> type('Hello, World!')
+          < class 'str'>
+          </code>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Chapter 2: Variables Expressions and Statements"></a>Chapter 2: Variables Expressions and Statements
+          </h2>
+          <h3>Statement</h3>
+          <p>An assignment statement creates a new variable and gives it a value:</p>
+          <code>
+            >>> message = 'And now for something completely different'
+            >>> n = 17
+            >>> pi = 3.1415926535897932
+          </code>
+          <h3>Expressions</h3>
+          <p>An expression is a combination of values, variables, and operators. A value all by itself is considered an expression, and so is a variable, so the following are all legal expressions:</p>
+          <code>
+            >>> 42
+            42
+            >>> n
+            17
+            >>> n + 25
+            42
+          </code>
+          <p>When you type an expression at the prompt, the interpreter evaluates it, which means that
+          it finds the value of the expression. In this example, n has the value 17 and n + 25 has the
+          value 42.
+          A statement is a unit of code that has an effect, like creating a variable or displaying a
+          value.</p>
+          <h3>Order of operations</h3>
+          <p>Parentheses have the highest precedence and can be used to force an expression to
+          evaluate in the order you want. Since expressions in parentheses are evaluated first,
+          2 * (3-1) is 4, and (1+1)**(5-2) is 8. You can also use parentheses to make an
+          expression easier to read, as in (minute * 100) / 60, even if it doesn’t change the
+          result.</p>
+          <p>Exponentiation has the next highest precedence, so 1 + 2**3 is 9, not 27, and 2 *
+          3**2 is 18, not 36.</p>
+          <p>Multiplication and Division have higher precedence than Addition and Subtraction.
+          So 2*3-1 is 5, not 4, and 6+4/2 is 8, not 5.
+          </p>
+          <p>Operators with the same precedence are evaluated from left to right (except exponentiation). So in the expression degrees / 2 * pi, the division happens first and the
+          result is multiplied by pi. To divide by 2π, you can use parentheses or write degrees
+          / 2 / pi.</p>
+          <h3>Comments</h3>
+          <p>comments, and they start with
+          the # symbol. """fdsfsdfsd""" for multiple lines of comments
+          </p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Chapter 3: Functions"></a>Chapter 3: Functions
+          </h2>
+          <p>In the context of programming, a function is a named sequence of statements that performs
+          a computation. When you define a function, you specify the name and the sequence of
+          statements. Later, you can “call” the function by name.</p>
+          <p>It is common to say that a function “takes” an argument and “returns” a result. The result
+          is also called the return value.
+          </p>
+          <p>Python has a math module that provides most of the familiar mathematical functions. A
+          module is a file that contains a collection of related functions.
+          Before we can use the functions in a module, we have to import it with an import statement:
+          </p>
+          <code>>>> import math</code>
+          <h3>Adding new functions</h3>
+          <p>So far, we have only been using the functions that come with Python, but it is also possible
+          to add new functions. A function definition specifies the name of a new function and the
+          sequence of statements that run when the function is called.</p>
+          <code>def print_lyrics():
+          print("I'm a lumberjack, and I'm okay.")
+          print("I sleep all night and I work all day.")</code>
+          <p>The first line of the function definition is called the header; the rest is called the body. The
+          header has to end with a colon and the body has to be indented. By convention, indentation
+          is always four spaces. The body can contain any number of statements.</p>
+          <p>A function can be inside another function</p>
+          <h3>Parameters and arguments</h3>
+          <p>Some of the functions we have seen require arguments. For example, when you call
+          math.sin you pass a number as an argument. Some functions take more than one argument: math.pow takes two, the base and the exponent.
+          </p>
+          <p>When you create a variable inside a function, it is local, which means that it only exists
+          inside the function</p>
+          <h3>Encapsulation</h3>
+          <p>Wrapping a piece of code up in a function is called encapsulation. One of the benefits of
+          encapsulation is that it attaches a name to the code, which serves as a kind of documentation. Another advantage is that if you re-use the code, it is more concise to call a function
+          twice than to copy and paste the body!</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Chapter 5: Conditionals and recursion"></a>Chapter 5: Conditionals and recursion
+          </h2>
           <p></p>
           <p></p>
           <p></p>
