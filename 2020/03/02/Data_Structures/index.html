@@ -28,45 +28,44 @@
         <div class="post-time">Mar 20, 2020</div>
         <div class="post-content">
           <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Binary Tree"></a>Binary Tree
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Binary Search"></a>Binary Search
           </h2> 
-          <h3>Traverse a tree</h3>
-          <p>There are two general strategies to traverse a tree:</p>
-          <p>Breadth First Search (BFS)</p>
-          <p>We scan through the tree level by level, following the order of height, from top to bottom. The nodes on higher level would be visited before the ones with lower levels.</p>
-          <p>Depth First Search (DFS)</p>
-          <p>In this strategy, we adopt the depth as the priority, so that one would start from a root and reach all the way down to certain leaf, and then back to root to reach another branch.</p>
-          <p>The DFS strategy can further be distinguished as preorder, inorder, and postorder depending on the relative order among the root node, left node and right node.Pre-order traversal is to visit the root first. Then traverse the left subtree. Finally, traverse the right subtree.In-order traversal is to traverse the left subtree first. Then visit the root. Finally, traverse the right subtree.Typically, for binary search tree, we can retrieve all the data in sorted order using in-order traversal.Post-order traversal is to traverse the left subtree first. Then traverse the right subtree. Finally, visit the root.It is worth noting that when you delete nodes in a tree, deletion process will be in post-order. That is to say, when you delete a node, you will delete its left child and its right child before you delete the node itself. Also, post-order is widely use in mathematical expression.</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>Use O(1) to make a T(n) problem T(n/2). So the total time complexity would be O(logn).</p>
+          <p>Ignore half of the problems in O(1) time.</p>
+          <p>First Bad Version</p>
+          <p>Search in a Big Sorted Array. Double the search number every time, then serach from n to 2n</p>
+          <p>Find Minimum in Rotated Sorted Array. Divide the array into a normal sorted array and a smaller rotated sorted array.</p>
+          <p>Search in a 2D matrix. Perform Binary Search 2 times. First find the row, then perform binary search on that row.</p>
+          <p>Search for a Range. Find the target number then perform binary search on its left and right.</p>
+          <p>Maximum Number in Mountain Sequence. Check mid number to see if it is incresing or decresing, we can return any mountain value.</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Bianry Tree and Divide & Conquer"></a>Bianry Tree and Divide & Conquer
+          </h2> 
+          <p>There are 3 ways to traverse a binary tree. Pre order, In order and post order</p>
+          <p>You need to know both resursive version and iterative version.</p>
+          <p>DFS includes pre order, in order, post order, divide & conquer</p>
+          <p>Bianry tree has height from O(logn) to O(n), traverse a binary tree takes O(n) time.</p>
+          <p>In order traverse a binary search tree is an increasing order traverse.</p>
+          <p>Maximum depth of Binary tree. Resursive: Divide and conquer/ traverse</p>
+          <p>Subtree with Maximum Average</p>
+          <p>Lowest Common Ancestor: Divide & Conquer, check leftsubtree and rightsubtree. See if they return A or B or null</p>
+          <p>Validate Binary Search Tree. Bottom up, return max and min return to the parent node.</p>
+          <p>Convert Binary Search Tree to Doubly Linked List. Inorder traverse it into a list and convert it.</p>
+          <p>Flattern Binary Tree to Linked List. node.right = head of left subtree, tail of left subtree = head of right subtree.</p>
+          <p>Insert and delete a node from a Binary Search Tree</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="BFS"></a>BFS
+          </h2> 
+          <p>1. make a list and put all start nodes into the list</p>
+          <p>2. traverse the list to get new nodes for the next level</p>
+          <p>3. use Queue for BFS</p>
+          <p>Graph BFS</p>
+          <p>Social Network</p>
+          <p>六度理论 你和世界上任何一个人之间最多间隔6个人 Linkedin BFS看第几层有相同好友</p>
+          <p>树和图的区别，树是单向的，图可以是双向的（或者单项）</p>
+          <p>在遍历图中，会有环，可以用HashSet检查是否曾经访问过某个节点</p>
+          <p>树的特性，树中如果有N个点，就会有N-1条边。树中的所有点连通。用Queue和Set访问并保存所有Graph中的点</p>
+          <p>构造Graph， 可以用 Map&#60;Integer, Set&#60;Integer&#62;&#62; Graph其实就是保存着（每个点和与他相邻的点的Set）的Map</p>
           <p></p>
           <p></p>
           <p></p>
