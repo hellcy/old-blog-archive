@@ -66,6 +66,119 @@
           <p>在遍历图中，会有环，可以用HashSet检查是否曾经访问过某个节点</p>
           <p>树的特性，树中如果有N个点，就会有N-1条边。树中的所有点连通。用Queue和Set访问并保存所有Graph中的点</p>
           <p>构造Graph， 可以用 Map&#60;Integer, Set&#60;Integer&#62;&#62; Graph其实就是保存着（每个点和与他相邻的点的Set）的Map</p>
+          <p>BFS on a 2D-array</p>
+          <p>Number of islands</p>
+          <p>Wall and Gates</p>
+          <p>什么时候使用BFS？</p>
+          <p>1. Tree的层次遍历</p>
+          <p>2. 2D-array中求连通性，灌水</p>
+          <p>3. 拓扑排序</p>
+          <p>4. 图的最短路径</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="DFS"></a>DFS
+          </h2> 
+          <p>Recursion</p>
+          <p>Combination</p>
+          <p>Permutation</p>
+          <p>Graph</p>
+          <p>Non-Recursion</p>
+          <p>什么时候使用DFS？</p>
+          <p>1. 找所有方案，排列，组合</p>
+          <p>2. 找最优方案（最短，最长）（大部分是动态规划，也有可能是DFS）</p>
+          <p>Questions</p>
+          <p>1. Combination sum</p>
+          <p>2. Palindrome Partitioning 所有的切割问题都是组合问题</p>
+          <p>切割abc字符串，有两个切割位 a1b2c， 可以切ab之间也可以切bc之间，把数字12放入代表切割位，所以切割的方式有</p>
+          <p>a b c [1,2]</p>
+          <p>a bc [1]</p>
+          <p>ab c [2]</p>
+          <p>abc []</p>
+          <p>以上可以看出四种切割方式可以用数字表示</p>
+          <p>所以n个字母的切割问题可以看作是n - 1个数字的组合问题</p>
+          <p>Backtracking</p>
+          <p>Permutation的去重与Combination相似，可以先定义一个boolean数组存放visited信息</p>
+          <p>N皇后</p>
+          <p>每一行和每一列都是1...n的一种排列</p>
+          <p>如何判断皇后在同一斜线上： 横坐标与纵坐标之差相等，或者横坐标与纵坐标之和相等</p>
+          <p>Word Ladder: BFS, 把ListWord转换成graph的形式，对于每个word，先找到所有可能的变换，总共有单词长度*26种，然后这些变换中存在于Wordlist中的就是他的neighbor，就可以变成标准的BFS问题</p>
+          <p>Word Ladder 2：Backtracking + BFS， 先从End往Begin做BFS找到每个单词距离End的长度，保证Backtrack时不会遍历更远的单词。再从Begin往End做backtracking</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Linked List and Array"></a>Linked List and Array
+          </h2> 
+          <p>Reverse linked list</p>
+          <p>Reverse linked list in k group</p>
+          <p>Use dummy node to save the list head</p>
+          <p>画图去理解linked list的变化</p>
+          <p>dummy node practices</p>
+          <ol>
+            <li>partition-list</li>
+            <li>merge two sorted list</li>
+            <li>reverse linked list 2</li>
+            <li>swap two nodes in linked list</li>
+            <li>reorder list</li>
+            <li>rotate list</li>
+          </ol>
+          <p>Copy list with random pointer -> similar to clone graph</p>
+          <p>Linked List Cycle 1 and 2 -> Floyd's Tortoise and Hare</p>
+          <p>Sort List -> how many sort algorithm has time complexity O(nlogn)?</p>
+          <ol>
+            <li>Quick Sort, with O(1) Space Complexity</li>
+            <li>Merge Sort, with O(n) space</li>
+            <li>Heap Sort</li>
+          </ol>
+          <p>Merge two sorted array</p>
+          <p>Merge small array into big array</p>
+          <p>intersection of two arrays</p>
+          <p>Median of two sorted arrays -> find the (m + n) / 2th number, use O(logn)</p>
+          <p>Median</p>
+          <p>Kth largest element</p>
+          <p>Merge Sort practice</p>
+          <p>Quick Sort practice</p>
+          <p>Same integers will not remain their relative order in the old list after using quick sort. Merge sort will keep the relative order of same integers</p>
+          <p>Merge sort will first split the array into two subarray until there is only one number left in the array, then sort, then merge the two sorted array back to one array. From small array to big array</p>
+          <p>Qucik sort will first pick a pivot value, sort the entire array based on the pivot value. Then sort the two small array. From big array two small array</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Subarray"></a>Subarray
+          </h2> 
+          <p>PrefixSum, HashMap to store prefixsum, then linear scan, So O(n) time and space</p>
+          <p>Maximum subarray</p>
+          <p>Minimum subarray</p>
+          <p>subarray sum equals k</p>
+          <p>number of subarray equals k</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Two pointers"></a>Two pointers
+          </h2> 
+          <p>同向双指针</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
           <p></p>
           <p></p>
           <p></p>
