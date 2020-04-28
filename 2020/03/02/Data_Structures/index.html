@@ -148,29 +148,30 @@
           <h2 id="u6587_u7AE0_u7ED3_u6784">
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Two pointers"></a>Two pointers
           </h2> 
+          <p>O(n) time complexity</p>
           <p>同向双指针</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>Move zeros</p>
+          <p>Remove duplicate number in array</p>
+          <p>Remove duplicate numbers in sorted array -> tortise and hare cycle detection</p>
+          <p>相向双指针</p>
+          <p>valid palindrome</p>
+          <p>rotate string -> three step reverse, when reverse a string, one start from begin and another start from end</p>
+          <p>recover rotated sorted array -> similar to above, find the rotate point, three step reverse.</p>
+          <p>Two Sum 1-7</p>
+          <p>Two Sum 1 -> 最普通的Two Sum， 可以使用HashMap，或者先排序在使用相向双指针，这样可以不是用额外空间，但是时间复杂度是O(nlogn)</p>
+          <p>Two Sum 2 - Data Structure Design -> HashMap</p>
+          <p>Two Sum 3 - Array is sorted -> 相向双指针</p>
+          <p>Two sum 7 - unique pairs -> 找到所有符合的数对,相向双指针，当找到一对时，left++,right--,并继续。如果遇到重复比如1,1,3,4,4,每次我们移动时，移动到与之前的数不一样的数为止。注意此方法要求数组是有序的。</p>
+          <p>3Sum -> 使用Two sum的结果，对于array中的每一个不等的数，检查是否有一对数的和等于它的相反数。可以使用HashMap或者two pointers，记住two pointers必须先排序数组。Two pointers的速度远快于HashMap</p>
+          <p>Valid Triangle Number -> 检查有多少组三个数可以组成合法的三角形的三条边。注意我们只需要检查最小的两个数的和大于第三个数即可. 从最大的数开始loop，使用Two pointers，对于每一个符合的left and right， 所有大于left的数都是符合的，所以每当我们找到一组合法的left and right，count += （right - left）. 详情查看leetcode 611</p>
+          <p>对于求2个变量如何组合的问题，可以循环其中一个变量，然后研究另外一个变量如何变化</p>
+          <p>对于求3个变量如何组合的问题，可以循环其中一个变量，然后研究另外2个变量如何变化</p>
+          <p>Two Sum less than k</p>
+          <p>Two Sum greater than k -> same as triangle count</p>
+          <p>Two Sum closest to target -> two pointers start from begin and end, keep updating diff</p>
+          <p>3 Sum closest to target -> similar to above, loop one value and use two sum as a template</p>
+          <p>4 Sum</p>
+          <p>Two Sum - difference equals to target</p>
           <p></p>
           <p></p>
           <p></p>
