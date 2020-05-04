@@ -137,6 +137,7 @@
           <p>Same integers will not remain their relative order in the old list after using quick sort. Merge sort will keep the relative order of same integers</p>
           <p>Merge sort will first split the array into two subarray until there is only one number left in the array, then sort, then merge the two sorted array back to one array. From small array to big array</p>
           <p>Qucik sort will first pick a pivot value, sort the entire array based on the pivot value. Then sort the two small array. From big array two small array</p>
+          <p>Note in Quick Sort, when we find a value equals to the pivot value, we don't swap it, leave it as where it is. We need to split these values as even as possible.</p>
           <h2 id="u6587_u7AE0_u7ED3_u6784">
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Subarray"></a>Subarray
           </h2> 
@@ -166,12 +167,25 @@
           <p>Valid Triangle Number -> 检查有多少组三个数可以组成合法的三角形的三条边。注意我们只需要检查最小的两个数的和大于第三个数即可. 从最大的数开始loop，使用Two pointers，对于每一个符合的left and right， 所有大于left的数都是符合的，所以每当我们找到一组合法的left and right，count += （right - left）. 详情查看leetcode 611</p>
           <p>对于求2个变量如何组合的问题，可以循环其中一个变量，然后研究另外一个变量如何变化</p>
           <p>对于求3个变量如何组合的问题，可以循环其中一个变量，然后研究另外2个变量如何变化</p>
+          <p>对于求4个变量如何组合的问题，可以循环其中两个变量，然后研究另外2个变量如何变化</p>
           <p>Two Sum less than k</p>
           <p>Two Sum greater than k -> same as triangle count</p>
           <p>Two Sum closest to target -> two pointers start from begin and end, keep updating diff</p>
           <p>3 Sum closest to target -> similar to above, loop one value and use two sum as a template</p>
           <p>4 Sum</p>
-          <p>Two Sum - difference equals to target</p>
+          <p>Two Sum - difference equals to target -> 同向双指针。两数之差等于target，先排序，两个pointers都在开始，如果他们的差大于target，小数往后移，如果他们的差小于target，大数往后移 O(n) time complexity</p>
+          <p>Partition array</p>
+          <p>move elements < k to the left and elements >= k to the right, this is a smaller step in quick sort</p>
+          <p>Letters by case</p>
+          <p>Partition array by parity</p>
+          <p>Interleaving positive and negative numbers -> first count positive and negative numbers, then decide starts from positive or negative, then use two pointers in the same direction.</p>
+          <p>Sort Colors</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
           <p>Three step reverse</p>
           <p>Recover rotated sorted array -> First use 3 step reverse then two pointer reverse.</p>
           <p>3 step reverse</p>
@@ -179,6 +193,42 @@
           <p>Reverse the first part(before rotate point) of the string/array</p>
           <p>Reverse the second part(after rotate point) of the String/array</p>
           <p>Reverse the entire String/Array</p>
+          <p>Quick Select 快速选择算法</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
           <p></p>
           <p></p>
           <p></p>
