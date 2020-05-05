@@ -180,48 +180,79 @@
           <p>Partition array by parity</p>
           <p>Interleaving positive and negative numbers -> first count positive and negative numbers, then decide starts from positive or negative, then use two pointers in the same direction.</p>
           <p>Sort Colors</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>1. sort 3 colors in group, we can use partition array two times, first time split one color, next split the rest two colors.</p>
+          <p>2. We could also count the number of each color and modify the array to match the occurance of colors</p>
+          <p>3. three pointers</p>
+          <ol>
+            <li>i pointer only moves when find ones and zeros, if it finds two, it will swap it with right. Throw two to the right</li>
+            <li>so left pointer will never find two.</li>
+            <li>so when i pointer finds zero, after swap it with left pointer, throw zero to the left, left pointer will only throw one back, so they can both move to right by 1</li>
+          </ol>
+          <p>Sort Colors 2 (rainbow sort) -> 使用多次Partition， 每次将一般的颜色分到array的左右，比如只有四种颜色，一次partition将1，2分到左边，3，4分到右边。花费O（n）的时间将T(k)的问题变成T(k/2)的问题。总共的时间复杂度为O(nlogk)</p>
+          <p>这个解法有点像Quick Sort。注意Quick sort and Rainbow sort的while loop条件均为 while(left < right)。可以不用要等号</p>
+          <p>其他比较高频的排序方法：</p>
+          <p>Pancake Sort</p>
+          <p>Sleep Sort</p>
+          <p>Spaghetti Sort</p>
+          <p>Bogo Sort</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="3 Step Reverse"></a>3 Step Reverse
+          </h2> 
           <p>Three step reverse</p>
           <p>Recover rotated sorted array -> First use 3 step reverse then two pointer reverse.</p>
           <p>3 step reverse</p>
           <p>First find the rotate point</p>
-          <p>Reverse the first part(before rotate point) of the string/array</p>
+          <p>Reverse the first part(before rotate point) of the String/array</p>
           <p>Reverse the second part(after rotate point) of the String/array</p>
-          <p>Reverse the entire String/Array</p>
+          <p>Reverse the entire String/array</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Quick Select"></a>Quick Select
+          </h2>
           <p>Quick Select 快速选择算法</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Hash & Heap"></a>Hash & Heap
+          </h2>
+          <p>了解他们的原理和应用</p>
+          <p>TreeMap</p>
+          <p>队列Queue</p>
+          <p>支持操作O(1) push O(1) pop O(1) top,多做跟BFS有关的题目</p>
+          <p>栈Stack</p>
+          <p>支持操作O(1) push O(1) pop O(1) top,非递归实现DFS的主要数据结构</p>
+          <p>哈希表Hash</p>
+          <p>支持操作O(1) insert O(1) find O(1) delete, Hash table / Hash map / Hash set的区别是什么</p>
+          <p>Hash Set只存key不存value</p>
+          <p>Hash map存key和value</p>
+          <p>Hash table，多线程安全，当多个线程同时访问一个Hash table时，它可以保证数据安全，Hash Map无法做到</p>
+          <p>Hash function -> 对于任意的Key，得到一个固定且无规律的介于0到capacity - 1的整数</p>
+          <p>数据结构分为连续性和离散型，array为连续性，List为离散型</p>
+          <p>一些著名的Hash算法：MD5， SHA-1， SHA-2，主要用于加密</p>
+          <p>用于算法中的Hash function很想进制转换</p>
+          <pre>
+            int hashfun(String key) {
+              int sum = 0;
+              for (int i = 0; i < key.length(); ++i) {
+                sum = sum * 31 + (int)(key.charAt(i));
+                sum = sum % HASH_TABLE_SIZE;
+              }
+              return sum;
+            }
+          </pre>
+          <p>Magic number - 31</p>
+          <p>通过经验得出31的冲突更少（Collision）</p>
+          <p>Magic number取质数更好，如果数太大影响效率，数太小冲突太多</p>
+          <p>Closed Hashing - line sweep</p>
+          <p>当哈希表发生冲突时，把新的数据插入到下一个空的位置</p>
+          <p>寻找，不断的找下一个位置直到找到value或者找到空位为止</p>
+          <p>删除，把值删除后用一个deleted标记出来，这个位置并不为空</p>
+          <p>缺点，当我们插入和删除的次数很多时，很多位置都会被标记为deleted，寻找的效率会变低</p>
+          <p>Open Hashing</p>
+          <p>每一个位置都是一个链表，当发生冲突时加到链表的开头，这样不用每次都遍历到链表末尾，寻找时搜寻整个链表</p>
+          <p>Rehashing</p>
+          <p>当hash table size不够用了怎么办？</p>
+          <p>像ArrayList那样不断倍增</p>
+          <p>怎么定义满？当实际的存储个数达到总共空间的1/10(经验值)时，我们就需要rehash</p>
+          <p>回顾ArrayList的倍增：当ArrayList满时，把size扩大两倍，把前面的所有数复制到后一半新扩大的ArrayList中</p>
+          <p>Hash Table的倍增：如果移动之前的数，会影响到hash function，所以我们会先扩大hash table， 再把hash table中的所有值重新放到hash function算出它在新的hash table中的位置，重新插入</p>
           <p></p>
           <p></p>
           <p></p>
