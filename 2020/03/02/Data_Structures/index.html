@@ -138,6 +138,7 @@
           <p>Merge sort will first split the array into two subarray until there is only one number left in the array, then sort, then merge the two sorted array back to one array. From small array to big array</p>
           <p>Qucik sort will first pick a pivot value, sort the entire array based on the pivot value. Then sort the two small array. From big array two small array</p>
           <p>Note in Quick Sort, when we find a value equals to the pivot value, we don't swap it, leave it as where it is. We need to split these values as even as possible.</p>
+          <p>Quick sort while loop condition: while (left <= right). Don't forget the equal sign</p>
           <h2 id="u6587_u7AE0_u7ED3_u6784">
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Subarray"></a>Subarray
           </h2> 
@@ -176,6 +177,7 @@
           <p>Two Sum - difference equals to target -> 同向双指针。两数之差等于target，先排序，两个pointers都在开始，如果他们的差大于target，小数往后移，如果他们的差小于target，大数往后移 O(n) time complexity</p>
           <p>Partition array</p>
           <p>move elements < k to the left and elements >= k to the right, this is a smaller step in quick sort</p>
+          <p>Parition array while loop condition: while (left < right). No equal sign</p>
           <p>Letters by case</p>
           <p>Partition array by parity</p>
           <p>Interleaving positive and negative numbers -> first count positive and negative numbers, then decide starts from positive or negative, then use two pointers in the same direction.</p>
@@ -209,6 +211,12 @@
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Quick Select"></a>Quick Select
           </h2>
           <p>Quick Select 快速选择算法</p>
+          <p>思想类似于快速排序,利用O(n)的时间找到前right个大数，再看k与right的关系决定下一步recursion的范围</p>
+          <p>O(n) + O(n/2) + O(n/4) +... = O(n) time</p>
+          <p>kth largest element</p>
+          <p>Median</p>
+          <p>kth smallest element</p>
+          <p>Median of two sorted arrays</p>
           <h2 id="u6587_u7AE0_u7ED3_u6784">
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Hash & Heap"></a>Hash & Heap
           </h2>
@@ -253,6 +261,45 @@
           <p>怎么定义满？当实际的存储个数达到总共空间的1/10(经验值)时，我们就需要rehash</p>
           <p>回顾ArrayList的倍增：当ArrayList满时，把size扩大两倍，把前面的所有数复制到后一半新扩大的ArrayList中</p>
           <p>Hash Table的倍增：如果移动之前的数，会影响到hash function，所以我们会先扩大hash table， 再把hash table中的所有值重新放到hash function算出它在新的hash table中的位置，重新插入</p>
+          <p>Rehashing很慢，所以在定义hash table的时候最好提前定义一个size，让他尽量不要rehash</p>
+          <p>在存储快的和存储慢的介质之间都会存在Cache的问题，不仅在CPU和内存之间有</p>
+          <p>使用链表储存数据的的插入顺序，使用哈希表判断将要插入的数据是否已经存在于链表中</p>
+          <p>LinkedHashMap = DoublyLinkedList + HashMap</p>
+          <p>LRU Cache -> 使用HashMap + DoublyLinkedList可以解决</p>
+          <p>Heap</p>
+          <p>支持操作O(logn) add O(logn) remove O(1) MIN or MAX,求最大值或最小值只可取其一</p>
+          <p>ugly number 2</p>
+          <p>top k largest number 2 -> 使用PriorityQueue只保存k个数</p>
+          <p>merge k sorted list -> Add all list heads to a heap, poll the smallest head, add to ans, then add next node to heap.</p>
+          <p>注意要会写heap的comparator</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Dynamic programming"></a>Dynamic Programming
+          </h2>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
           <p></p>
           <p></p>
           <p></p>
