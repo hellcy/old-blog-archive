@@ -29,7 +29,23 @@
         <div class="post-content">
           <h2 id="u6587_u7AE0_u7ED3_u6784">
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Scalability for Dummies"></a>Scalability for Dummies
-          </h2> 
+          </h2>
+          <h3>Clones</h3>
+          <ol>
+            <li>用户的请求可以被不同的服务器接受</li>
+            <li>每个服务器保存的数据应该是一样的</li>
+            <li>用户数据Session需要被保存在另一个不用的地方，可以是另外一个服务器或者是Cache（Redis）</li>
+            <li>Capistrano可以用来保持所有服务器的同步</li>
+            <li>当新建一个服务器时，把数据从一个super clone里镜像复制过来</li>
+          </ol>
+          <h3>Database</h3>
+          <ol>
+            <li>用户的请求可以被不同的服务器接受</li>
+            <li>每个服务器保存的数据应该是一样的</li>
+            <li>用户数据Session需要被保存在另一个不用的地方，可以是另外一个服务器或者是Cache（Redis）</li>
+            <li>Capistrano可以用来保持所有服务器的同步</li>
+            <li>当新建一个服务器时，把数据从一个super clone里镜像复制过来</li>
+          </ol>
         </div>
       </article>
     </div>
