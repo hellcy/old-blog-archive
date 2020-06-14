@@ -28,6 +28,80 @@
         <div class="post-time">June 12, 2020</div>
         <div class="post-content">
           <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Scalability Harvard Web Development Course"></a>Scalability Harvard Web Development Course
+          </h2>
+          <p>https://www.youtube.com/watch?v=-W9F__D3oY4</p>
+          <h3>Vertical Scaling</h3>
+          <p>增加服务器的CPU，内存，硬盘等，但总会不够用</p>
+          <ol>
+            <li>CPU: cores, L2 cache...</li>
+            <li>Disk: PATA, SATA, SAS, RAID</li>
+            <li>RAID(Redundent array of independent disks)
+              <ol>
+                <li>RAID 0 :如果你有n块磁盘，原来只能同时写一块磁盘，写满了再下一块，做了RAID 0之后，n块可以同时写，速度提升很快，但由于没有备份，可靠性很差。n最少为2。</li>
+                <li>RAID 1: 正因为RAID 0太不可靠，所以衍生出了RAID1。如果你有n块磁盘，把其中n/2块磁盘作为镜像磁盘，在往其中一块磁盘写入数据时，也同时往另一块写数据。坏了其中一块时，镜像磁盘自动顶上，可靠性最佳，但空间利用率太低。n最少为2。</li>
+                <li>RAID 10: 是RAID 0 和RAID 1 的结合，同时写入n/2的硬盘并将剩下n/2作为备份，可靠性和速度都有，但是需要两倍的钱。</li>
+                <li>RAID 3：为了说明白RAID 5，先说RAID 3.RAID 3是若你有n块盘，其中1块盘作为校验盘，剩余n-1块盘相当于作RAID 0同时读写，当其中一块盘坏掉时，可以通过校验码还原出坏掉盘的原始数据。这个校验方式比较特别，奇偶检验，1 XOR 0 XOR 1=0，0 XOR 1 XOR 0=1，最后的数据时校验数据，当中间缺了一个数据时，可以通过其他盘的数据和校验数据推算出来。但是这有个问题，由于n-1块盘做了RAID 0，每一次读写都要牵动所有盘来为它服务，而且万一校验盘坏掉就完蛋了。最多允许坏一块盘。n最少为3.</li>
+                <li>RAID 5：在RAID 3的基础上有所区别，同样是相当于是1块盘的大小作为校验盘，n-1块盘的大小作为数据盘，但校验码分布在各个磁盘中，不是单独的一块磁盘，也就是分布式校验盘，这样做好处多多。最多坏一块盘。n最少为3.</li>
+                <li>RAID 6：在RAID 5的基础上，又增加了一种校验码，和解方程似的，一种校验码一个方程，最多有两个未知数，也就是最多坏两块盘。</li>
+              </ol>
+            </li>
+            <li>RAM</li>
+          </ol>
+          <h3>Horizontal Scaling</h3>
+          <p>增加更多的服务器，而不是提升每个服务器的配置。当我们拥有多于一个服务器时，当用户向服务器发送请求时，我们需要一个load balancer去将进来的request平均分配给所有的服务器。load balancer拥有一个public IP
+          。而每一个服务器有一个private IP，他们不需要public IP</p>
+          <h3>Load Balancing</h3>
+          <p>如何给服务器平均分配request？我们可以将所有可用的服务器IP列出来，第一个request给第一个服务器，第二个request给第二个服务器，以此类推直到回到第一个，然后循环，这种方法叫做round-robin，优点是他不需要主动询问服务器的当前状态如何。</p>
+          <h3>Caching</h3>
+          <p>当用户通过load balancer登录到一号服务器时，他的登录信息如果保存在一号服务器，那么在他下一个request被分配到其他服务器时，他就需要再次登录，如果他在使用一个购物网站，他将一件商品加入到一号服务器的购物车中，然后又在二号服务器登录却找不到他的购物车，也不能结帐，这就会成为一个大问题</p>
+          <h3>Shared Session State</h3>
+          <p>我们可以将session，也就是用户信息储存在另外一个服务器中，</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p>horizontal scaling (13:00 - 21:00)
+load balancing & caching (21:00 – 29:00)
+shared session state (29:00 – 34:00)
+RAID (36:00 – 40:00)
+shared storage tech (42:00)
+database replication (43:00)
+load balancing tech (44:00 – 45:00)
+session affinity (46:00 – 51:00)
+in-memory caching (59:00 – 1:00)
+data replication – active:passive (1:11 - 1:14), active:active (1:16 - 1:21)
+partitioning (1:21 – 1:34)
+data center redundancy (1:33 – 1:39)
+security (1:39 – 1:44)</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
             <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Scalability for Dummies"></a>Scalability for Dummies
           </h2>
           <h3>Clones</h3>
