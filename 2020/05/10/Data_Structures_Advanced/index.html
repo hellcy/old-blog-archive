@@ -28,8 +28,201 @@
         <div class="post-time">May 10, 2020</div>
         <div class="post-content">
           <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Binary Search"></a>Binary Search
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="sliding window"></a>sliding window
           </h2> 
+          <pre>
+            //通过两层for循环改进算法
+            for (i = 0, i < n; ++i) {
+              while (j < n) {
+                if (满足条件) {
+                  j++;
+                  更新j状态
+                } else if (不满足条件) {
+                  break;
+                }
+              }
+              更新i状态
+            }
+          </pre>
+          <p>在一维字符串或者数组中找到符合条件的字串</p>
+          <p>前向型指针题目</p>
+          <p>窗口类</p>
+          <p>remove nth node from end of list</p>
+          <p>Minimum size subarray sum</p>
+          <p>Longest substring without rapeating characters</p>
+          <p>Minimum window substring</p>
+          <p>Longest Substring with at most k distinct characters</p>
+          <p>Longest Repeating Character Replacement</p>
+          <p>Longest Turbulent subarray</p>
+          <p>快慢类</p>
+          <p>find the middle of the linked list</p>
+          <p>linked list cycle 1 and 2</p>
+          <p>优化类型</p>
+          <ol>
+            <li>优化思想通过两层for循环而来</li>
+            <li>外层指针依然是一次遍历</li>
+            <li>内层指针证明是否需要退回</li>
+          </ol>
+          <p>two pointers题型分类</p>
+          <ol>
+            <li>前向型</li>
+            <ol>
+              <li>窗口型</li>
+              <li>快慢型</li>
+            </ol>
+            <li>相向型</li>
+            <li>两个数组</li>
+          </ol>
+          <p>第k大或者第k小问题</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Union Find 并查集"></a>Union Find 并查集
+          </h2> 
+          <p>一种用来解决集合查询合并的数据结构 支持O(1) find and O(1) union，O(n) space</p>
+          <ol>
+            <li>检查两个元素是否属于同一集合</li>
+            <li>合并两个集合，将root node指向另一个root node</li>
+          </ol>
+          <p>可以使用array或者哈希表实现Union find</p>
+          <p>查找 find O(n) time</p>
+          <pre>
+            public int find(int x) {
+              if (father[x] == x) {
+                return x;
+              }
+              return find(father[x]);
+            }
+          </pre>
+          <p>合并 union, O(n) time, 之合并两个root nodes，不管child nodes</p>
+          <pre>
+            public void union(int a, int b) {
+              int root_a = find(a);
+              int root_b = find(b);
+              // 如果两个root nodes已经相等，则两个集合已经合并，不需要再操作
+              if (root_a != root_b) {
+                father[root_a] = root_b; // 将root_a指向root_b
+              }
+            }
+          </pre>
+          <p>路径压缩：将find和union的时间复杂度变成O(1)</p>
+          <p>在查找元素的father的时候，第一次需要O(n)的时间，但是当找到最终的father时，将每一个路径中的father都更新成最终的father，以后在查找路径中的father就只需要O(1)</p>
+          <pre>
+            public int find(int x) {
+              if (father[x] == x) {
+                return x;
+              }
+              return father[x] = find(father[x]); // 将当前点的father更新为最终father
+            }
+          </pre>
+          <p>Practice</p>
+          <ol>
+            <li>Connecting graph 3</li>
+            <li>Connecting cities with minimum costs</li>
+            <li>Number of Operations to Make Network Connected</li>
+            <li>The Earliest Moment When Everyone Become Friends</li>
+            <li>Lexicographically Smallest Equivalent String</li>
+            <li>Number of Islands II</li>
+          </ol>
+          <p>Union find问题总结</p>
+          <p>原生操作</p>
+          <p>1. 查询两个元素是否在用一个集合内。 2. 合并两个元素所在的集合</p>
+          <p>派生操作</p>
+          <p>1. 查询某个元素所在集合的元素个数。 2. 查询当前集合的个数</p>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Trie"></a>Trie
+          </h2> 
+          <p>常见考点</p>
+          <p>1. Trie直接实现</p>
+          <p>2. 利用Trie前缀特性解题</p>
+          <p>3. 矩阵类里面，字符串一个一个字符，深度优先遍历的问题</p>
+          <p>Trie和Hash拥有相同的时间复杂度，但是Trie的空间复杂度更小</p>
+          <ol>
+            <li>Implement Trie</li>
+            <li>Add and search word</li>
+            <li>word search 2 -> Trie + DFS</li>
+          </ol>
+          <h2 id="u6587_u7AE0_u7ED3_u6784">
+            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Heap"></a>Heap
+          </h2>
+          <p>Trapping rain water 2</p>
+          <p>怎么通过Trapping rain water 1拓展到这道题的思路</p>
+          <p>怎么样想到利用heap？</p> 
+          <p>怎么想到由外向内遍历？</p>
+          <p>Find Median from Data Stream</p>
+          <p>Sliding Window Median</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
         </div>
       </article>
     </div>
