@@ -55,20 +55,54 @@
           <p>如何给服务器平均分配request？我们可以将所有可用的服务器IP列出来，第一个request给第一个服务器，第二个request给第二个服务器，以此类推直到回到第一个，然后循环，这种方法叫做round-robin，优点是他不需要主动询问服务器的当前状态如何。</p>
           <h3>Caching</h3>
           <p>当用户通过load balancer登录到一号服务器时，他的登录信息如果保存在一号服务器，那么在他下一个request被分配到其他服务器时，他就需要再次登录，如果他在使用一个购物网站，他将一件商品加入到一号服务器的购物车中，然后又在二号服务器登录却找不到他的购物车，也不能结帐，这就会成为一个大问题</p>
-          <h3>Shared Session State</h3>
-          <p>我们可以将session，也就是用户信息储存在另外一个服务器中，</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <h3>Shared Session State(Sticky session)</h3>
+          <p>我们可以将session，也就是用户信息储存在另外一个服务器中</p>
+          <p>Shared Storage</p>
+          <p>FC (Fiber Channel), iSCSI, MySQL, NFS</p>
+          <p>Replicate your database, use more than one database to store sessions in case one goes down</p>
+          <h3>Cookie</h3>
+          <p>当用户首次登陆时，load balancer可以想用户电脑中加入一个cookie，包含一些加密的服务器信息，所以当用户在短时间内再次访问时，load balancer就知道该将用户的请求发送到哪个服务器</p>
+          <h3>Load Balancer</h3>
+          <p>Software: ELB(Amazon's Elastic Load Balancer), HAProxy(High Availability Proxy), LVS(Linux Virtual Server)</p>
+          <p>Hardware: Barracuda, Cisco, Citrix, F5</p>
+          <h3>PHP Accelerators</h3>
+          <p>当我们在调用python程序时，我们需要先将以py结尾的代码文件编译成可直接执行的文件，然后再运行可执行文件得到结果。这样做的目的是当我们想再次得到结果时，我们不需要再次编译，可以直接运行执行文件。</p>
+          <p>这样做可以提升效率，但是如果我们有任何的代码改动，我们就需要重新编译。</p>
+          <p>PHP Accelerators有一样的逻辑，用户在发送相同的请求时，网站会直接运行可执行文件以提升速度</p>
+          <h3>Caching</h3>
+          <p>.html</p>
+          <p>Caching就是一种将你经常访问的数据提前保存到你的电脑上以便下次快速显示的技术。对于PHP来说，HTML网页是自动生成的，意味着每次用户访问时PHP都会重新生成一个新的重复的HTML文件。</p>
+          <p>如果我们将所有的HTML网页都事先编译好储存在服务器上，用户访问时就可以快速拿到这些静态网页，因为不需要每次都进行编译。这就是一种Caching</p>
+          <p>这样做的坏处是，当你需要更改整个网站的风格时，你就需要更改所有的HTML文件。</p>
+          <p>MySQL Query Cache：MySQL会将一些query的结果caching，第一次运行时如果你的table很大，或者你要找的column没有index，他会运行一段时间，但是下次你就会更快的看到结果</p>
+          <p>memcached</p>
+          <p>memory cache， 内存的读写要比硬盘快很多，所以我们如果有一百万个用户，服务器SQL拿到一个用户数据可能会需要很长时间，我们可以将这个用户数据保存在memory里面，下次就可以快速得到</p>
+          <p>下面是PHP将用户数据保存到memcache的代码</p>
+          <pre>
+            $memcache = memchache_connect(HOST, PORT);
+            $user = memcache_get($memcache, $id);
+            // 如果内存里面没有这个用户的id，我们就从数据库中拿取，之后把他添加到内存中
+            if (is_null($user))
+            {
+              $bdh = new PDO(DSN, USER, PASS;
+              $result = $dbh->query("SELECT * FROM users WHERE id = $id");
+              $user = $result->fetch(PDO:FETCH_ASSOC); // this is to get the associated array of data(username, email address,...)
+              memcache_set($memcache, $user['id'], $user)
+            }
+          </pre>
+          <p>如果我们一直将数据添加到内存中，内存总有一天会不够用，这时我们就需要删除一些数据来释放空间，我们可以删除最早的数据（LRU， Least Recent Used）或者最少用到的数据(LFU, Least Frequent Used)</p>
+          <h3>Data Replication: Master: slave</h3>
+          <p>主从关系的服务器复制，所有的附属服务器要从主服务器中拿取数据，要将新数据写入主服务器，一切以主服务器为准，优点在于当主服务器down机时，我们可以自动化一个过程：因为所有服务器的数据都是一样的，我们可以将一个附属服务器晋升为新的主服务器。以保证服务不间断</p>
+          <p>适用于读多于写的网站，所有的读取都去附属服务器，所有的写入都去主服务器</p>
+          <p>缺点是当主服务器down机时，写入会短暂失效一段时间直到其中一个附属服务器成为新的主服务器</p>
+          <h3>Data Replication: Master: Master</h3>
+          <p>当其中一个主服务器失效时，我们还有另外一个，从而保证不会有服务间断的时间.同样，读取请求发送到附属服务器，写入发送到主服务器</p>
+          <img src="1.png">
+          <p>上面的图片还是有一个缺点，就是如果load balancer失效了，整个服务还是会断开。所以我们需要有两个相同作用的load balancer</p>
+          <p>Load Balancer: active: active</p>
+          <p>每个load balancer都负责分配任务，并且他们会不断的每个一段时间向另一个load balancer发送一个heart beat，以证明自己的存在。如果任何一个load balancer没有收到另一个的心跳，他就将负责所有的流量</p>
+          <p>Load Balancer: active: passive</p>
+          <p>与之前相似，只不过一开始只有一个load balancer负责所有的流量，并且向passive的load balancer发送心跳，如果passive load balancer没有接收到心跳，他就把自己提升为active load balancer，并开始负责所有的任务。</p>
           <p>horizontal scaling (13:00 - 21:00)
 load balancing & caching (21:00 – 29:00)
 shared session state (29:00 – 34:00)
