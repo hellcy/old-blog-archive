@@ -52,12 +52,23 @@
             <li><a href="https://developers.onelogin.com/saml" target="_blank">SAML</a></li>
             <li><a href="https://dzone.com/articles/sso-login-key-benefits-and-implementation" target="_blank">How SSO works</a></li>
           </ol>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <h2>
+            <a href="#Title" class="headerlink" title="One potential security issue">一个安全隐患</a>
+          </h2>
+          <p>如果我们仔细想想这个流程，就会发现这中间存在一个安全隐患，如果用户在IDP输入完用户信息并验证通过后，IDP会把SAML response发回给SP，这时如果这个SAML被拦截并被篡改，SP并不知道这个SAML有没有被改动，还是会按照SAML上面的信息将用户登陆。</p>
+          <p>要解决这个问题，我们就需要检查SAML Response，这个检查分为两步，Signing check和Certificate check</p>
+          <p>Signing Check</p>
+          <p>其实就是一种checksum，我们把整个SAML response转换成一种加密的text。这个text随着SAML一起返回给SP，当我们解密这个text后得到的SAML和返回的SAML对不上，我们就知道这个SAML已经被篡改过了。举个例子：我们收到了一个来自Sam的SAML response，当我们检查了signing之后，我们就能确定这个response自从从Sam手上发出后就没有被篡改过。</p>
+          <p>但是另一个问题是，如果我们得信息被Tony拦截，Tony完全替换了整个SAML并发给我们，我们虽然知道SAML自从从Tony手中发出后没有被篡改，但是我们还是没有拿到正确的SAML。</p>
+          <p>Certificate check</p>
+          <p>这就需要Certificate check了，他其实就是提前保存在用户电脑中的受信任的证书，当我们发现SAML来自Tony而不是Sam，Tony并没有在受信名单中，那我们还是会拒绝这个SAML。只有当response来自我们所信任的人，并且这个response自从从他手上发出后就没有更改，我们才选择接受。</p>
+          <ol>
+            <li><a href="https://stackoverflow.com/questions/1703301/saml-why-is-the-certificate-within-the-signature" target="_blank">SAML: Why is the certificate within the Signature?</a></li>
+            <li><a href="https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.xml.signedxml.checksignature?view=dotnet-plat-ext-3.1#System_Security_Cryptography_Xml_SignedXml_CheckSignature_System_Security_Cryptography_X509Certificates_X509Certificate2_System_Boolean_" target="_blank">CheckSignature(X509Certificate2, Boolean)</a></li>
+            <li><a href="https://stackoverflow.com/questions/2185569/how-to-validate-a-saml-signature-value" target="_blank">How to validate a SAML signature value</a></li>
+            <li><a href="https://docs.microsoft.com/en-us/dotnet/standard/security/how-to-verify-the-digital-signatures-of-xml-documents" target="_blank">How to: Verify the Digital Signatures of XML Documents</a></li>
+            <li><a href="https://stackoverflow.com/questions/47662340/asp-net-core-saml-response-signature-validation" target="_blank">Asp.Net Core SAML Response Signature Validation</a></li>
+          </ol>
         </div> 
       </article>
     </div>
