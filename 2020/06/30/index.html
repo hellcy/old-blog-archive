@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="X-UA-Compatible" content="IE=edge">
-  <title>System Design</title>
+  <title>Harvard CS75 Web Development</title>
   <meta name="description" content="System Design - hellcy">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="short icon" href="/sitelogo.jpg">
@@ -24,11 +24,85 @@
   <section class="container">
     <div class="post">
       <article class="post-block">
-        <h1 class="post-title">System Design</h1>
-        <div class="post-time">June 12, 2020</div>
+        <h1 class="post-title">Harvard CS75 Web Development</h1>
+        <div class="post-time">June 30, 2020</div>
         <div class="post-content">
-          <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Scalability Harvard Web Development Course"></a>Scalability Harvard Web Development Course
+          <ol id="title">
+            <li><a href="#Chapter0">Chapter 0: HTTP</a></li>
+            <li><a href="#Chapter1">Chapter 1: PHP</a></li>
+            <li><a href="#Chapter2">Chapter 2: PHP Continued</a></li>
+            <li><a href="#Chapter3">Chapter 3: MVC XML</a></li>
+            <li><a href="#Chapter4">Chapter 4: SQL</a></li>
+            <li><a href="#Chapter5">Chapter 5: SQL Continued</a></li>
+            <li><a href="#Chapter6">Chapter 6: Javascript</a></li>
+            <li><a href="#Chapter7">Chapter 7: AJAX</a></li>
+            <li><a href="#Chapter8">Chapter 8: Security</a></li>
+            <li><a href="#Chapter9">Chapter 9: Scalability</a></li>
+          </ol>
+          <h2 id="Chapter0">
+            <a href="#title" class="headerlink" title="Lecture 1"></a>Lecture 1 HTTP
+          </h2>
+          <h3>What happens after you pressing Enter?</h3>
+          <p>The URL address will be translate to an IP address. 我们现在所用的IP address是ipv4,它由四组0-255的数字组成，总共32bits，可以有40亿总可能，我们现在每个人都有很多设备，ipv4的组合已经快不够用了。</p>
+          <p>所以新的ipv6要替代原来的ip address，它由8组4位的16进制组成，总共有128bits</p>
+          <p>怎么样将hostname网址转换成IP address呢？我们需要用到DNS（Domain name server）,他储存有ip address到hostname的一个mapping table，如果你访问的网址不在这个DNS里，他就会不断的访问上级服务器，直到访问到root server，root server知道谁有可能知道这个ip address，在不断的访问到下级服务器/DNS，直到找到并把hostname转换成ip address</p>
+          <p>互联网就像一个邮件系统，我们现在知道邮件该送给谁，我们知道自己的ip address(return address). 我们就可以把信息送给我们想送的网站，比如google.com，他收到信后，会拆开看我们相访问哪个网址，比如index.html,然后把我们想要的内容装进信封，颠倒送件人和收件人，然后送回来，我们拆开信封看到html信息，浏览器就会显示这些信息</p>
+          <p>Private Ip address</p>
+          <p>对于一个家庭来说，所有的设备共享一个公共ip，但是每个设备都会有自己的private ip，192.168.x.y. 或者172.16.x.y. 当你需要很多设备时，比如在大型公司，你可以使用10.x.y.z</p>
+          <p>TCP/IP</p>
+          <p>IP用来确认谁要向谁传送信息，TCP就是传送协议</p>
+          <p>Port Number</p>
+          <p>信息的传送有很多种，不光是HTTP，还有邮件，短信等等，我们使用不同的port number来让服务器知道进来的request是哪种请求，比如HTTP: TCP 80，我们让服务器听取port 80的网页请求，还可以SMTP: TCP 25让服务器听取port 25 的邮件请求， HTTPS： TCP 443, 加密的网页请求。</p>
+          <p>现在的浏览器会自动在网址后面加上port number</p>
+          <p>Getting your own domain name</p>
+          <p>我们的设备虽然可以联网，但是他只有一个公共ip，如果我们想host我们自己的网站，我们就需要有一个域名</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <h2 id="Chapter9">
+            <a href="#title" class="headerlink" title="Lecture 9"></a>Lecture 9 Scalability
           </h2>
           <h3>Vertical Scaling</h3>
           <p>增加服务器的CPU，内存，硬盘等，但总会不够用</p>
@@ -148,58 +222,6 @@
           <p></p>
           <p></p>
           <p></p>
-          <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Scalability for Dummies"></a>Scalability for Dummies
-          </h2>
-          <h3>Clones</h3>
-          <ol>
-            <li>用户的请求可以被不同的服务器接受</li>
-            <li>每个服务器保存的数据应该是一样的</li>
-            <li>用户数据Session需要被保存在另一个不用的地方，可以是另外一个服务器或者是Cache（Redis）</li>
-            <li>Capistrano可以用来保持所有服务器的同步</li>
-            <li>当新建一个服务器时，把数据从一个super clone里镜像复制过来</li>
-          </ol>
-          <h3>Database</h3>
-          <ol>
-            <li>用户的请求可以被不同的服务器接受</li>
-            <li>每个服务器保存的数据应该是一样的</li>
-            <li>用户数据Session需要被保存在另一个不用的地方，可以是另外一个服务器或者是Cache（Redis）</li>
-            <li>Capistrano可以用来保持所有服务器的同步</li>
-            <li>当新建一个服务器时，把数据从一个super clone里镜像复制过来</li>
-          </ol>
-          <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Performance vs scalability"></a>Performance vs scalability
-          </h2>
-          <p>What is it that we really mean by scalability? A service is said to be scalable if when we increase the resources in a system, it results in increased performance in a manner proportional to resources added. Increasing performance in general means serving more units of work, but it can also be to handle larger units of work, such as when datasets grow.</p>
-          <p>Why is scalability so hard? Because scalability cannot be an after-thought. It requires applications and platforms to be designed with scaling in mind, such that adding resources actually results in improving the performance or that if redundancy is introduced the system performance is not adversely affected.</p>
-          <p>在扩展服务的时候，有些资源算的快，有些算的慢，这可能会导致问题或者算的快的资源无法发挥其作用。A second problem area is that growing a system through scale-out generally results in a system that has to come to terms with heterogeneity. Resources in the system increase in diversity as next generations of hardware come on line, as bigger or more powerful resources become more cost-effective or when some resources are placed further apart. Heterogeneity means that some nodes will be able to process faster or store more data than other nodes in a system and algorithms that rely on uniformity either break down under these conditions or underutilize the newer resources.</p>
-          <ol>
-            <li><a href="https://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html" target="_blank">A word on scalability</a></li>
-          </ol>
-          <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Latency vs throughput"></a>Latency vs throughput
-          </h2>
-          <p>Latency is the time to perform some action or to produce some result.</p>
-          <p>Throughput is the number of such actions or results per unit of time.</p>
-          <p>Generally, you should aim for maximal throughput with acceptable latency.</p>
-          <ol>
-            <li><a href="https://community.cadence.com/cadence_blogs_8/b/sd/posts/understanding-latency-vs-throughput" target="_blank">Understanding latency vs throughput</a></li>
-          </ol>
-          <h2 id="u6587_u7AE0_u7ED3_u6784">
-            <a href="#u6587_u7AE0_u7ED3_u6784" class="headerlink" title="Availability vs consistency"></a>Availability vs consistency(可靠性与一致性), CAP Theorem
-          </h2>
-          <p>In a distributed computer system, you can only support two of the following guarantees:</p>
-          <ul>
-            <li>Consistency - Every read receives the most recent write or an error</li>
-            <li>Availability - Every request receives a response, without guarantee that it contains the most recent version of the information</li>
-            <li>Partition Tolerance - The system continues to operate despite arbitrary partitioning due to network failures</li>
-          </ul>
-          <p>Networks aren't reliable, so you'll need to support partition tolerance. You'll need to make a software tradeoff between consistency and availability.</p>
-          <p>CP - consistency and partition tolerance: Waiting for a response from the partitioned node might result in a timeout error. CP is a good choice if your business needs require atomic reads and writes.</p>
-          <p>AP - availability and partition tolerance: Responses return the most recent version of the data available on a node, which might not be the latest. Writes might take some time to propagate when the partition is resolved. AP is a good choice if the business needs allow for eventual consistency or when the system needs to continue working despite external errors.</p>
-          <ol>
-            <li><a href="https://robertgreiner.com/cap-theorem-revisited/" target="_blank">CAP theorem revisited</a></li>
-          </ol>
           <p></p>
           <p></p>
           <p></p>
@@ -234,14 +256,14 @@
   </section>
   <footer>
     <div class="paginator">
-      <a href="/2020/05/10/Data_Structures_Advanced/" class="next">下一篇</a>
+      <a href="/2020/06/12/System_Design/" class="next">下一篇</a>
     </div>
   </footer>
     <div id="disqus_thread"></div>
     <script>
   var disqus_shortname = 'hellcy';
   
-  var disqus_url = 'https://hellcy.github.io/2020/06/12/System_Design/';
+  var disqus_url = 'https://hellcy.github.io/2020/06/30/Harvard_CS75_Web_Development';
   
   (function(){
     var dsq = document.createElement('script');
