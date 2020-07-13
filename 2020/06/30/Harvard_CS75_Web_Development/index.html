@@ -115,7 +115,7 @@
           </pre>
           <p>1. HTTP_HOST is an environment variable, it is the host name. In English, the first line is a condition, it is saying if the host name is not starting with www.cs75.net(Regex), do the following line, [NC], no case, case insensetive</p>
           <p>2. (.*) one or more any characters, it remembers what user was typing, redirect user to the correct URL, 301 move permenately, the brwoser saves the result and next time will redirect you automatically. whereas 302 is move temporarily.</p>
-          <p></p>
+          <p>The reason to do this is to make sure the URL in user's browser is the website URL. Because there are multiple ways to visit the website and not typing the website URl. We could use ip address, we could use 'udo vi /etc/hosts'(see end of lecture 0). So this will make sure that the URL will always be www.cs75.net no matter what user originally typed.</p>
           <p></p>
           <p></p>
           <p></p>
