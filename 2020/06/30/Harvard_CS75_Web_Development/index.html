@@ -55,30 +55,42 @@
           <p>信息的传送有很多种，不光是HTTP，还有邮件，短信等等，我们使用不同的port number来让服务器知道进来的request是哪种请求，比如HTTP: TCP 80，我们让服务器听取port 80的网页请求，还可以SMTP: TCP 25让服务器听取port 25 的邮件请求， HTTPS： TCP 443, 加密的网页请求。</p>
           <p>现在的浏览器会自动在网址后面加上port number</p>
           <p>Getting your own domain name</p>
-          <p>我们的设备虽然可以联网，但是他只有一个公共ip，如果我们想host我们自己的网站，我们就需要有一个域名</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>我们的设备虽然可以联网，但是他只有一个公共ip，如果我们想host我们自己的网站，我们就需要有一个域名 GoDaddy...CheapName</p>
+          <p>Hosting your own website</p>
+          <p>当我们有了域名之后，我们还需要一个web server用来存放我们的网站相关文件，HTML， CSS， JAVASCRIPT等等，这需要我们再找一个提供DNS服务的公司（dreamhost.com），向他们租用一些online storeage，他们也会提供两个ip addresses（还有一个是备用的）。并且与我们的域名关联</p>
+          <p>DNS</p>
+          <p>例子：如果你的网站是一个邮件服务网站，比如Google email。我们的email虽然可以是yuan@unicard.com，但是其实我们使用的是Google的邮件服务，DNS识别出以unicard结尾的邮件地址是属于Google的一个服务，并把他发送到Google的服务器。</p>
+          <p>NS Name Server</p>
+          <p>一个NS record的作用是告诉大家哪个name server知道关于我们域名的一些信息</p>
+          <p>NS stands for 'name server' and this record indicates which DNS server is authoritative for that domain (which server contains the actual DNS records). A domain will often have multiple NS records which can indicate primary and backup name servers for that domain</p>
+          <p>A</p>
+          <p>A record的作用是把ip address和域名相连(Domain name to ip address)</p>
+          <p>CNAME Canonical name</p>
+          <p>与A record不同的是CNAME是把域名和域名相连(Domain name to domain name)，因为比如我们相用Google的邮件服务，所以我们想把yuan@unicard.com，关联到yuan@google.com,然后Google用他们呢的DNS server去把他转换成ip address，我们就不用担心Google改变他的ip address了。 再比如说，如果Dell公司的客户服务是外包出去的，那么我们访问Dell的网站，在通过Dell官网进入到他们的客户服务网站，我们就会发现我们从Dell.com 到了customerService.com，这样可能不太好，Dell想让他的网站看起来是一个整体，所以就可以用CNAME让customerService.com的名字隐藏起来，只显示成support.dell.com</p>
+          <p>MX Mail Exchange</p>
+          <p>MX record把负责处理请求的server和他们的ip address相连，这样就可以知道进来的email请求该由哪个server负责</p>
+          <h3>What happens when you reach the target website?</h3>
+          <p>Web host</p>
+          <p>Web host companies host multiple websites with one ip address, they share one ip address. Server response with different content based on the headers in the request</p>
+          <p>If the hosting server is using Php v4.3, you have to use the same. If the hosting server is down, all websites related to this server is also down.</p>
+          <p>VPS(Virtual Private Server)</p>
+          <p>VMware, Parallels, Virtual Box</p>
+          <p>Install multiple instances of Windows or Linux or MacOS on the server, and you can control the software and tools on that VPS</p>
+          <p>SSH/SFTP</p>
+          <p>SSH: Connecting to a remote server and execute commands on it. SFTP: Transfer files to a remote server.</p>
+          <pre>
+            telnet www.google.com 80
+
+            GET / HTTP/1.1
+
+
+            (press enter twice)
+          </pre>
+          <p>If your webiste is hosted by a server that are shared with other website, you have to send a get request with a host header specify your domain name. Otherwise the server don't know what content to return.</p>
+          <p>nslookup google.com</p>
+          <p>will list ip address for that host</p>
+          <p>sudo vi /etc/hosts</p>
+          <p>this is a local ip address <-> domain name mapping table, browser will check this file first before sending any request</p>
           <p></p>
           <p></p>
           <p></p>
