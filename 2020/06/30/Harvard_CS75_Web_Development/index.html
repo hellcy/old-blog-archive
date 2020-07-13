@@ -40,7 +40,7 @@
             <li><a href="#Chapter9">Chapter 9: Scalability</a></li>
           </ol>
           <h2 id="Chapter0">
-            <a href="#title" class="headerlink" title="Lecture 1"></a>Lecture 1 HTTP
+            <a href="#title" class="headerlink" title="Lecture 0"></a>Lecture 0 HTTP
           </h2>
           <h3>What happens after you pressing Enter?</h3>
           <p>The URL address will be translate to an IP address. 我们现在所用的IP address是ipv4,它由四组0-255的数字组成，总共32bits，可以有40亿总可能，我们现在每个人都有很多设备，ipv4的组合已经快不够用了。</p>
@@ -67,6 +67,7 @@
           <p>A record的作用是把ip address和域名相连(Domain name to ip address)</p>
           <p>CNAME Canonical name</p>
           <p>与A record不同的是CNAME是把域名和域名相连(Domain name to domain name)，因为比如我们相用Google的邮件服务，所以我们想把yuan@unicard.com，关联到yuan@google.com,然后Google用他们呢的DNS server去把他转换成ip address，我们就不用担心Google改变他的ip address了。 再比如说，如果Dell公司的客户服务是外包出去的，那么我们访问Dell的网站，在通过Dell官网进入到他们的客户服务网站，我们就会发现我们从Dell.com 到了customerService.com，这样可能不太好，Dell想让他的网站看起来是一个整体，所以就可以用CNAME让customerService.com的名字隐藏起来，只显示成support.dell.com</p>
+          <img src="1.png">
           <p>MX Mail Exchange</p>
           <p>MX record把负责处理请求的server和他们的ip address相连，这样就可以知道进来的email请求该由哪个server负责</p>
           <h3>What happens when you reach the target website?</h3>
@@ -91,6 +92,103 @@
           <p>will list ip address for that host</p>
           <p>sudo vi /etc/hosts</p>
           <p>this is a local ip address <-> domain name mapping table, browser will check this file first before sending any request</p>
+          <h2 id="Chapter1">
+            <a href="#title" class="headerlink" title="Lecture 1"></a>Lecture 1 PHP
+          </h2>
+          <p>Apache</p>
+          <p>Configuration file for Apache web server: httpd.conf, apache.conf, apache2.conf</p>
+          <img src="2.png">
+          <p>1. listen to port 80 of any ip addresses of incoming requests</p>
+          <p>2. ServerName and ServerAlias: the destination of the incoming requests, both will need an A record in DNS to work (or CNAME)</p>
+          <p>3. CustomLog, ErrorLog: Specify where to save the log files</p>
+          <p>4. DocumentRoot: Root path of your website</p>
+          <p>5. port 443 uses SSL(Secure socket layer), needs a certificate to be installed on the server.</p>
+          <p>SSL: there are two keys, public key and private key, when a user visits our website, the website sends the public key to the user's machine, user uses it to encrypt the message. Then when our website receives the message from the user, we use the private to decrypt it to get the original message. But this is not enough, we need to ask some Certifiate Authorization(CA) for a certificate. This is because user doesn't trust our website. but because our website is trusted by a CA, so the user can trust our website. Certificate needs to be digitally signed.</p>
+          <p>6. SSLCertificateKeyFile: the private key on the server</p>
+          <p>7. SSLCertificateFile: the certificate</p>
+          <pre>
+            mod_rewrite
+
+            RewriteEngine On
+            RewriteCond %{HTTP_HOST} !^www\.cs75\.net [NC]
+            RewriteRule (.*) https://www.cs75.net/$1 [R=301, L]
+          </pre>
+          <p>1. HTTP_HOST is an environment variable, it is the host name. In English, the first line is a condition, it is saying if the host name is not starting with www.cs75.net(Regex), do the following line, [NC], no case, case insensetive</p>
+          <p>2. (.*) one or more any characters, it remembers what user was typing, redirect user to the correct URL, 301 move permenately, the brwoser saves the result and next time will redirect you automatically. whereas 302 is move temporarily.</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
           <p></p>
           <p></p>
           <p></p>
