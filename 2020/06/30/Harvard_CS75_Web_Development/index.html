@@ -125,18 +125,30 @@
           <p>PHP</p>
           <p>Very well documented. Interpreted(alternative to compiled) language, you don't need to compile it first then to run it, you can just give your code to a interpreter and it will run. Downside is performance. Once a C++ language be compiled, the complied code can be run by CPU superfast. whereas PHP needs to be interpreted everytime.</p>
           <p>suPHP</p>
-          <p>Web servers usually have root user(administrator) and other users. If you are user A, and you want the web server to be able to use your PHP code. You have to set them to be readable. Then another user B would be able to see your PHP code. Use suPHP could solve this issue. It makes sure that web server can only execute A's code when A's logged in. And B cannot see it when B's logged in.</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>Web servers usually have root user(administrator) and other users. If you are user A, and you want the web server to be able to use your PHP code. You have to set them to be readable. Then another user B would be able to see your PHP code. Use suPHP could solve this issue. It makes sure that web server can only execute A's code when A's logged in. And B cannot see it when B's logged in. And A can only delete A's file, so no one else could modify or break A's code. If A's website's users upload files or images, they are stored in the server where only A can see.</p>
+          <p>Variables</p>
+          <p>Data Types(loose in PHP), PHP functions will return different data types based on situations</p>
+          <p>Superglobals</p>
+          <ul>
+            <li>$_COOKIE, key values from browser</li>
+            <li>$_ENV, lower details of user's machine</li>
+            <li>$_FILES</li>
+            <li>$_GET, hash table</li>
+            <li>$_POST, array</li>
+            <li>$_REQUEST, details from requests</li>
+            <li>$_SERVER, user agent, browser and OS</li>
+            <li>$_SESSION, states, save values</li>
+          </ul>
+          <p>Command line</p>
+          <p>mkdir, make directory</p>
+          <p>cd, change directory</p>
+          <p>cat/more, show content of a file</p>
+          <p>ls, list content of a directory</p>
+          <p>. current folder</p>
+          <p>.. parent folder</p>
+          <p>ls -al, list permission settings for all files in current directory</p>
+          <p>chmod, change mode of a file or directory: e.g. chmod a+r filename: give read access to a file called filename</p>
+          <p>permission settings looks like this: -rw-rw-r--, the first - means it is a file or it can be 'd' for directory, it can then be split into three groups, they are the owner, the group and the world.</p>
           <p></p>
           <p></p>
           <p></p>
