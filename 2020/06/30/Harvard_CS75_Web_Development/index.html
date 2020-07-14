@@ -114,18 +114,18 @@
             RewriteRule (.*) https://www.cs75.net/$1 [R=301, L]
           </pre>
           <p>1. HTTP_HOST is an environment variable, it is the host name. In English, the first line is a condition, it is saying if the host name is not starting with www.cs75.net(Regex), do the following line, [NC], no case, case insensetive</p>
-          <p>2. (.*) one or more any characters, it remembers what user was typing, redirect user to the correct URL, 301 move permenately, the brwoser saves the result and next time will redirect you automatically. whereas 302 is move temporarily.</p>
+          <p>2. (.*) one or more any characters, it remembers what user was typing, redirect user to the correct URL, 301 move permanently, the browser saves the result and next time will redirect you automatically. whereas 302 is move temporarily.</p>
           <p>The reason to do this is to make sure the URL in user's browser is the website URL. Because there are multiple ways to visit the website and not typing the website URl. We could use ip address, we could use 'udo vi /etc/hosts'(see end of lecture 0). So this will make sure that the URL will always be www.cs75.net no matter what user originally typed.</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>XAMPP</p>
+          <p>Linux, Apache, MySQL, PHP, Perl</p>
+          <p>We can set up our dynamic website without using remote virtual server, people from outside world cannot visit it. But it is good for development purposes</p>
+          <p>GET/POST</p>
+          <p>GET: will change the state of the url, add parameters behind the quesiont mark '?', parameters are separated by &, everything will be shown in URL, not good to send sensitive or huge information</p>
+          <p>POST: can upload files(images), it is not in URL, can send sensitive information. Post request cannot be copied. One of the downsides of POST is that when user click reload or backbutton, browser will try to submit the form again, you may end up buying things twice. One of the solutions would be, whenever user submitted a form, immediately redirect user to another website page with only GET request, so they cannot revisit the POST request page anymore.</p>
+          <p>PHP</p>
+          <p>Very well documented. Interpreted(alternative to compiled) language, you don't need to compile it first then to run it, you can just give your code to a interpreter and it will run. Downside is performance. Once a C++ language be compiled, the complied code can be run by CPU superfast. whereas PHP needs to be interpreted everytime.</p>
+          <p>suPHP</p>
+          <p>Web servers usually have root user(administrator) and other users. If you are user A, and you want the web server to be able to use your PHP code. You have to set them to be readable. Then another user B would be able to see your PHP code. Use suPHP could solve this issue. It makes sure that web server can only execute A's code when A's logged in. And B cannot see it when B's logged in.</p>
           <p></p>
           <p></p>
           <p></p>
