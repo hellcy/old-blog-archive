@@ -151,6 +151,62 @@
           <p>permission settings looks like this: -rw-rw-r--, the first - means it is a file or it can be 'd' for directory, it can then be split into three groups, they are the owner, the group and the world.</p>
           <p>Use $_GET['username'] to get the variable values user send by GET request.</p>
           <p>Use htmlspecialchars to escape all html tags to sanity check user inputs</p>
+          <h2 id="Chapter2">
+            <a href="#title" class="headerlink" title="Lecture 2"></a>Lecture 2 PHP Continued
+          </h2>
+          <p>PHP is an interpreted language, it can be run at anywhere no matter what the PC is like. Compiled language depends on the PC, it may run at one PC and may not run at another.</p>
+          <p>POST request</p>
+          <pre>
+            &lt;pre&gt;
+              &lt;?php print_r($_POST) ?&gt;
+            &lt;/pre&gt;
+          </pre>
+          <p>use print_r to recursivly display all data inside the POST request</p>
+          <pre>
+            &lt;?
+              if (empty($_POST['fname']) || empty($_POST['lname'])) {
+                header("Location: http://localhost/yuan");
+                exit;
+              }
+            ?&gt;
+          </pre>
+          <p>check if necessary form information is filled(not empty). If not, redirect user back to the previous form page. header("Location: URL") is to redirect user</p>
+          <pre>
+            &lt;? if (empty($_POST['fname']) || empty($_POST['lname'])): ?&gt;
+              You must provide your full name and gender to continue. Go &lt;a href="index.html"&gt;back&lt;/a&gt;
+            &lt;? else: ?&gt;
+              You are registered!
+              &lt;pre&gt;&lt;? print_r($_POST) ?&gt;&lt;/pre&gt;
+            &lt;? endif ?> 
+          </pre>
+          <pre>
+            &lt;? if (empty($_POST['fname']) || empty($_POST['lname'])) { ?&gt;
+              You must provide your full name and gender to continue. Go &lt;a href="index.html"&gt;back&lt;/a&gt;
+            &lt;? } else { ?&gt;
+              You are registered!
+              &lt;pre&gt;&lt;? print_r($_POST) ?&gt;&lt;/pre&gt;
+            &lt;? } ?> 
+          </pre>
+          <p>if else conditions in PHP supports both colon and curly brackets</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
           <p></p>
           <p></p>
           <p></p>
