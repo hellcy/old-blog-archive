@@ -55,7 +55,7 @@
           <p>信息的传送有很多种，不光是HTTP，还有邮件，短信等等，我们使用不同的port number来让服务器知道进来的request是哪种请求，比如HTTP: TCP 80，我们让服务器听取port 80的网页请求，还可以SMTP: TCP 25让服务器听取port 25 的邮件请求， HTTPS： TCP 443, 加密的网页请求。</p>
           <p>现在的浏览器会自动在网址后面加上port number</p>
           <p>Getting your own domain name</p>
-          <p>我们的设备虽然可以联网，但是他只有一个公共ip，如果我们想host我们自己的网站，我们就需要有一个域名 GoDaddy...CheapName</p>
+          <p>我们的设备虽然可以联网，但是他只有一个公共ip，如果我们想host我们自己的网站，我们就需要有一个域名 GoDaddy, NameCheap</p>
           <p>Hosting your own website</p>
           <p>当我们有了域名之后，我们还需要一个web server用来存放我们的网站相关文件，HTML， CSS， JAVASCRIPT等等，这需要我们再找一个提供DNS服务的公司（dreamhost.com），向他们租用一些online storeage，他们也会提供两个ip addresses（还有一个是备用的）。并且与我们的域名关联</p>
           <p>DNS</p>
@@ -188,23 +188,95 @@
             &lt;? } ?> 
           </pre>
           <p>if else conditions in PHP supports both colon and curly brackets</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <pre>
+            if (!empty($_POST['fname']) && !empty($_POST['lname'])) {
+              $to = 'chengyuan82281681@hotmail.com';
+              $subject = 'Registration';
+              $body = "This person just registered!\n\n" .
+                $_POST['fname'] . "\n" .
+                $_POST['lname'];
+              $headers = "From: chengyuan82281681@hotmail.com\r\n";
+              mail($to, $subject, $body, $headers);
+            }
+            else {
+              header("Location: http://localhost/yuan/index.html");
+              exit;
+            }
+          </pre>
+          <p>Dot symbol is a concatenation symbol, connect two strings into one</p>
+          <p>This mail function comes with PHP doesn't uaually work on local network, because ISP blocks outbound port 25 for SMTP. Same reason as they block port 80.</p>
+          <pre>
+            <?
+              if (isset($_POST['action'])) {
+                if (empty($_POST['fname']) || empty($_POST['lname'])) {
+                  $error = true;
+                }
+              }
+            ?>
+
+            <? if ($error): ?>
+              <div style="color: red">You must fill out the form!</div>
+            <? endif ?>
+          </pre>
+          <p>To be able to check form errors using PHP code, index.html has to be changed to index.php</p>
+          <p>in index.php, setup a variable named 'action'(other names work too) and send it to the backend, the server code will know if user submit a form by checking by variable.</p>
+          <p>if form has errors, send user back to itself with errors.</p>
+          <pre>
+            $DORMS = array("one", "two", "three");
+            <? foreach ($DORMS as $dorm): ?>
+              <option value="<?= $dorm ?>"><?= $dorm ?></option> 
+            <? endforeach ?>
+          </pre>
+          <p>Define array in PHP</p>
+          <p>Foreach loop in PHP</p>
+          <pre>
+            <?
+              foreach ($DORMS as $dorm) {
+                if (isset($_POST["dorm"]) && $_POST["dorm"] == $dorm)
+                  echo "<option selected='selected' value='$dorm'>$dorm</option>";
+                else
+                  echo "<option value='$dorm'>$dorm</option>";
+              }
+            ?>
+          </pre>
+          <p>When redirect user back because there are some errors in the form, the selected value will stay</p>
+          <p>Xdebug: extension of PHP to debug.</p>
+          <h3>Let website remember your login with sessions</h3>
+          <pre>
+            <?
+              // 1
+              session_start();
+
+              // 2
+              define("USER", "yuan");
+              define("PASS", "123");
+
+              // 3
+              if (isset($_POST["user"]) && isset($_POST["pass"])) {
+                if ($_POST["user"] == USER && $_POST["pass"] == PASS) {
+                  $_SESSION["authenticated"] = true;
+
+                  // save user in cookie for a week
+                  setcookie("user", $_POST["user"], time() + 7 * 24 * 60 * 60);
+                  
+                  // redirect user to home page, using absolute path.
+                  redirect("home.php");
+                }
+              }
+
+              // 4
+              function redirect($file) {
+                $host = $_SERVER["HTTP_HOST"];
+                $path = rtrim(dirname($_SERVER["PHP_SELF"]), "/\\"); // current php directory, trim out unwanted leading slashes
+                header("Location: http://$host$path/$file");
+                exit;
+              }
+            ?>
+          </pre>
+          <p>1. this will enable session, must be at the top of your code. Make sure no whitespaces or any code in front of this.</p>
+          <p>2. Define constants</p>
+          <p>3. check user form data are exist and valid</p>
+          <p>4. define functions in PHP</p>
           <p></p>
           <p></p>
           <p></p>
