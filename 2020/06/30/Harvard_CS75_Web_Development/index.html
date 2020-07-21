@@ -177,7 +177,7 @@
             &lt;? else: ?&gt;
               You are registered!
               &lt;pre&gt;&lt;? print_r($_POST) ?&gt;&lt;/pre&gt;
-            &lt;? endif ?> 
+            &lt;? endif ?&gt; 
           </pre>
           <pre>
             &lt;? if (empty($_POST['fname']) || empty($_POST['lname'])) { ?&gt;
@@ -185,7 +185,7 @@
             &lt;? } else { ?&gt;
               You are registered!
               &lt;pre&gt;&lt;? print_r($_POST) ?&gt;&lt;/pre&gt;
-            &lt;? } ?> 
+            &lt;? } ?&gt; 
           </pre>
           <p>if else conditions in PHP supports both colon and curly brackets</p>
           <pre>
@@ -206,38 +206,38 @@
           <p>Dot symbol is a concatenation symbol, connect two strings into one</p>
           <p>This mail function comes with PHP doesn't uaually work on local network, because ISP blocks outbound port 25 for SMTP. Same reason as they block port 80.</p>
           <pre>
-            <?
+            &lt;?
               if (isset($_POST['action'])) {
                 if (empty($_POST['fname']) || empty($_POST['lname'])) {
                   $error = true;
                 }
               }
-            ?>
+            ?&gt;
 
-            <? if ($error): ?>
-              <div style="color: red">You must fill out the form!</div>
-            <? endif ?>
+            &lt;? if ($error): ?&gt;
+              &lt;div style="color: red"&gt;You must fill out the form!&lt;/div&gt;
+            &lt;? endif ?&gt;
           </pre>
           <p>To be able to check form errors using PHP code, index.html has to be changed to index.php</p>
           <p>in index.php, setup a variable named 'action'(other names work too) and send it to the backend, the server code will know if user submit a form by checking by variable.</p>
           <p>if form has errors, send user back to itself with errors.</p>
           <pre>
             $DORMS = array("one", "two", "three");
-            <? foreach ($DORMS as $dorm): ?>
-              <option value="<?= $dorm ?>"><?= $dorm ?></option> 
-            <? endforeach ?>
+            &lt;? foreach ($DORMS as $dorm): ?&gt;
+              &lt;option value="&lt;?= $dorm ?&gt;"&gt;&lt;?= $dorm ?&gt;&lt;/option&gt; 
+            &lt;? endforeach ?&gt;
           </pre>
           <p>Define array in PHP</p>
           <p>Foreach loop in PHP</p>
           <pre>
-            <?
+            &lt;?
               foreach ($DORMS as $dorm) {
                 if (isset($_POST["dorm"]) && $_POST["dorm"] == $dorm)
-                  echo "<option selected='selected' value='$dorm'>$dorm</option>";
+                  echo "&lt;option selected='selected' value='$dorm'&gt;$dorm&lt;/option&gt;";
                 else
-                  echo "<option value='$dorm'>$dorm</option>";
+                  echo "&lt;option value='$dorm'>$dorm&lt;/option&gt;";
               }
-            ?>
+            ?&gt;
           </pre>
           <p>When redirect user back because there are some errors in the form, the selected value will stay</p>
           <p>Xdebug: extension of PHP to debug.</p>
@@ -271,7 +271,7 @@
                 header("Location: http://$host$path/$file");
                 exit;
               }
-            ?>
+            ?&gt;
           </pre>
           <p>1. this will enable session, must be at the top of your code. Make sure no whitespaces or any code in front of this.</p>
           <p>2. Define constants</p>
