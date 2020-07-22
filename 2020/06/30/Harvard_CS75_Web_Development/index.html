@@ -243,7 +243,7 @@
           <p>Xdebug: extension of PHP to debug.</p>
           <h3>Let website remember your login with sessions</h3>
           <pre>
-            <?
+            &lt;?
               // 1
               session_start();
 
@@ -256,7 +256,7 @@
                 if ($_POST["user"] == USER && $_POST["pass"] == PASS) {
                   $_SESSION["authenticated"] = true;
 
-                  // save user in cookie for a week
+                  // 4 save user in cookie for a week
                   setcookie("user", $_POST["user"], time() + 7 * 24 * 60 * 60);
                   
                   // redirect user to home page, using absolute path.
@@ -264,7 +264,7 @@
                 }
               }
 
-              // 4
+              // 5
               function redirect($file) {
                 $host = $_SERVER["HTTP_HOST"];
                 $path = rtrim(dirname($_SERVER["PHP_SELF"]), "/\\"); // current php directory, trim out unwanted leading slashes
@@ -276,7 +276,8 @@
           <p>1. this will enable session, must be at the top of your code. Make sure no whitespaces or any code in front of this.</p>
           <p>2. Define constants</p>
           <p>3. check user form data are exist and valid</p>
-          <p>4. define functions in PHP</p>
+          <p>4. Session will be saved on the web server on the disk with a unique session id. Cookie will saved on the client machine. Everytime user visit the website, it will show us the cookies, web server will quickly open up the file saved with the same session id, and grab all the values(key-value pairs) to our webpage. Webpage also can access to the user Cookies.</p>
+          <p>5. define functions in PHP</p>
           <p></p>
           <p></p>
           <p></p>
