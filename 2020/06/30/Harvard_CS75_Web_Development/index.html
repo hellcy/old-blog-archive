@@ -283,25 +283,27 @@
           <h2 id="Chapter3">
             <a href="#title" class="headerlink" title="Lecture 3"></a>Lecture 3 MVC XML
           </h2>
-          <p>Source Control - Git</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>Change permission to write and read directory or files:</p>
+          <p>Read: r = 4</p>
+          <p>Write: w = 2</p>
+          <p>Execute: x = 1</p>
+          <p>adds them up to get the mode code.</p>
+          <p>e.g. sudo chmod 644 filename means: give the file the permission level: -rw-r--r--</p>
+          <p>sudo chmod 700 filename: give the file the permission level -rwx------</p>
+          <p>commonly used mode of files:</p>
+          <p>644: can be read and write by the file owner, also can be read by other group of users and the whole world.</p>
+          <p>600: can be read and write by the file owner only.</p>
+          <p>html 644</p>
+          <p>gif 644</p>
+          <p>jpg 644</p>
+          <p>css 644</p>
+          <p>js 644</p>
+          <p>png 644</p>
+          <p>php 600</p>
+          <p>For directory: Read means user can list all content inside a directory(same as the ls command in terminal). Execute means user can go into this directory(same as the cd command).</p>
+          <p>Common permission level for directory: </p>
+          <p>dir 711: user can go into this directory, can read/write all its files. Other groups or outside world can only go into this directory. If they know the exact filename in this directory and has read permission to that particular file. They can read it. But they can't list all filenames of that directory.</p>
+          <p>dir 755: user can go into this directory, can read/write all its files, Other groups or outside world can go inside and list all files.</p>
           <p></p>
           <p></p>
           <p></p>
