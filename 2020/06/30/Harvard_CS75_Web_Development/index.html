@@ -278,7 +278,7 @@
           <p>3. check user form data are exist and valid</p>
           <p>4. Session will be saved on the web server on the disk with a unique session id. Cookie will saved on the client machine. Everytime user visit the website, it will show us the cookies, web server will quickly open up the file saved with the same session id, and grab all the values(key-value pairs) to our webpage. Webpage also can access to the user Cookies.</p>
           <p>5. define functions in PHP</p>
-          <p>Note: make sure to give web server user the write permission to the session folder. Otherwise it cannot write session variables to the file. Also, make sure to use session_start(); in home.php as well. So it can have access to the session variables after redirecting.</p>
+          <p>Note: make sure to give web server user the write permission to the session folder. Otherwise it cannot write session variables to the file. Also, make sure to use session_start(); in home.php as well. So it can have access to the session variables after redirecting. Any sensitive information should not be stored in the Cookies.</p>
           <p></p>
           <p></p>
           <p></p>
