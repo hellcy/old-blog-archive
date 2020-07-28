@@ -103,7 +103,7 @@
           <p>3. CustomLog, ErrorLog: Specify where to save the log files</p>
           <p>4. DocumentRoot: Root path of your website</p>
           <p>5. port 443 uses SSL(Secure socket layer), needs a certificate to be installed on the server.</p>
-          <p>SSL: there are two keys, public key and private key, when a user visits our website, the website sends the public key to the user's machine, user uses it to encrypt the message. Then when our website receives the message from the user, we use the private to decrypt it to get the original message. But this is not enough, we need to ask some Certifiate Authorization(CA) for a certificate. This is because user doesn't trust our website. but because our website is trusted by a CA, so the user can trust our website. Certificate needs to be digitally signed.</p>
+          <p>SSL: there are two keys, public key and private key, when a user visits our website, the website sends the public key to the user's machine, user uses it to encrypt the message. Then when our website receives the message from the user, we use the private to decrypt it to get the original message. But this is not enough, we need to ask some Certificate Authorization(CA) for a certificate. This is because user doesn't trust our website. but because our website is trusted by a CA, so the user can trust our website. Certificate needs to be digitally signed.</p>
           <p>6. SSLCertificateKeyFile: the private key on the server</p>
           <p>7. SSLCertificateFile: the certificate</p>
           <pre>
@@ -279,7 +279,11 @@
           <p>4. Session will be saved on the web server on the disk with a unique session id. Cookie will saved on the client machine. Everytime user visit the website, it will show us the cookies, web server will quickly open up the file saved with the same session id, and grab all the values(key-value pairs) to our webpage. Webpage also can access to the user Cookies.</p>
           <p>5. define functions in PHP</p>
           <p>Note: make sure to give web server user the write permission to the session folder. Otherwise it cannot write session variables to the file. Also, make sure to use session_start(); in home.php as well. So it can have access to the session variables after redirecting. Any sensitive information should not be stored in the Cookies.</p>
-          <p></p>
+          <p>Note: make sure to give web server user the write permission to the session folder. Otherwise it cannot write session variables to the file. Also, make sure to use session_start(); in home.php as well. So it can have access to the session variables after redirecting.</p>
+          <h2 id="Chapter3">
+            <a href="#title" class="headerlink" title="Lecture 3"></a>Lecture 3 MVC XML
+          </h2>
+          <p>Source Control - Git</p>
           <p></p>
           <p></p>
           <p></p>
