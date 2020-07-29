@@ -283,6 +283,7 @@
           <h2 id="Chapter3">
             <a href="#title" class="headerlink" title="Lecture 3"></a>Lecture 3 MVC XML
           </h2>
+          <h3>MVC</h3>
           <p>Change permission to write and read directory or files:</p>
           <p>Read: r = 4</p>
           <p>Write: w = 2</p>
@@ -304,6 +305,122 @@
           <p>Common permission level for directory: </p>
           <p>dir 711: user can go into this directory, can read/write all its files. Other groups or outside world can only go into this directory. If they know the exact filename in this directory and has read permission to that particular file. They can read it. But they can't list all filenames of that directory.</p>
           <p>dir 755: user can go into this directory, can read/write all its files, Other groups or outside world can go inside and list all files.</p>
+          <p>Use different hostname with only one web server. Change the hosts table file to give your domain a different name locally instead of localhost. sudo vi /etc/hosts</p>
+          <p>Use RewriteModule to manipulate the URL, route user to correct places with cleaner URLs</p>
+          <h3>XML</h3>
+          <img src="3.png">
+          <p>XML is an extensible markup language where you can extend structure without breaking existing data and applications.</p>
+          <p>Adding more children to an element is 100% fine.</p>
+          <p>Config files can be XML, you can add more KEYs and variables to the config files later.</p>
+          <p>Escape entities(pre-defined keywords) in XML: <code>&amp;amp; &amp;lt; &amp;gt; &amp;apos; &amp;quot;</code></p>
+          <p>Declare your own entity: <code>&lt;!ENTITY nbsp "&amp;#160;"&gt;</p>
+          <p>SimpleXML API: See XML in a Tree Structure</p>
+          <p>DOM(Document Object Model)</p>
+          <p>RSS</p>
+          <img src="4.png">
+          <p>In PHP, we can use SimpleXML API to read an XML file and load its contents.</p>
+          <pre>
+            <?
+              $dom = simplexml_load_file("lectures.xml");
+              foreach ($dom->xpath("/lectures/lecture") as $lecture) {
+                print "<li>";
+                print "Lecture " . $lecture["number"] . ": ";
+                print $lecture->title;
+                print "<li>";
+              }
+            ?>
+          </pre>
+          <p>Recall dot symbol . in PHP means concatenation.</p>
+          <p>Select XML node from PHP using xpath: If you only want to display certain lecture, for example, lecture 3, you could add additional condition in xpath</p>
+          <pre>$dom->xpath("/lectures/lecture[@number='3']")</pre>
+          <p>@ is short for attributes, we can expend it as 'attributes::'</p>
+          <p>We can also start at any given node and go to its parent, chlid or siblings by define the axis in the path(below is just an example and will not work):</p>
+          <pre>$dom->xpath("/parent::lectures/child::lecture[attributes::number='3']")</pre>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
           <p></p>
           <p></p>
           <p></p>
