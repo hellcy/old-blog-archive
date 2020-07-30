@@ -313,14 +313,14 @@
           <p>Adding more children to an element is 100% fine.</p>
           <p>Config files can be XML, you can add more KEYs and variables to the config files later.</p>
           <p>Escape entities(pre-defined keywords) in XML: <code>&amp;amp; &amp;lt; &amp;gt; &amp;apos; &amp;quot;</code></p>
-          <p>Declare your own entity: <code>&lt;!ENTITY nbsp "&amp;#160;"&gt;</p>
+          <p>Declare your own entity: <code>&lt;!ENTITY nbsp "&amp;#160;"&gt;</code>
           <p>SimpleXML API: See XML in a Tree Structure</p>
           <p>DOM(Document Object Model)</p>
           <p>RSS</p>
           <img src="4.png">
           <p>In PHP, we can use SimpleXML API to read an XML file and load its contents.</p>
           <pre>
-            <?
+            &gt;?
               $dom = simplexml_load_file("lectures.xml");
               foreach ($dom->xpath("/lectures/lecture") as $lecture) {
                 print "<li>";
@@ -328,7 +328,7 @@
                 print $lecture->title;
                 print "<li>";
               }
-            ?>
+            ?&lt;
           </pre>
           <p>Recall dot symbol . in PHP means concatenation.</p>
           <p>Select XML node from PHP using xpath: If you only want to display certain lecture, for example, lecture 3, you could add additional condition in xpath</p>
@@ -356,13 +356,56 @@
           <p>INSERT</p>
           <p>UPDATE</p>
           <p>DELETE</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>Connection MySQL to PHP</p>
+          <pre>
+            &gt;?
+              // enable sessions
+              session_start();
+
+              // connect to databsae
+              if (($connection = mysqli_connect("localhost", "yuan", "123", "yuan_lecture")) === false)
+                die("Could not connect to database");
+
+              // if username and password were submitted, check them
+              if (isset($_POST["user"]) && isset($_POST["pass"]))
+              {
+                // prepare SQL
+                $sql = sprintf("SELECT * FROM users WHERE user='%s'", mysqli_real_escape_string($connection, $_POST["user"]));
+
+                // execute query
+                $result = mysqli_query($connection, $sql);
+                if ($result === false)
+                  die("Could not query database");
+
+                // check whether we found a row
+                if (mysqli_num_rows($connection, $result) == 1) {
+                  // fetch row
+                  $row = mysqli_fetch_assoc($connection, $result);
+
+                  // check password
+                  if ($row["password"] == $_POST["pass"]) {
+                    // remember that user's logged in
+                    $_SESSION["authenticated"] = true;
+
+                    // redirect user to home page, using absolute path.
+                    redirect("home.php");
+                  }
+                }
+              }
+
+              function redirect($file) {
+                $host = $_SERVER["HTTP_HOST"];
+                $path = rtrim(dirname($_SERVER["PHP_SELF"]), "/\\"); // current php directory, trim out unwanted leading slashes
+                header("Location: http://$host$path/$file");
+                exit;
+              }
+            ?&lt;
+          </pre>
+          <p>1. in mysql_connect(), the first variable is the DB server, second is username of the DB, thrid is the password of the DB</p>
+          <p>2. mysql_real_escape_string is preventing SQL injection attack.</p>
+          <p>3. $result is a temporary table get from DB</p>
+          <p>4. mysql_num_rows return number of rows in the temp table</p>
+          <p>5. mysql_fetch_assoc return an associated array with keys and values from the temp table</p>
           <p></p>
           <p></p>
           <p></p>
