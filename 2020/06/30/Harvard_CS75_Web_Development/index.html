@@ -370,7 +370,7 @@
               if (isset($_POST["user"]) && isset($_POST["pass"]))
               {
                 // prepare SQL
-                $sql = sprintf("SELECT * FROM users WHERE user='%s'", mysqli_real_escape_string($connection, $_POST["user"]));
+                $sql = sprintf("SELECT * FROM users WHERE username='%s'", mysqli_real_escape_string($connection, $_POST["user"]));
 
                 // execute query
                 $result = mysqli_query($connection, $sql);
@@ -406,16 +406,16 @@
           <p>3. $result is a temporary table get from DB</p>
           <p>4. mysql_num_rows return number of rows in the temp table</p>
           <p>5. mysql_fetch_assoc return an associated array with keys and values from the temp table</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>One way hash password</p>
+          <p>It is not good to store password in the DB in plain text. So we should use a hash function to hash the password into some random characters, whenever user logs in, we use the same algorithm to hash the password and check if it equals to the same random characters in the DB.</p>
+          <p>SQL indexes, Constraints</p>
+          <p>PRIMARY KEY</p>
+          <p>INDEX: doing a binary search or some other tree structure to a column, so it will be much faster to run a query. Cost more disk space.</p>
+          <p>UNIQUE</p>
+          <p>FULLTEXT</p>
+          <p>BLOB (Binary Large Object) -> etc. Images</p>
+          <p>Although you can store images into DB, it cost space, it would be better to store it in a folder(file system), and store the link to this file into the DB.</p>
+          <p>Foriegn Key: is a primary key in another table</p>
           <p></p>
           <p></p>
           <p></p>
