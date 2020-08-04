@@ -356,7 +356,7 @@
           <p>INSERT</p>
           <p>UPDATE</p>
           <p>DELETE</p>
-          <p>Connection MySQL to PHP: MyPHPAdmin</p>
+          <p>Connection MySQL to PHP</p>
           <pre>
             &gt;?
               // enable sessions
@@ -410,71 +410,42 @@
           <p>It is not good to store password in the DB in plain text. So we should use a hash function to hash the password into some random characters, whenever user logs in, we use the same algorithm to hash the password and check if it equals to the same random characters in the DB.</p>
           <p>SQL indexes, Constraints</p>
           <p>PRIMARY KEY</p>
-          <p>INDEX: doing a binary search or some other tree structure to a column, so it will be much faster to run a query. Cost more disk space. The below image shows that this table has two indexes, and it is using BTREE structure to store all values.</p>
-          <img src="8.png">
+          <p>INDEX: doing a binary search or some other tree structure to a column, so it will be much faster to run a query. Cost more disk space.</p>
           <p>UNIQUE</p>
           <p>FULLTEXT</p>
           <p>BLOB (Binary Large Object) -> etc. Images</p>
           <p>Although you can store images into DB, it cost space, it would be better to store it in a folder(file system), and store the link to this file into the DB.</p>
           <p>Foriegn Key: is a primary key in another table</p>
-          <h2 id="Chapter5">
-            <a href="#title" class="headerlink" title="Lecture 5">Lecture 5 SQL Continued</a>
-          </h2>
-          <p>CRUD (Create Read Update Delete) model</p>
-          <p>VARCHAR will save more space than using CHAR, because it uses different length of chars for each value.</p>
-          <p>CHAR will use same length of chars for all values, but it will run query faster, because it knows the length of values, it can move to next value by adding the length to the current position. (For VARCHAR it has to keep searching until reach to the end of the value.)</p>
-          <p>AI (Auto Increment) Good for IDs, plus one each time. When you delete the ID, the ID number will NOT be reused.</p>
-          <p>Float numbers: 32-bit or 64-bit numbers are finite. If we are using it to represents real numbers(infinite), SQL will round the number to its closest number that it can find. e.g. if you enter 1.9, it might give you 1.89999999 instead. So it is not good to use Float to represent Money etc... important values</p>
-          <p>MySQL Functions</p>
-          <p>PDO(Portable Data Object)</p>
-          <img src="5.png">
-          <p>Assign variables to values, so when you change database next time, you don't have to change the code. You just need to change the variables of PDO arguments.</p>
-          <p>JOIN</p>
-          <img src="6.png">
-          <img src="7.png">
-          <p>Join tables together. Get data from multiple tables at once.</p>
-          <p>In the above example, we could further create another table that has Product_Id and Product_Name, and use only Product_Id in the orders table.</p>
-          <img src="9.png">
-          <p>Only the person that have sold products are displayed.</p>
-          <pre>
-            SELECT Employees.Name, Orders.Product
-            FROM Employees
-            JOIN Orders ON Employees.Employee_ID = Orders.Employee_ID
-          </pre>
-          <p>This is another syntax to use to join tables. This is the same as the other SQL syntax shown above.</p>
-          <p>Left Join, Right Join</p>
-          <p>Their are differnt type of joins, they decides which table should carry more weight in this query. For example, in the Employees table, if someone has left the company and is no longer exist in the Employees table. But his sell history is still in the orders table. We want to keep the sell history. Then we could use a Right Join, it will display all sell history related. But will show NULL in the Employee_ID(because there is no corresponding Employee_ID in the Employees table).</p>
-          <p>Race Conditions(Atomicity)</p>
-          <p>In computer programming, an operation done by a computer is considered atomic if it is guaranteed to be isolated from other operations that may be happening at the same time. Put another way, atomic operations are indivisible.</p>
-          <p>INSERT INTO table (a,b,c) VALUES (1,2,3) ON DUPLICATE KEY UPDATE c=c+1;</p>
-          <p>This will help you to merge SELECT and UPDATE into one query. Potentially solve the race conditions issue(NOT enough though).</p>
-          <p>Transactions</p>
-          <p>Transactions means do the following queries atomically, do not allow any other queries perform in the meantime.</p>
-          <pre>
-            START TRANSACTION;
-            UPDATE ACCOUNT SET BALANCE = BALANCE - 1000 WHERE NUMBER = 2;
-            UPDATE ACCOUNT SET BALANCE = BALANCE + 1000 WHERE NUMBER = 1;
-            COMMIT;
-          </pre>
-          <p>In the example above, we transfer 1000 balance from account 1 to account 2 at the same time.</p>
-          <pre>
-            START TRANSACTION;
-            UPDATE ACCOUNT SET BALANCE = BALANCE - 1000 WHERE NUMBER = 2;
-            UPDATE ACCOUNT SET BALANCE = BALANCE + 1000 WHERE NUMBER = 1;
-            SELECT BALANCE FROM ACCOUNT WHERE NUMBER = 2;
-            # suppose account number 2 has a negative balance here!
-            ROLLBACK;
-          </pre>
-          <p>In the example above, if we find something wrong happened after we perform the transaction, ROLLBACK will undo all the changes in the transaction.</p>
-          <p>Locks (MyISAM)</p>
-          <pre>
-            LOCK TABLES account WRITE;
-            SELECT balance FROM account WHERE number = 2;
-            UPDATE account SET balance = 1500 WHERE number = 2;
-            UNLOCK TABLES;
-          </pre>
-          <p>'LOCK TABLES account WRITE;'' will lock the table 'account', prevening people from WRITING to the table.</p>
-          <p>One downside is that LOCK will lock the entire table, so no one can write to the table even if they are updating other accounts.</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
           <p></p>
           <p></p>
           <p></p>
