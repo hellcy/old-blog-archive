@@ -356,7 +356,7 @@
           <p>INSERT</p>
           <p>UPDATE</p>
           <p>DELETE</p>
-          <p>Connection MySQL to PHP</p>
+          <p>Connection MySQL to PHP: MyPHPAdmin</p>
           <pre>
             &gt;?
               // enable sessions
@@ -416,15 +416,18 @@
           <p>BLOB (Binary Large Object) -> etc. Images</p>
           <p>Although you can store images into DB, it cost space, it would be better to store it in a folder(file system), and store the link to this file into the DB.</p>
           <p>Foriegn Key: is a primary key in another table</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <h2 id="Chapter5">
+            <a href="#title" class="headerlink" title="Lecture 5">Lecture 5 SQL Continued</a>
+          </h2>
+          <p>CRUD (Create Read Update Delete) model</p>
+          <p>VARCHAR will save more space than using CHAR, because it uses different length of chars for each value.</p>
+          <p>CHAR will use same length of chars for all values, but it will run query faster, because it knows the length of values, it can move to next value by adding the length to the current position. (For VARCHAR it has to keep searching until reach to the end of the value.)</p>
+          <p>AI (Auto Increment) Good for IDs, plus one each time. When you delete the ID, the ID number will NOT be reused.</p>
+          <p>Float numbers: 32-bit or 64-bit numbers are finite. If we are using it to represents real numbers(infinite), SQL will round the number to its closest number that it can find. e.g. if you enter 1.9, it might give you 1.89999999 instead. So it is not good to use Float to represent Money etc... important values</p>
+          <p>MySQL Functions</p>
+          <p>PDO(Portable Data Object)</p>
+          <img src="5.png">
+          <p>Assign variables to values, so when you change database next time, you don't have to find every place you use the value and change it. You just need to change the variables at the top of the file.</p>
           <p></p>
           <p></p>
           <p></p>

@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="X-UA-Compatible" content="IE=edge">
-	<title>乱七八糟的东西</title>
-	<meta name="description" content="乱七八糟的东西 - hellcy">
+	<title>All Related</title>
+	<meta name="description" content="All Related - hellcy">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="short icon" href="/sitelogo.jpg">
 	<link rel="stylesheet" href="/css/apollo.css">
@@ -116,6 +116,7 @@
 					<p>HSTS enforces the use of HTTPS through a policy that requires support from both web servers and browsers. An HSTS enabled web host can include a special HTTP response header "Strict-Transport-Security" (STS) along with a "max-age" directive in an HTTPS response to request the browser to use HTTPS for further communication. The browser receives the header, and memorizes the HSTS policy for the number of seconds specified by the “max-age” directive. Within this period, if an user tries to visit the same website but types http:// or omits the scheme at all, the browser will automatically turn the insecure link to the secure one (https://) and make an HTTPS connection to the server. Once a response is received through HTTPS, the browser also prevents the user from “clicking through” any security warning (e.g. a warning about an invalid server certificate). In order to take advantage of HSTS, the browser has to see the HSTS header at least once. To protect the user in the first connection to a given domain, HSTS has a separate mechanism to preload a list of registered domains to the browser out of the box.</p>
 					<p>SSL and TLS are cryptographic protocols that provide authentication and data encryption between different endpoints (e.g., a client connecting to a web server), with SSL the predecessor to TLS. As a best practice, you should configure your servers to support the latest protocol versions to ensure you are using only the strongest algorithms and ciphers, but equally as important is to disable the older versions. the browsers are officially removing support for TLS versions 1.0 and 1.1</p>
 					<p>Steps on how to disable TLS on IIS or AWS load balancer is listed below.</p>
+					<p>Steps on how to setup anti-CSRF for form or ajax post request is listed below.</p>
 					<ol>
 						<li><a href="https://www.tenable.com/plugins/nessus/124719" target="_blank"> jQuery < 3.4.0 Prototype Pollution</a></li>
 						<li><a href="https://www.globalsign.com/en/blog/what-is-hsts-and-how-do-i-use-it" target="_blank">HTTP Strict Transport Security Policy</a></li>
@@ -125,6 +126,7 @@
 						<li><a href="https://docs.microsoft.com/en-us/iis/get-started/whats-new-in-iis-10-version-1709/iis-10-version-1709-hsts#http-strict-transport-security-hsts" target="_blank">Enable HSTS on IIS webserver</a></li>
 						<li><a href="https://www.chowles.com/how-to-disable-tls-1-0-on-aws/" target="_blank">Disable TLS on AWS</a></li>
 						<li><a href="https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings" target="_blank">Disable TLS on IIS</a></li>
+						<li><a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks" target="_blank">How to setup anti-CSRF using C#</a></li>
 					</ol>
 				</div>
 			</article>
