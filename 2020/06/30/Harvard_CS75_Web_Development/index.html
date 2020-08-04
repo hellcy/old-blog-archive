@@ -475,8 +475,9 @@
           </pre>
           <p>'LOCK TABLES account WRITE;'' will lock the table 'account', prevening people from WRITING to the table.</p>
           <p>One downside is that LOCK will lock the entire table, so no one can write to the table even if they are updating other accounts.</p>
-          <p></p>
-          <p></p>
+          <img src="10.png">
+          <p>Add Foreign key constraints so that the DB knows the primary key in one table is related to another foreign key in another table.</p>
+          <p>ON DELETE RESTRICT and ON UPDATE RESTRICT means if we want to delete something that is actually a primary key in a table, DB will reject it because it is related to another tables. If we changed it to CASCADE, then if we delete a record that is a primary key, DB will delete all records that are related to this primary key in other tables too.</p>
           <p></p>
           <p></p>
           <p></p>
