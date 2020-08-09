@@ -596,7 +596,7 @@
                         }
                     }
                     window.setInterval(blinker, 500);
-                &lt;/script&gt;37
+                &lt;/script&gt;
                 &lt;title&gt;&lt;/title&gt;
               &lt;/head&gt;
               &lt;body&gt;
@@ -605,7 +605,7 @@
                 &lt;/center&gt;
               &lt;/body&gt;
             &lt;/html&gt;
-          <pre>
+          </pre>
           <p>Notice in the code above, when we call the blinker function in window.setInterval(blinker, 500), we are not adding () at the end of the function name. This is because we are passing a reference of that function(blinker) to it. If we use window.setInterval(blinker(), 500), we are passing the return result of blinker function to it, which will not work because blinker function doesn't return anything.</p>
           <p>Anonymous function(lambda function)</p>
           <p>window.setInterval(function() { alert("HI"); }, 5000);</p>
