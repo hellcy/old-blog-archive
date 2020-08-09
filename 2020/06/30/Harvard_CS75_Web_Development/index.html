@@ -504,6 +504,7 @@
           <p>Put cursor in form field that is empty.</p>
           <img src="11.png">
           <p>Document is a super global object. It is a DOM(document object model)</p>
+          <img src="12.png">
           <pre>
               &lt;html&gt;
               &lt;head&gt;
@@ -595,7 +596,7 @@
                         }
                     }
                     window.setInterval(blinker, 500);
-                &lt;/script&gt;
+                &lt;/script&gt;37
                 &lt;title&gt;&lt;/title&gt;
               &lt;/head&gt;
               &lt;body&gt;
@@ -604,7 +605,7 @@
                 &lt;/center&gt;
               &lt;/body&gt;
             &lt;/html&gt;
-          &lt;/pre>
+          <pre>
           <p>Notice in the code above, when we call the blinker function in window.setInterval(blinker, 500), we are not adding () at the end of the function name. This is because we are passing a reference of that function(blinker) to it. If we use window.setInterval(blinker(), 500), we are passing the return result of blinker function to it, which will not work because blinker function doesn't return anything.</p>
           <p>Anonymous function(lambda function)</p>
           <p>window.setInterval(function() { alert("HI"); }, 5000);</p>
@@ -612,9 +613,31 @@
           <h2 id="Chapter7">
             <a href="#title" class="headerlink" title="Lecture 7">Lecture 7 AJAX</a>
           </h2>
-          <p></p>
-          <p></p>
-          <p></p>
+          <img src="13.png">
+          <p>XML and json and data transfer machanism, json tends to be much more popular thesedays</p>
+          <p>XMLHttpRequest</p>
+          <ol>
+            <li>abort()</li>
+            <li>getAllResponseHeaders()</li>
+            <li>getResponseHeader()</li>
+            <li>open(method, url)</li>
+            <li>open(method, url, async)</li>
+            <li>open(method, url, async, user)</li>
+            <li>open(method, url, async, user, password)</li>
+            <li>send()</li>
+            <li>send(data)</li>
+            <li>setRequestHeader(header, value)</li>
+          </ol>
+          <p>XMLHttpRequest properties</p>
+          <ol>
+            <li>onreadystatechange</li>
+            <li>readyState(0 unitialized, 1 open, 2 sent, 3 receiving, 4 loaded)</li>
+            <li>responseBody</li>
+            <li>responseText</li>
+            <li>responseXML</li>
+            <li>status(200 OK, 404 Not Found, 500 Internal Server Error)</li>
+            <li>statusText</li>
+          </ol>
           <p></p>
           <p></p>
           <p></p>
