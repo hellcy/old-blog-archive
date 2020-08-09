@@ -478,24 +478,140 @@
           <img src="10.png">
           <p>Add Foreign key constraints so that the DB knows the primary key in one table is related to another foreign key in another table.</p>
           <p>ON DELETE RESTRICT and ON UPDATE RESTRICT means if we want to delete something that is actually a primary key in a table, DB will reject it because it is related to another tables. If we changed it to CASCADE, then if we delete a record that is a primary key, DB will delete all records that are related to this primary key in other tables too.</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <h2 id="Chapter6">
+            <a href="#title" class="headerlink" title="Lecture 6">Lecture 6 Javascript</a>
+          </h2>
+          <p>Javacript, like PHP, is also an interpreted language. Node.js is a server side js language.</p>
+          <p>Global objects</p>
+          <ol>
+            <li>Array</li>
+            <li>Boolean</li>
+            <li>Date</li>
+            <li>Function</li>
+            <li>Math</li>
+            <li>Number</li>
+            <li>Object</li>
+            <li>RegExp</li>
+            <li>String</li>
+          </ol>
+          <p>Array</p>
+          <pre>
+            var array = [];
+            array[0] = 'abc';
+            array.push('abc');
+          </pre>
+          <p>Array doesn't have a fixed length, you can use index or 'push' method to add elements.</p>
+          <p>Put cursor in form field that is empty.</p>
+          <img src="11.png">
+          <p>Document is a super global object. It is a DOM(document object model)</p>
+          <pre>
+              &lt;html&gt;
+              &lt;head&gt;
+                &lt;script&gt;
+                    function validate(f)
+                    {
+                        if (f.email.value == "")
+                        {
+                            alert("You must provide an email adddress.");
+                            return false;
+                        }
+                        else if (f.password1.value == "")
+                        {
+                            alert("You must provide a password.");
+                            return false;
+                        }
+                        else if (f.password1.value != f.password2.value)
+                        {
+                            alert("You must provide the same password twice.");
+                            return false;
+                        }
+                        else if (!f.agreement.checked)
+                        {
+                            alert("You must agree to our terms and conditions.");
+                            return false;
+                        }
+                        return true;
+                    }
+                &lt;/script&gt;
+                &lt;title&gt;&lt;/title&gt;
+              &lt;/head&gt;
+              &lt;body&gt;
+                &lt;form action="process.php" method="get" name="registration" onsubmit="return validate(this);"&gt;
+                  Email: &lt;input name="email" type="text"&gt;
+                  &lt;br&gt;
+                  Password: &lt;input name="password1" type="password"&gt;
+                  &lt;br&gt;
+                  Password (again): &lt;input name="password2" type="password"&gt;
+                  &lt;br&gt;
+                  I agree to the terms and conditions: &lt;input name="agreement" type="checkbox"&gt;
+                  &lt;br&gt;&lt;br&gt;
+                  &lt;input type="submit" value="Submit"&gt;
+                &lt;/form&gt;
+              &lt;/body&gt;
+            &lt;/html&gt;
+          </pre>
+          <p>check the form fields values at client side using Javascript. validate(this), is passing 'document.forms.registration' to the function.</p>
+          <p>Both client side and server side form validation and necessary. User's can change js using tools like inspector console and bypass the client side validation.</p>
+          <p>Regular Expressions</p>
+          <p>Object</p>
+          <pre>
+            var obj = {};
+            obj.key = value;
+            obj['key'] = value;
+            var obj = {key: value};
+          </pre>
+          <p>Event handlers</p>
+          <ol>
+            <li>onblur</li>
+            <li>onchange</li>
+            <li>onclick</li>
+            <li>onfocus</li>
+            <li>onkeydown</li>
+            <li>onkeyup</li>
+            <li>onload</li>
+            <li>onmousedown</li>
+            <li>onmouseup</li>
+            <li>onmouseout</li>
+            <li>onmouseover</li>
+            <li>onresize</li>
+            <li>onselect</li>
+            <li>onsubmit</li>
+            <li>etc...</li>
+          </ol>
+          <p>Call a function as a reference</p>
+          <pre>
+            &lt;html&gt;
+              &lt;head&gt;
+                &lt;script&gt;
+                    function blinker()
+                    {
+                        var blinks = document.getElementsByTagName("blink");
+                        for (var i = 0; i &lt; blinks.length; i++)
+                        {
+                            if (blinks[i].style.visibility == "hidden")
+                                blinks[i].style.visibility = "visible";
+                            else
+                                blinks[i].style.visibility = "hidden";
+                        }
+                    }
+                    window.setInterval(blinker, 500);
+                &lt;/script&gt;
+                &lt;title&gt;&lt;/title&gt;
+              &lt;/head&gt;
+              &lt;body&gt;
+                &lt;center&gt;
+                  &lt;blink&gt;&lt;h1&gt;hello, world&lt;/h1&gt;&lt;/blink&gt;
+                &lt;/center&gt;
+              &lt;/body&gt;
+            &lt;/html&gt;
+          &lt;/pre>
+          <p>Notice in the code above, when we call the blinker function in window.setInterval(blinker, 500), we are not adding () at the end of the function name. This is because we are passing a reference of that function(blinker) to it. If we use window.setInterval(blinker(), 500), we are passing the return result of blinker function to it, which will not work because blinker function doesn't return anything.</p>
+          <p>Anonymous function(lambda function)</p>
+          <p>window.setInterval(function() { alert("HI"); }, 5000);</p>
+          <p>Javascript code can be minimized to save traffic. Variable names and spaces will be shrinked.</p>
+          <h2 id="Chapter7">
+            <a href="#title" class="headerlink" title="Lecture 7">Lecture 7 AJAX</a>
+          </h2>
           <p></p>
           <p></p>
           <p></p>
