@@ -812,29 +812,20 @@
           <p>SSL Certificate</p>
           <p>Public key Cryptography</p>
           <p>There is a public key and a private key. Imagine we want to buy something from a website. Before we sending credit card information to the website. The website will send me the public key(can be see by everyone). And we are going to use the public key to encrypt the information. Only the private key can be used to decrypt the information. And only the website has the private key. Likewise, if the website wants to send me some information. I need to send it the public key too. And use my private key to decrypt it when I receive the information.</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>SQL injection attacks</p>
+          <p>mysql_real_escape_string(): put backslash to quote etc...</p>
+          <p>Same-Origin Policy: You can only get data from the same origin as your HTML DOM. (ajax calls)</p>
+          <p>CORS can override same origin policy, jsonp</p>
+          <p>Attacks</p>
+          <p>CSRF (Cross-site scripting forgery): If you login to some stock trade website recently and saved your login session. And you visited the bad website in the meantime and being tricked to click the link in their website. The link is actually a request and will send a request to the stock trade website to buy some stock. Note: User click a link could send both GET/POST request. Forms can be hidden and submitted by JS code. So just change the buying request to POST request doesn't solve this issue.</p>
+          <p>1.The way to prevent this is whenever you want to send a request, the website will send a random session token back to you. And you have to add this token in the request to be able to make the request work. The CSRF link will never know what the token is.</p>
+          <p>2.CAPTCHA: enter some words that easy for human to see but not for machine.</p>
+          <p>3.Whenever you want to checkout, the website will make you log out immediately when you click the checkout button.</p>
+          <p>XSS</p>
+          <p>You can access to the Cookie from JS</p>
+          <p>And there is a flawed website which writing values to its body, and you can be tricked to click the link and send your Cookie to other people.</p>
+          <p>An attacker can use XSS to send a malicious script to an unsuspecting user. The end user’s browser has no way to know that the script should not be trusted, and will execute the script. Because it thinks the script came from a trusted source, the malicious script can access any cookies, session tokens, or other sensitive information retained by the browser and used with that site.</p>
+          <p>1. Escape HTML special chars</p>
           <h2 id="Chapter9">
             <a href="#title" class="headerlink" title="Lecture 9">Lecture 9 Scalability</a>
           </h2>
@@ -926,64 +917,6 @@
           <ol>
             <li><a href="https://www.youtube.com/watch?v=-W9F__D3oY4" target="_blank">CS75 (Summer 2012) Lecture 9 Scalability Harvard Web Development David Malan</a></li>
           </ol>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
         </div>
       </article>
     </div>
