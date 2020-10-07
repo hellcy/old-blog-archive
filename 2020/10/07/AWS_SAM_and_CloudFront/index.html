@@ -34,10 +34,70 @@
           <h2 id="Part1">
             <a href="#title" class="headerlink" title="Part 1">Part One AWS SAM</a>
           </h2>
-
           <h2 id="Part2">
-            <a href="#title" class="headerlink" title="Part 2">Part Two AWS CloudFront</a>
+            <a href="#title" class="headerlink" title="Part 2">Part Two AWS SSO</a>
           </h2>
+          <h2 id="Part3">
+            <a href="#title" class="headerlink" title="Part 3">Part Three AWS CloudFront</a>
+          </h2>
+          <h4>Restricting Access to Files in Amazon S3 Buckets</h4>
+          <p>You can optionally secure the content in your Amazon S3 bucket so that users can access it through CloudFront but cannot access it directly by using Amazon S3 URLs. This prevents someone from bypassing CloudFront and using the Amazon S3 URL to get content that you want to restrict access to. (Using Origin Access Identity)</p>
+          <h4>Block all public access to S3 bucket</h4>
+          <img src="1.png">
+          <img src="2.png">
+          <p>When creating new distribution in CloudFront, do the following steps</p>
+          <ol>
+            <li>Select Web distribution</li>
+            <li>Select the S3 bucket you want to connect to</li>
+            <li>Select Redirect HTTP to HTTPS if you don't want people to access your content by HTTP requests</li>
+            <li>Select Yes for 'Restrict Viewer Access'</li>
+            <li>Select Self as trusted signer</li>
+          </ol>
+          <h4>Create Trusted Signer</h4>
+          <p>Note When 'Restrict Viewer Access' is selected, you can specify which account is the 'Trusted Signer'. Which means they have the permission to create signed URL or signed cookie for people to access your private content.</p>
+          <p>Self is the default 'Truested Signer', which is the account your are currently using. You can also add another accounts by entering their account ID.</p>
+          <h4>Create another behavior</h4>
+          <p>Login page should be accessiable by public, so as the js, css and image files. So we should create another behavior to let CloudFront know which file access is retricted and which are not.</p>
+          <img src="3.png">
+          <p>Path Pattern decides which files can be set to public(also select No for 'Retrict Viewer Access' this time)</p>
+          <p>Rules about Path Pattern can be found <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern" target="_blank">here</a></p>
+          <h4>Create CloudFront Key Pairs</h4>
+          <p>We need CloudFront key pairs to create signed URLs and signed Cookies, they are a pair of public and private keys AWS uses to encrypt requests people send to CloudFront, so it knows whether they are authenticated users.</p>
+          <p>This step can only be done using AWS root account, IAM account cannot create CloudFront key pairs.</p>
+          <img src="4.png">
+          <p>Save the private key pem file and Access key ID to a save place. We will use it later.</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <ol>
+            <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern" target="_blank"></a></li>
+            <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern" target="_blank"></a></li>
+            <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern" target="_blank"></a></li>
+            <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern" target="_blank"></a></li>
+            <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern" target="_blank"></a></li>
+            <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern" target="_blank"></a></li>
+            <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern" target="_blank"></a></li>
+            <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern" target="_blank"></a></li>
+            <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern" target="_blank"></a></li>
+            <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern" target="_blank"></a></li>
+          </ol>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
         </div>
       </article>
     </div>
