@@ -28,10 +28,10 @@
         <div class="post-time">Aug 27, 2020</div>
         <div class="post-content">
           <ol id="title">
-            <li><a href="#Chapter0">Chapter 0: Introduction</a></li>
+            <li><a href="#Chapter1">Chapter 1: Introduction</a></li>
           </ol>
-          <h2 id="Chapter0">
-            <a href="#title" class="headerlink" title="Lecture 0">Lecture 0 Introduction</a>
+          <h2 id="Chapter1">
+            <a href="#title" class="headerlink" title="Lecture 1">Lecture 1 Introduction</a>
           </h2>
           <h3>什么是动态规划？</h3>
           <p>1.计数型</p>
@@ -61,6 +61,116 @@
           <p>最后一步是由前面几步的最小值确定的，所以先确定前面的值，从小到大，就能判断出最后一步的值</p>
           <p>Unique Path:计数型</p>
           <p>Jump Game：存在型</p>
+          <h2 id="Chapter2">
+            <a href="#title" class="headerlink" title="Lecture 2">Lecture 2 Coordinates and Bit Operation</a>
+          </h2>
+          <p>序列型：前i个，最小，方式数，可行性。。</p>
+          <p>Paint House</p>
+          <p>分别记录每栋房子之前的房子的每种颜色的最小花费</p>
+          <p>划分型</p>
+          <p>Decode ways</p>
+          <p>解密数字串即划分成若干段数字，每段数字对应一个字母</p>
+          <p>知道前N-1和N-2个数字分别有多少种方式，再相加</p>
+          <p>坐标型</p>
+          <p>需要找到序列中某些子序列或者网格中的某条路径：计数，最大，最小，存在性</p>
+          <p>Minimum Path Sum</p>
+          <p>空间优化：计算第i行时，只需要i行和i-1行的f值（滚动数组）</p>
+          <p>Bomb Enemy</p>
+          <p>给定输入为序列或者网格矩阵</p>
+          <p>问题一般为：以第i个元素结尾的某种性质，到格子（i， j）的路径的性质</p>
+          <p>Minimum path sum打印路径：新建一个二维数组，记录每次的方向，然后从最后（右下角）往前推，最后记住要反转数组才是从开始到结束的顺序</p>
+          <p>位操作型动态规划</p>
+          <p>Counting bits: removing the last bits</p>
+          <h2 id="Chapter3">
+            <a href="#title" class="headerlink" title="Lecture 3">Lecture 3 Sequence</a>
+          </h2>
+          <p>给定一个序列，转移方程f（i）下标i表示前i个元素的某种性质， f(0)就是空序列的性质</p>
+          <p>Paint House II: Similar to Paint House I, Optimization: pick the smallest and the second smallest cost of all colors, reduce the min calculation to O(1) and totoal time complexity from O(N * K * K) to O(N * K * 2), where N is the number of houses and K is the number of colors</p>
+          <p>House Robber</p>
+          <p>House Robber II:想办法把圈断开，分两种情况处理，变成两种序列情况</p>
+          <p>Buy and Sell Stock III:分成五个状态，分别记录下每天每个状态的情况（类似于Paint house）</p>
+          <p>Russian Doll Envelope</p>
+          <h2 id="Chapter4">
+            <a href="#title" class="headerlink" title="Lecture 4">Lecture 4 划分型，博弈型，背包型</a>
+          </h2>
+          <p>划分型</p>
+          <p>Perfect Squares</p>
+          <p>Palindrome Partitioning II:1. find all possible palindrome from the string s ans store them in a 2d array expand palindrome start and end index to both sides. 2. partition dp: dp[i] = min(dp[i], dp[j] && isPalin(s[j][i - 1]))</p>
+          <p>Copy Books(LintCode)</p>
+          <p>划分型dp关键字：连续！Substring, continuous subarray</p>
+          <p>博弈型(两方游戏)</p>
+          <p>从第一部开始分析!!!问题规模会越来越小。</p>
+          <p>Coins in a line: Alince and Bob takes one or two coins each turn</p>
+          <p>Alice先手还剩N个Coin，与Bob先手还剩N-1个Coin是一样的，所以每个局面都可以看成是先手但是剩下不同数量的Coin</p>
+          <p>背包型</p>
+          <p>你有一个背包，背包有最大承重</p>
+          <p>商店里有若干物品，都是免费拿</p>
+          <p>目标： 1. 装下最多重量的物品， 2. 装下最大总价值的物品。 3. 有多少种方式正好带走满满一书包物品</p>
+          <p>给定背包最大承重M， 物品的重量都是整数</p>
+          <p>每个方案的总重量都是从0到M</p>
+          <p>对于每个重量方案，我们要知道能不能做到</p>
+          <p>Note：背包问题中，dp数组大小和总承重有关</p>
+          <p>现在需要知道前N个物品能否拼出重量W</p>
+          <p>如果前N-1个物品能拼出W，当然前N个物品也可以拼出W</p>
+          <p>如果前N-1个物品能拼出W-A(N-1),A(N-1)为第N个物品的重量，那么前N个物品也能拼出W</p>
+          <p>BackPack I - V</p>
+          <p>Coin Change 1, 2</p>
+          <p>当每个物品只能用一次时，需要多开一维的dp数组去计算前N个物品的方式</p>
+          <h2 id="Chapter5">
+            <a href="#title" class="headerlink" title="Lecture 5">Lecture 5 背包型, 区间型</a>
+          </h2>
+          <p>背包型</p>
+          <p>Backpack II：现在每个物品有价值，求能带走最大多少价值的物品</p>
+          <p>f[i][j]: 用前i个物品拼出重量j时的最大总价值，j = -1表示不能拼出</p>
+          <p>dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - nums[i - 1]] + Value[i - 1])</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
           <p></p>
           <p></p>
           <p></p>
