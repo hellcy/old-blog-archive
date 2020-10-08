@@ -37,6 +37,19 @@
           <h2 id="Part2">
             <a href="#title" class="headerlink" title="Part 2">Part Two AWS SSO</a>
           </h2>
+          <h4>Create Custom SAML Application</h4>
+          <p>We can use AWS SSO as an IDP for our web application.</p>
+          <p>Create new Custom SAML 2.0 application.</p>
+          <img src="8.png">
+          <p>This is IDP metadata, we will download it after finishing configuring return attributes.</p>
+          <img src="9.png">
+          <p>This is SP metadata, which we will prepare and upload.</p>
+          <img src="10.png">
+          <p>This is where we config the return attribute in SAML response. Supported attribute list can be found <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/attributemappingsconcept.html?icmpid=docs_sso_console">here</a>.</p>
+          <img src="11.png">
+          <h4>Create Users</h4>
+          <p>Users can be created by simply fill this form. You can also setup MFA device after creating the user.</p>
+          <img src="12.png">
           <h2 id="Part3">
             <a href="#title" class="headerlink" title="Part 3">Part Three AWS CloudFront</a>
           </h2>
@@ -66,9 +79,19 @@
           <p>This step can only be done using AWS root account, IAM account cannot create CloudFront key pairs.</p>
           <img src="4.png">
           <p>Save the private key pem file and Access key ID to a save place. We will use it later.</p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <h4>Create Signed URL</h4>
+          <p>This is the most important part.</p>
+          <p>I used two ways to create signed URL, nodejs and C#. I use nodejs to create a lambda function as an API, which will return the signed URL generated. I also add this feature to the SAML project, so when IDP returned SAML response, I can add signed details to the URL and redirect user to the home page.</p>
+          <img src="5.png">
+          <p>Note that yaml file supports multiple line string, so we can add private key string in the yaml file as a environment variable, so as the public key.</p>
+          <img src="insert yaml private key string image">
+          <p>Also note expiry time input are in <a href="https://www.epochconverter.com/">Unix Epoch Time format</a> in miliseconds(13 digits). However, the expires argument in the signed URL are in seconds format (10 digits).</p>
+          <p>Also note that C# doesn't recognize private key string in PEM format. We have to convert it to XML format before create signed URL.</p>
+          <img src="6.png">
+          <p>The signed URL created will append three arguments at the end of the original URL: Expires, Signature and Key-Pair-Id</p>
+          <img src="7.png">
+          <p>Note the signature contains information about the original URL so you cannot reuse it with different URLs. We have to generate new signed URLs when direct user to other pages.(this will also refresh the session time, which is we want.)</p>
+          <h4>References</h4>
           <ol>
             <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-task-list.html" target="_blank">Task List for Serving Private Content using S3 and CloudFront</a></li>
             <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html" target="_blank">Restricting Access to Amazon S3 Content by Using an Origin Access Identity</a></li>
@@ -84,23 +107,6 @@
             <li><a href="https://stackoverflow.com/questions/9091900/how-can-i-convert-pem-public-key-to-rsa-public-key-with-bouncycastle-in-c" target="_blank">Convert PEM to XML in C#</a></li>
             <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern" target="_blank">CloudFront Path Pattern Rules</a></li>
           </ol>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
         </div>
       </article>
     </div>
