@@ -29,7 +29,8 @@
         <div class="post-content">
           <ol id="title">
             <li><a href="#Part1">Part One: AWS SAM</a></li>
-            <li><a href="#Part2">Part Two: AWS CloudFront</a></li>
+            <li><a href="#Part2">Part Two: AWS SSO</a></li>
+            <li><a href="#Part3">Part Three: AWS CloudFront</a></li>
           </ol>
           <h2 id="Part1">
             <a href="#title" class="headerlink" title="Part 1">Part One AWS SAM</a>
@@ -83,14 +84,16 @@
           <p>This is the most important part.</p>
           <p>I used two ways to create signed URL, nodejs and C#. I use nodejs to create a lambda function as an API, which will return the signed URL generated. I also add this feature to the SAML project, so when IDP returned SAML response, I can add signed details to the URL and redirect user to the home page.</p>
           <img src="5.png">
-          <p>Note that yaml file supports multiple line string, so we can add private key string in the yaml file as a environment variable, so as the public key.</p>
-          <img src="insert yaml private key string image">
+          <p>Note that yaml file supports multiple line string (a vertical line followed by a hyphen), so we can add private key string in the yaml file as a environment variable, so as the public key.</p>
+          <img src="13.png">
           <p>Also note expiry time input are in <a href="https://www.epochconverter.com/">Unix Epoch Time format</a> in miliseconds(13 digits). However, the expires argument in the signed URL are in seconds format (10 digits).</p>
           <p>Also note that C# doesn't recognize private key string in PEM format. We have to convert it to XML format before create signed URL.</p>
           <img src="6.png">
           <p>The signed URL created will append three arguments at the end of the original URL: Expires, Signature and Key-Pair-Id</p>
           <img src="7.png">
           <p>Note the signature contains information about the original URL so you cannot reuse it with different URLs. We have to generate new signed URLs when direct user to other pages.(this will also refresh the session time, which is we want.)</p>
+          <p>By default, CloudFront caches a response from Amazon S3 for 24 hours, so if you just updated contents in S3 bucket, CloudFront may still serve you the outdated content. Use the below code in cmd to force CloudFront to update its files from S3.</p>
+          <pre>aws cloudfront create-invalidation --distribution-id 'YOUR DISTRIBUTION ID' --paths "/*"</pre>
           <h4>References</h4>
           <ol>
             <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-task-list.html" target="_blank">Task List for Serving Private Content using S3 and CloudFront</a></li>
