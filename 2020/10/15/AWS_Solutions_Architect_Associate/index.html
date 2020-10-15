@@ -28,10 +28,10 @@
         <div class="post-time">Oct 15, 2020</div>
         <div class="post-content">
           <ol id="title">
-            <li><a href="#Part1">Part One: Pluralsight Course: Cloud Certifications: AWS Solutions Architect Associate</a></li>
+            <li><a href="#Part1">Part One: Pluralsight Course: Architecting for Reliability on AWS</a></li>
           </ol>
           <h2 id="Part1">
-            <a href="#title" class="headerlink" title="Part 1">Part One: Pluralsight Course: Cloud Certifications: AWS Solutions Architect Associate</a>
+            <a href="#title" class="headerlink" title="Part 1">Part One: Pluralsight Course: Architecting for Reliability on AWS</a>
           </h2>
           <p>AWS SAA C02 exam will include 4 topic</p>
           <ol>
@@ -61,7 +61,35 @@
           <h4>Elastic Container Service</h4>
           <p>Container helps you to deploy web serices easier. Build an image of your container, deploy the image to an instance, and launch the containser in the image. E.g. Docker</p>
           <p>You can have multiple containers in one instance, so it is like you are running multiple web services for the price of one instance. Also, if one container is down, the other containers on that instance will still be running.</p>
-          <p></p>
+          <h4>Trusted Advisor</h4>
+          <p>Where you can found the number of limits for all services on AWS.</p>
+          <h4>Section One Summary</h4>
+          <p>Availability is not cheap, we need to found the balance between availability and cost. We can achieve high availability use Redundancy and Loose Coupling</p>
+          <p>The Simple Queue Service can act as a go-between for loosely coupled services. 1. Sending service places message in a queue. 2. Receiving service polls the queue for new messages. E.g. Online voting service</p>
+          <p>The Elastic Container Service deploys microservices using Docker containers, can improve availability by running multiple containers on a single instance.</p>
+          <h4>AWS Budget</h4>
+          <p>In the Billing section, you can create an AWS Budget and setup an email alert, AWS will send you an email when the budget amount has been reached. There are more options.</p>
+          <h4>AWS IAM</h4>
+          <p>AWS has two account types, Root User account and IAM account. We can setup a password policy for AWS accounts.</p>
+          <p>AWS provides MFA for Root User account in case someone else knows your AWS account credentials.</p>
+          <p>You can create IAM accounts and Groups and assign Policies to Users or Groups, IAM users will use Root account ID or Alias and their account details to login.</p>
+          <p>CloudTrail: where AWS logs all events such as: user login, user create new resources, user attach policy to its account etc...</p>
+          <p>Configure AWS account using AWS CLI</p>
+          <pre>aws configure</pre>
+          <img src="1.png">
+          <h4>TLS Certificate</h4>
+          <p>TLS(Transport Layer Security): Make sure messages being transferred between Load Balancer and Clients are secure.</p>
+          <p>ACM(Amazon Certificate Manager): we ask ACM to issue us a TLS certificate</p>
+          <p>Route 53: when you purchase a domain, you need to config the DNS records, you can do this in the service where you purchased the domain (e.g. GoDaddy) or in Route 53.</p>
+          <p>Note: Once your TLS certificate has been issued, you still can't visit your website via https, you have to link your TLS certificate to other AWS services like CloudFront or ELB</p>
+          <h4>VPC networks</h4>
+          <p>AWS managers underlying VPC infrastructrue and is responsible for reliability of VPC network components. You don't need to worry about VPC failures. There are many redundencies built in.</p>
+          <p>VPC contains one or more subnets. A subnet exists in an availability zone. An instance exists in a subnet.</p>
+          <p>Because one instance only exists in one subnet which exists in one availability zone, it lacks of redundency and availability is not high. If the zone fails, the instance will fail.</p>
+          <p>Availability zones: they are basically the data centers in different locations. if you have your instances running in different availability zones, it is highly unlikely that all zones fail.</p>
+          <p>Client(me) can access a VPC via three ways: 1. Internet Gateway, 2. VPN network, 3. Direct Connect link provided by AWS.</p>
+          <p>Transit Gateway: high availability service that can connect two networks together (two VPCs)</p>
+          <img src="2.png">
         </div>
       </article>
     </div>
