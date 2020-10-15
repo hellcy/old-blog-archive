@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="X-UA-Compatible" content="IE=edge">
+  <title>AWS Solutions Architect Associate</title>
+  <meta name="description" content="System Design - hellcy">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="short icon" href="/sitelogo.jpg">
+  <link rel="stylesheet" href="/css/apollo.css">
+</head>
+<body>
+  <header>
+    <a href="/" class="logo-link"><img src="/sitelogo.jpg"></a>
+    <ul class="nav nav-list">
+      <li class="nav-list-item">
+        <a href="/" target="_self" class="nav-list-link">Blog</a>
+      </li>
+      <li class="nav-list-item">
+        <a href="https://github.com/hellcy" target="_blank" class="nav-list-link">Github</a>
+      </li>
+    </ul>
+  </header>
+  <section class="container">
+    <div class="post">
+      <article class="post-block">
+        <h1 class="post-title">AWS Solutions Architect Associate</h1>
+        <div class="post-time">Oct 15, 2020</div>
+        <div class="post-content">
+          <ol id="title">
+            <li><a href="#Part1">Part One: Pluralsight Course: Cloud Certifications: AWS Solutions Architect Associate</a></li>
+          </ol>
+          <h2 id="Part1">
+            <a href="#title" class="headerlink" title="Part 1">Part One: Pluralsight Course: Cloud Certifications: AWS Solutions Architect Associate</a>
+          </h2>
+          <p>AWS SAA C02 exam will include 4 topic</p>
+          <ol>
+            <li>Resilience</li>
+            <li>Performance</li>
+            <li>Security</li>
+            <li>Cost-Optimization</li>
+          </ol>
+          <h4>Availability</h4>
+          <p>Resiliency: The ability of an application to avoid and recover from failure.</p>
+          <p>Availability: The percentage of time that an application is performing as expected.</p>
+          <p>The availability of a single EC2 instance is 90%</p>
+          <p>The availability of an ELB(Elastic Load Balancer) and EFS(Elastic File System) is 99.99%</p>
+          <p>The availability of a RDS(Relational DataBase System) multi-AZ(multi-Availability Zone) is 99.95%</p>
+          <p>The availability of a Lambda is 99.95%</p>
+          <p>The availability of a S3 is 99.9%</p>
+          <p>The availability of a DynamoDB with Global Tables is 99.999%</p>
+          <h4>Loose Coupling</h4>
+          <p>One component doesn't depend on a specific component (e.g. URL points to ELB, not a specific EC2), one-to-many relationship</p>
+          <p>is EFS a single point of failure?</p>
+          <p>No, Elastic services are always composed of redundant components, they just hide it. Elastic services are always loosely coupled with other services like EC2.</p>
+          <p>Loose Coupling helps Performance: If our application's performance is low and we want to upgrade our EC2 instances, because they are loose coupled, we can upgrade EC2 instances one by one and our application will still be available, ELB will just route traffic to other instances.</p>
+          <p>Performance and Availability are linked.</p>
+          <h4>Simple Queue Service</h4>
+          <p>The concept of Loose Coupling can be applied to the application level too. For example, we have a video processing application, we can create two components for this application, the web interface part and the video processing part. Users go to the webpage and submit a request of a video with differnt options, and video processing part gets the request and start processing.</p>
+          <p>But because processing videos take much more time than sending requests. We need a Message Queue Service to save all the requests in order. Simple Queue Service(SQS) is one option with high availability.</p>
+          <h4>Elastic Container Service</h4>
+          <p>Container helps you to deploy web serices easier. Build an image of your container, deploy the image to an instance, and launch the containser in the image. E.g. Docker</p>
+          <p>You can have multiple containers in one instance, so it is like you are running multiple web services for the price of one instance. Also, if one container is down, the other containers on that instance will still be running.</p>
+          <p></p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <footer>
+    <div class="paginator">
+      <a href="/2020/10/07/AWS_SAM_and_CloudFront/" class="next">下一篇</a>
+    </div>
+  </footer>
+    <div id="disqus_thread"></div>
+    <script>
+  var disqus_shortname = 'hellcy';
+  
+  var disqus_url = 'https://hellcy.github.io/2020/10/15/AWS_Solutions_Architect_Associate';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script id="dsq-count-scr" src="//https-hellcy-github-io.disqus.com/count.js" async></script>
+    <script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

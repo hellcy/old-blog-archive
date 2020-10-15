@@ -35,6 +35,20 @@
           <h2 id="Part1">
             <a href="#title" class="headerlink" title="Part 1">Part One AWS SAM</a>
           </h2>
+          <p>Note: This is a brief introduction about how to setup a Serverless Application Model using VS Code and Nodejs. I will probably be adding more details later.</p>
+          <h4>Visual Studio Code</h4>
+          <p>VS Code is an perfect IDE for writing/testing/deploying SAM. Some key points need attention are listed.</p>
+          <ol>
+            <li>AWS credentials in Users/UserName/.aws folder.</li>
+            <li>Create yaml file with resources: lambda function, policies, runtime language, environment variable etc..</li>
+            <li>Writing lambda function in Nodejs, CROS policy..</li>
+            <li>CRUD operation: marshall/unmarshall object etc..</li>
+            <li>AWS CLI: package and deploy SAM to AWS</li>
+          </ol>
+          <p>AWS CLI command to package and deploy SAM to AWS.</p>
+          <pre>sam deploy --template-file output-yamlFileName.yaml --stack-name Your_Stack_Name --capabilities CAPABILITY_IAM</pre>
+          <pre>sam package --template-file yamlFileName.yaml --s3-bucket S3_Bucket_Name --output-template-file output-yamlFileName.yaml</pre>
+          <p>A very useful course I took about AWS SAM: <a href="https://app.pluralsight.com/library/courses/aws-deploying-serverless-applications-application-model/table-of-contents" target="_blank">Deploying Serverless Applications in AWS Using the Serverless Application Model</a></p>
           <h2 id="Part2">
             <a href="#title" class="headerlink" title="Part 2">Part Two AWS SSO</a>
           </h2>
