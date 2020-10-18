@@ -74,7 +74,7 @@
           <p>AWS provides MFA for Root User account in case someone else knows your AWS account credentials.</p>
           <p>You can create IAM accounts and Groups and assign Policies to Users or Groups, IAM users will use Root account ID or Alias and their account details to login.</p>
           <p>CloudTrail: where AWS logs all events such as: user login, user create new resources, user attach policy to its account etc...</p>
-          <p>Configure AWS account using AWS CLI</p>
+          <p>Configure AWS account using AWS CLI. This command can also be used to change default AWS credentials in .aws folder.</p>
           <pre>aws configure</pre>
           <img src="1.png">
           <h4>TLS Certificate</h4>
@@ -90,6 +90,29 @@
           <p>Client(me) can access a VPC via three ways: 1. Internet Gateway, 2. VPN network, 3. Direct Connect link provided by AWS.</p>
           <p>Transit Gateway: high availability service that can connect two networks together (two VPCs)</p>
           <img src="2.png">
+          <h4>Elastic IP Address</h4>
+          <p>EIP allows an instance to retain the same public IP address. EIP is bound to an ENI(Elastic Network Interface), which is attached to an instance. You can move an EIP to differnt ENI</p>
+          <p>To check EC2 instances EIPs.</p>
+          <pre>aws ec2 describe-addresses</pre>
+          <p>To allocate new EIP</p>
+          <pre>aws ec2 allocate-address</pre>
+          <h4>Global Accelerator</h4>
+          <p>Provides two anycast IPv4 addresses. While ELP is bound to a AWS region, Global Accelerator IPs doesn't, Users connects to a global accelerator static IP will be routed to a nearest POP(points-of-presence), which then will provide you with resources in any region.</p>
+          <h4>VPC Architecture</h4>
+          <p>Public Subnet: has full access to the internet, can also be reached from the internet.</p>
+          <p>Private Subnet: is isolated from the internet, cannot reach internet nor be reached from the internet.</p>
+          <p>NAT Gateway: Provides outbound internet access for instance in Private Subnet</p>
+          <img src="3.png">
+          <p>Create VPC with Public Subnet and Private Subnet.</p>
+          <img src="4.png">
+          <p>Public Subnet has a default Route Rule which route all requests(0.0.0.0/0) to a IGW(Internet Gateway), this allows instance in Public Subnet access public internet(inbound and outbound).</p>
+          <img src="5.png">
+          <p>Private Subnet has a default Route Rule which route all requests(0.0.0.0/0) to a NAT(NAT Gateway), this allows instance in Private Subnet outbound only access to internet.</p>
+          <img src="6.png">
+          <p>NAT Gateway: Instance in private subnet send outbound traffic to NAT Gateway, NAT Gateway then sends traffic to Internet Gateway.</p>
+          <p>Create multiple Public and Private subnets for redundency.</p>
+          <p>To find a subnet by its CIDR block</p>
+          <pre>aws ec2 describe-subnets --filters Name=cidr-block,Values="10.0.11.0/24"</pre>
         </div>
       </article>
     </div>
