@@ -111,8 +111,51 @@
           <img src="6.png">
           <p>NAT Gateway: Instance in private subnet send outbound traffic to NAT Gateway, NAT Gateway then sends traffic to Internet Gateway.</p>
           <p>Create multiple Public and Private subnets for redundency.</p>
-          <p>To find a subnet by its CIDR block</p>
+          <p>To find a subnet by its CIDR block, we will be using the subnet ID to launch the instance.</p>
           <pre>aws ec2 describe-subnets --filters Name=cidr-block,Values="10.0.11.0/24"</pre>
+          <p>Launch an EC2 instance into a public subnet:</p>
+          <p>Note: subnetId is the ID of your public subnet, which you can get by using the describe-subnets command above. ImageID is the ID of the EC2 instance, it specify some options about the instance you want to launch. key-name is the name of the SSH key pair you created, which you can use later to login to the instance.</p>
+          <pre>aws ec2 run-instances --subnet-id subnet-0aa8c9baa867b88f0 --image-id ami-0e6449745600ac1da --instance-type t3.micro --key-name hellcyAWSkey</pre>
+          <img src="7.png">
+          <p>To allocate a new EIP</p>
+          <pre>aws ec2 allocate-address</pre>
+          <p>To associate the new EIP to the new EC2 instance</p>
+          <pre>aws ec2 associate-address --instance-id Your_Instance_Id --allocation-id Your_EIP_Allocation_Id</pre>
+          <img src="8.png">
+          <p>To terminate the EC2 instance</p>
+          <pre>aws ec2 terminate-instances --instance-ids Your_Instance_Id</pre>
+          <p>To release the EIP so AWS will not charge us</p>
+          <pre>aws ec2 release-address --allocation-id Your_EIP_Allocation_Id</pre>
+          <img src="9.png">
+          <p>To delete NAT gateway</p>
+          <pre>aws ec2 delete-nat-gateway --nat-gateway-id Your_NAT_Gateway_Id</pre>
+          <p>Don't forget to release the EIP associated with the NAT gateway.(They will charge for un-associated EIP)</p>
+          <img src="10.png">
+          <p>Next we are go</p>
+          <h4>AWS Shield Standard</h4>
+          <p>Free service that detects against DDoS attacks, always ON</p>
+          <h4>Direct Connect</h4>
+          <p>Low-latency connection to an AWS region. Bypasses the internet, Two types: Dedicated, Hosted</p>
+          <p>Dedicated: Physical connection that terminates at a Direct Connection location, fast, 1 or 10 Gbps</p>
+          <p>Hosted: Last-mile connection provided by a Direct Connect partner(Local ISP). 50 Mbps to 10 Gbps</p>
+          <h4>VPN Connection</h4>
+          <p>Encrypted IPsec connection over the internet, Unpredicatable latency, Can be implemented in two ways: Virtual private gateway, Transit gateway.</p>
+          <p>Virtual private gateway: Enables you to establish a VPN tunnel with only one VPC. Doesn't scale well when you have multiple VPCs, then you need to create multiple Virtual private gateway for each VPC you want to connect.</p>
+          <p>Transit Gateway: Connects VPCs and on-premises networks, 1. Terminates multiple VPN connections, 2. Supports Direct Connect. Connects multiple VPCs together.</p>
+          <p>Transit Gateway Route Tables: Control how traffic is routed between subnets. Cna block traffic.</p>
+          <p>To create a Transit Gateway</p>
+          <pre>aws ec2 create-transit-gateway</pre>
+          <img src="11.png">
+          <p>To create a VPC</p>
+          <pre>aws ec2 create-vpc --cidr-block 127.27.0.0/16</pre>
+          <img src="12.png">
+          <p>To create a Subnet in the VPC</p>
+          <pre>aws ec2 create-subnet --vpc-id Your_VPC_Id --cidr-block 172.27.1.0/24 --availability-zone ap-southeast-2a</pre>
+          <img src="13.png">
+          <p>To attach Transit Gateway to the subnet of the VPC</p>
+          <pre>aws ec2 create-transit-gateway-vpc-attachment --transit-gateway-id Your_TGW_Id --vpc-id Your_VPC_Id --subnet-ids Your_Subnet_Ids</pre>
+          <img src="14.png">
+          <h4>Automated Deployments with CloudFormation</h4>>
         </div>
       </article>
     </div>
