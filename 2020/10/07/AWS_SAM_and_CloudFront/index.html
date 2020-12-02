@@ -106,6 +106,58 @@
           <p>The signed URL created will append three arguments at the end of the original URL: Expires, Signature and Key-Pair-Id</p>
           <img src="7.png">
           <p>Note the signature contains information about the original URL so you cannot reuse it with different URLs. We have to generate new signed URLs when direct user to other pages.(this will also refresh the session time, which is we want.)</p>
+          <h4>Create Signed Cookies</h4>
+          <p>NodeJs: Signed Cookies can be created using below code. I used <a href="https://github.com/h-arora/aws-cloudfront-cookie-signer/blob/master/cookieSign.js" target="_blank">this</a> post as a reference.</p>
+          <pre>
+            "use strict"
+            const AWS = require("aws-sdk")
+
+            exports.handler = async (event, context, callback) => {
+              var cfsign = require('aws-cloudfront-sign');
+              
+              // 5 seconds
+              var expireTime = Math.floor((+new Date() + 1000 * 300) / 1000);
+              
+              var signingParams = {
+                keypairId: process.env.PUBLIC_KEY,
+                privateKeyString: process.env.PRIVATE_KEY,
+                // Optional - this can be used as an alternative to privateKeyString
+                //privateKeyPath: '/path/to/private/key',
+                expireTime: expireTime
+              }
+
+              const body = JSON.parse(event.body);
+              
+              // Method 2: Generating singed Cookies
+              let policy = {
+                  'Statement': [{
+                    'Resource': body.url + '*',
+                    'Condition': {
+                      'DateLessThan': {'AWS:EpochTime': expireTime}
+                    }
+                  }]
+              };
+              let policyString = JSON.stringify(policy);
+              const signer = new AWS.CloudFront.Signer(signingParams.keypairId, signingParams.privateKeyString);
+            
+              const options = {
+                url: body.url,
+                policy: policyString
+              };
+            
+              const signedCookie = signer.getSignedCookie(options);
+
+              var response = {
+                  statusCode: 200,
+                  headers: {
+                      "Access-Control-Allow-Origin" : "*"
+                  },
+                  body: JSON.stringify(signedCookie)
+              }
+              
+              callback(null, response);
+            };
+          </pre>
           <p>By default, CloudFront caches a response from Amazon S3 for 24 hours, so if you just updated contents in S3 bucket, CloudFront may still serve you the outdated content. Use the below code in cmd to force CloudFront to update its files from S3.</p>
           <pre>aws cloudfront create-invalidation --distribution-id 'YOUR DISTRIBUTION ID' --paths "/*"</pre>
           <h4>References</h4>
@@ -118,6 +170,8 @@
             <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-creating-signed-url-canned-policy.html" target="_blank">Creating a Signed URL Using a Canned Policy</a></li>
             <li><a href="https://aws.amazon.com/blogs/developer/creating-amazon-cloudfront-signed-urls-in-node-js/" target="_blank">Code Example: Creating Amazon CloudFront Signed URLs in Node.js</a></li>
             <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CreateSignatureInCSharp.html" target="_blank">Code Example: Create a URL Signature Using C# and the .NET Framework</a></li>
+            <li><a href="https://github.com/h-arora/aws-cloudfront-cookie-signer/blob/master/cookieSign.js" target="_blank">Code Example: Create Signed Cookies using NodeJs</a></li>
+            <li><a href="https://medium.com/@himanshuarora/protect-private-content-using-cloudfront-signed-cookies-fd9674faec3" target="_blank">Test Signed Cookies using Postman</a></li>
             <li><a href="https://www.epochconverter.com/" target="_blank">Epoch & Unix Timestamp Conversion Tools</a></li>
             <li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-serving-outdated-content-s3/" target="_blank">Why is CloudFront serving outdated content from Amazon S3?</a></li>
             <li><a href="https://stackoverflow.com/questions/8637419/rsa-public-private-keys-in-yaml" target="_blank">RSA public/private keys in YAML</a></li>
