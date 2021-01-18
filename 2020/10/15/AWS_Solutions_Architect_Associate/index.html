@@ -40,15 +40,21 @@
             <li>Security</li>
             <li>Cost-Optimization</li>
           </ol>
-          <h4>Availability</h4>
+          <h3>Chapter One: Resilience</h3>
+          <h4>Section One: Availability</h4>
           <p>Resiliency: The ability of an application to avoid and recover from failure.</p>
           <p>Availability: The percentage of time that an application is performing as expected.</p>
+          <p>Poor performance implies low availablility. Uptime isn't the same as availability.</p>
+          <p>The service level agreement(SLA) for each service includes its annual availability.</p>
           <p>The availability of a single EC2 instance is 90%</p>
           <p>The availability of an ELB(Elastic Load Balancer) and EFS(Elastic File System) is 99.99%</p>
           <p>The availability of a RDS(Relational DataBase System) multi-AZ(multi-Availability Zone) is 99.95%</p>
           <p>The availability of a Lambda is 99.95%</p>
           <p>The availability of a S3 is 99.9%</p>
-          <p>The availability of a DynamoDB with Global Tables is 99.999%</p>
+          <p>The availability of a DynamoDB with Global Tables (replicates our database across multiple regions) is 99.999%</p>
+          <p>Traditional web application: can be convert to AWS web application without having to change the code. For example, a traditional video processing application can use Elastic File System(EFS) to store video data. But it cannot use S3 to store video data. Because that requires changes of code.</p>
+          <p>EFS provides a network file system (NFS) volume, NFS is an established standard that most Linux distributions support.</p>
+          <p>For DB: we can use (Relational Database Service)RDS. It offers managed database engines (MySQL, MariaDB, PostgreSQL, Microsoft SQL server, Oracle..). AWS manages database infrastructure and backups.</p>
           <h4>Loose Coupling</h4>
           <p>One component doesn't depend on a specific component (e.g. URL points to ELB, not a specific EC2), one-to-many relationship</p>
           <p>is EFS a single point of failure?</p>
@@ -60,18 +66,28 @@
           <p>But because processing videos take much more time than sending requests. We need a Message Queue Service to save all the requests in order. Simple Queue Service(SQS) is one option with high availability.</p>
           <h4>Elastic Container Service</h4>
           <p>Container helps you to deploy web serices easier. Build an image of your container, deploy the image to an instance, and launch the containser in the image. E.g. Docker</p>
-          <p>You can have multiple containers in one instance, so it is like you are running multiple web services for the price of one instance. Also, if one container is down, the other containers on that instance will still be running.</p>
+          <p>You can have multiple containers in one instance, so it is like you are running multiple web services for the price of one instance. Also, if one container is down, the other containers on that instance will still be running. (Processes running inside the container are isolated from the host.)</p>
+          <h4>Cloud Native Applications</h4>
+          <p>Depend on a cloud service that can't be deployed on-premises</p>
+          <p>Examples: SQS, S3, DynamoDB</p>
+          <p>Lambda, S3 and DynamoDB are three main serverless components.</p>
+          <p>Rather than running the video processing function on a service on a EC2 instance, we could write a Lambda function to do that. Lambda is a serverless service (they are running on a server of course, but the server is managed by AWS and we don't need to worry about it, so we call it serverless.)</p>
+          <p>Advantages of using Cloud Native Architecture: Scalability, Performance, Convenience</p>
+          <p>Disadvantages: Could vendor lock-in (have to use AWS services), Slightly lower availability (Cloud services are hard dependencies).</p>
+          <p>However, because of the scalability of Cloud Applications, if we deploy the application to two different regions, we could improve the availability. (introduce more redundence)</p>
           <h4>Trusted Advisor</h4>
           <p>Where you can found the number of limits for all services on AWS.</p>
           <h4>Section One Summary</h4>
           <p>Availability is not cheap, we need to found the balance between availability and cost. We can achieve high availability use Redundancy and Loose Coupling</p>
           <p>The Simple Queue Service can act as a go-between for loosely coupled services. 1. Sending service places message in a queue. 2. Receiving service polls the queue for new messages. E.g. Online voting service</p>
           <p>The Elastic Container Service deploys microservices using Docker containers, can improve availability by running multiple containers on a single instance.</p>
+          <h4>Section Two: Setting up AWS Environment</h4>
           <h4>AWS Budget</h4>
           <p>In the Billing section, you can create an AWS Budget and setup an email alert, AWS will send you an email when the budget amount has been reached. There are more options.</p>
           <h4>AWS IAM</h4>
           <p>AWS has two account types, Root User account and IAM account. We can setup a password policy for AWS accounts.</p>
           <p>AWS provides MFA for Root User account in case someone else knows your AWS account credentials.</p>
+          <p>Delete root user access keys: if someone knows your root user access key, he can use CLI to do anything. MFA will not be required to use CLI if he knows root user access key. So it is recommanded to create an IAM user and create access key for IAM users.</p>
           <p>You can create IAM accounts and Groups and assign Policies to Users or Groups, IAM users will use Root account ID or Alias and their account details to login.</p>
           <p>CloudTrail: where AWS logs all events such as: user login, user create new resources, user attach policy to its account etc...</p>
           <p>Configure AWS account using AWS CLI. This command can also be used to change default AWS credentials in .aws folder.</p>
@@ -82,7 +98,18 @@
           <p>ACM(Amazon Certificate Manager): we ask ACM to issue us a TLS certificate</p>
           <p>Route 53: when you purchase a domain, you need to config the DNS records, you can do this in the service where you purchased the domain (e.g. GoDaddy) or in Route 53.</p>
           <p>Note: Once your TLS certificate has been issued, you still can't visit your website via https, you have to link your TLS certificate to other AWS services like CloudFront or ELB</p>
-          <h4>VPC networks</h4>
+          <h4>Section Two Summary</h4>
+          <ol>
+          	<li>Set up budget alert</li>
+          	<li>Create IAM policy</li>
+          	<li>Set up MFA for the root user</li>
+          	<li>Create IAM user</li>
+          	<li>View CloudTrail event history</li>
+          	<li>Configure AWS CLI</li>
+          	<li>Create a TLS certificate using ACM</li>
+          </ol>
+          <p></p>
+          <h4>Section Three: VPC networks</h4>
           <p>AWS managers underlying VPC infrastructrue and is responsible for reliability of VPC network components. You don't need to worry about VPC failures. There are many redundencies built in.</p>
           <p>VPC contains one or more subnets. A subnet exists in an availability zone. An instance exists in a subnet.</p>
           <p>Because one instance only exists in one subnet which exists in one availability zone, it lacks of redundency and availability is not high. If the zone fails, the instance will fail.</p>
@@ -96,6 +123,8 @@
           <pre>aws ec2 describe-addresses</pre>
           <p>To allocate new EIP</p>
           <pre>aws ec2 allocate-address</pre>
+          <p>To release the EIP</p>
+          <pre>aws ec2 release-address --allocation-id (your_allocation_id)</pre>
           <h4>Global Accelerator</h4>
           <p>Provides two anycast IPv4 addresses. While ELP is bound to a AWS region, Global Accelerator IPs doesn't, Users connects to a global accelerator static IP will be routed to a nearest POP(points-of-presence), which then will provide you with resources in any region.</p>
           <h4>VPC Architecture</h4>
@@ -115,9 +144,14 @@
           <pre>aws ec2 describe-subnets --filters Name=cidr-block,Values="10.0.11.0/24"</pre>
           <p>Launch an EC2 instance into a public subnet:</p>
           <p>Note: subnetId is the ID of your public subnet, which you can get by using the describe-subnets command above. ImageID is the ID of the EC2 instance, it specify some options about the instance you want to launch. key-name is the name of the SSH key pair you created, which you can use later to login to the instance.</p>
+          <p>You can create or manage your SSH key pair under your EC2 panel, NETWORK & SECURITY tab.</p>
           <pre>aws ec2 run-instances --subnet-id subnet-0aa8c9baa867b88f0 --image-id ami-0e6449745600ac1da --instance-type t3.micro --key-name hellcyAWSkey</pre>
           <img src="7.png">
+          <p>Note: You could optionally associate a public IP address to the instance you are about to launch. By using the command</p>
+          <pre>--associate-public-ip-address</pre>
+          <p>It will make EC2 to associate a temporary public IP address to this instance, and will close the ip address when the instance is stopped. I will not do that because I want to keep the IP and so I will associate an EIP to this instance.</p>
           <p>To allocate a new EIP</p>
+          <p>Note before we have associated the EIP to the NAT gateway. Now we are going to associate the new EIP to the EC2 instacne</p>
           <pre>aws ec2 allocate-address</pre>
           <p>To associate the new EIP to the new EC2 instance</p>
           <pre>aws ec2 associate-address --instance-id Your_Instance_Id --allocation-id Your_EIP_Allocation_Id</pre>
@@ -127,11 +161,12 @@
           <p>To release the EIP so AWS will not charge us</p>
           <pre>aws ec2 release-address --allocation-id Your_EIP_Allocation_Id</pre>
           <img src="9.png">
+          <p>Launch an EC2 instance into private subnet</p>
+          <pre>aws ec2 run-instances --subnet-id [private_subnet_id] --image-id ami-0e6449745600ac1da --instance-type t3.micro --key-name hellcyAWSkey</pre>
           <p>To delete NAT gateway</p>
           <pre>aws ec2 delete-nat-gateway --nat-gateway-id Your_NAT_Gateway_Id</pre>
           <p>Don't forget to release the EIP associated with the NAT gateway.(They will charge for un-associated EIP)</p>
           <img src="10.png">
-          <p>Next we are go</p>
           <h4>AWS Shield Standard</h4>
           <p>Free service that detects against DDoS attacks, always ON</p>
           <h4>Direct Connect</h4>
@@ -142,7 +177,7 @@
           <p>Encrypted IPsec connection over the internet, Unpredicatable latency, Can be implemented in two ways: Virtual private gateway, Transit gateway.</p>
           <p>Virtual private gateway: Enables you to establish a VPN tunnel with only one VPC. Doesn't scale well when you have multiple VPCs, then you need to create multiple Virtual private gateway for each VPC you want to connect.</p>
           <p>Transit Gateway: Connects VPCs and on-premises networks, 1. Terminates multiple VPN connections, 2. Supports Direct Connect. Connects multiple VPCs together.</p>
-          <p>Transit Gateway Route Tables: Control how traffic is routed between subnets. Cna block traffic.</p>
+          <p>Transit Gateway Route Tables: Control how traffic is routed between subnets. Can block traffic.</p>
           <p>To create a Transit Gateway</p>
           <pre>aws ec2 create-transit-gateway</pre>
           <img src="11.png">
@@ -155,7 +190,87 @@
           <p>To attach Transit Gateway to the subnet of the VPC</p>
           <pre>aws ec2 create-transit-gateway-vpc-attachment --transit-gateway-id Your_TGW_Id --vpc-id Your_VPC_Id --subnet-ids Your_Subnet_Ids</pre>
           <img src="14.png">
-          <h4>Automated Deployments with CloudFormation</h4>
+          <h4>Section Three Summary</h4>
+          <ol>
+          	<li>Allocating and assigning EIP addresses</li>
+          	<li>Creating VPCs</li>
+          	<li>Creating public and private subnets</li>
+          	<li>Launching instances into subnets</li>
+          	<li>Transit gateways</li>
+          </ol>
+          <h4>Section Four: Automated Deployments with CloudFormation</h4>
+          <img src="15.png">
+          <p>Overview of the architecture: The architecture has two tiers, the web tier and the application tier. The client connects to the internet facing application load balancer, it proxies the connection to one of the instances in the web tier, and all of the instances in the web tier are running a web server. The web tier instance then opens a back-end connection to the internal load balancer, which then proxies the connection to one of the instances in the application tier. The idea is that the web tier instance grabs some information from an instance in the app tier, and it displays that information to a webpage, which presents to the client.</p>
+          <p>The instances in the web tier and the app tier are going to be part of two different Auto Scaling groups. Auto Scaling is going to launch these isntances and make sure we always have a minimum number of healthy instances. If an instance fail, Auto Scaling will terminate it and launch a new one.</p>
+          <h4>CloudFormation</h4>
+          <p>JSON or YAML document that describes AWS resources. Infrastructrue as code. Used to create a stack.</p>
+          <p>Stack: Created by a template, is a COLLECTION OF RESOURCES that you create, update, and delete as a single unit. You can manually manage individual resources in a stack.</p>
+          <p>Multiple templates: Different teams manage different resources. Resources have different lifecycles. Distributing resources across different stacks makes them easier to manage.</p>
+          <p>Template for this course can be downloaded from <a href="https://github.com/benpiper/architecting-reliability-aws/" target="_blank">here</a>. Name: app-stack.json and network-stack.json.</p>
+          <p>app-stack.json depends on network-stack.json, so it calls network-stack.json to create the nested stack first, then it will create the parent stack by using some of the outputs from network-stack.json.</p>
+          <p>Stack output: key-value pairs that CloudFormation makes available to other stacks and via the aws cloudformation describe-stacks CLI command.</p>
+          <h4>Application Load Balancers</h4>
+          <ol>
+          	<li>Supports HTTP and HTTPS traffic</li>
+          	<li>You can use any TCP port, default is 80 and 443</li>
+          	<li>ALB listener receives connection from a client and proxies it to an instance in the target group</li>
+          	<li>Uses round-robin load balancing by default</li>
+          	<li>Can monitor health of instances</li>
+          </ol>
+          <p>ALB Schemes</p>
+          <p>internet-facing: reachable from the internet, public IP address, Public DNS name</p>
+          <p>internel: Not reachable from the internet, private IP address, Private DNS name</p>
+          <p>Health Checks</p>
+          <p>Each instance must pass its health check before receiving traffic. ALB will send HTTP GET request and looks for a success code every 10 seconds.</p>
+          <h4>Auto Scaling Groups</h4>
+          <ol>
+          	<li>Launch a certain number of instances into the Auto Scaling group</li>
+          	<li>Add the instacnes to the ALB target group</li>
+          	<li>Terminate and recreate unhealthy instances</li>
+          	<li>Scale in or out based on average group CPU utilization</li>
+          </ol>
+          <p>Follow the steps to deploy stack to AWS Cloudformation</p>
+          <p>First validate the templates, you will see the output parameters if template format is correct.</p>
+          <pre>aws cloudformation validate-template --template-body file://app-stack.json</pre>
+          <pre>aws cloudformation validate-template --template-body file://network-stack.json</pre>
+          <p>deploy the stack to AWS cloudformation</p>
+          <pre>aws cloudformation deploy --template-file "app-stack.json" --stack-name "app-stack"</pre>
+          <ol>
+          	<li>Change the TLS certificate ARN</li>
+          	<li>Change the S3 URL to yours</li>
+          	<li>Change the SSH key pairs for logging into EC2 instance</li>
+          	<li>Change the EC2 instance image ID</li>
+          </ol>
+          <p>Note: the template will only work for us-east-1 region, tried using ap-southeast-2 but failed when waiting for the cfn-signal. Probably because the application doesn't exist in ap-southeast-2 docker market.</p>
+          <img src="17.png">
+          <pre>aws cloudformation describe-stacks --stack-name "app-stack"</pre>
+          <p>Using the command above we can find the URL of the Internet-facing application load balancer. We securely(HTTPS) connect to this load balancer. And it redirect us to one of the instance in web tier.</p>
+          <img src="16.png">
+          <p>Note we do added a TLS certificate in the template. But the TLS certficate is for my website theyuancheng.com, and the domain of the EC2 instance does not match. So we are connecting using HTTP protocol.</p>
+          <img src="19.png">
+          <img src="18.png">
+          <p>Also pay attention to the EC2 hostname, Web tier server information, ip-10-0-1-42 belongs to Public Subnet A, and one of the instance is running inside this subnet. App server information, ip-10-0-102-180 belongs to Private Subnet B, one of the instance is running inside this subnet too.</p>
+          <img src="20.png">
+          <img src="21.png">
+          <p>If you refresh the URL a couple of times, you can see that the hostname ip we are connecting to changes, which means the load balancer redirect us to a different instance.</p>
+          <img src="22.png">
+          <p>Now, let us try to terminate both of the web tier instances and see if Auto Scaling will recreate the instances for us.</p>
+          <pre>aws autoscaling describe-auto-scaling-instances</pre>
+          <p>This command will list all the instances, we can find the instance ids in the list.</p>
+          <img src="23.png">
+          <pre>aws ec2 termin ate-instances --instance-ids </pre>
+          <p>We can see Auto Scaling automatically recreate another two instances, the intance ids are different.</p>
+          <p>Use this command to delete the stack.</p>
+          <pre>aws cloudformation delete-stack --stack-name "app-stack"</pre>
+          <p>After deleting the stack, use this command to check if the stack has been deleted.</p>
+          <pre>aws cloudformation describe-stacks</pre>
+          <h4>Section Four Summary</h4>
+          <ol>
+          	<li>Use Stack template to deploy Auto Scaling multi-tier web application with load balancer.</li>
+          	<li>Stack will automatically rollback everything if deploy failed.</li>
+          	<li>Elastic load balancing and Auto Scaling work together. ELB provides health checks, Auto Scaling adds instances to the ELB target group.</li>
+          </ol>
+          <p></p>
         </div>
       </article>
     </div>
