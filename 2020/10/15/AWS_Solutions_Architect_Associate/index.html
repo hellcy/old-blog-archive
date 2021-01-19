@@ -270,7 +270,75 @@
           	<li>Stack will automatically rollback everything if deploy failed.</li>
           	<li>Elastic load balancing and Auto Scaling work together. ELB provides health checks, Auto Scaling adds instances to the ELB target group.</li>
           </ol>
-          <p></p>
+          <h4>Section Five: Multi-region Applications with Route 53</h4>
+          <ol>
+          	<li>Deploying a multi-region application</li>
+          	<li>Active-active redundancy using weighted resource records</li>
+          	<li>Active-passive redundancy using failover resource records</li>
+          	<li>Route 53 health checks</li>
+          </ol>
+          <p>We are going to deploy two cloudFormation stacks into the same region to simulate the multi-region application deployment.</p>
+          <p>But because we have two URLs for the two Internet facing ALB, we need Route 53 to send traffic to these two ALBs. This is called an active-active scanario, because they are both active. We are going to create two weighted resource record sets with equal weight, so Route 53 will distribute traffic evenly.</p>
+          <img src="26.png">
+          <img src="27.png">
+          <p>See the image above to create a new record.</p>
+          <img src="28.png">
+          <p>Create another record and route traffic to the two load balancers evenly.</p>
+          <p>Checklist for creating records</p>
+          <ol>
+          	<li>Routing Policy: Weighted</li>
+          	<li>Record name: www</li>
+          	<li>Turn on Alias</li>
+          	<li>Record Type: A</li>
+          	<li>Route traffic to: Classic load balancer, region (us-east-1), webtier-app-stack-1</li>
+          	<li>Weight: 50</li>
+          	<li>Record ID: app-stack-1</li>
+          </ol>
+          <img src="29.png">
+          <p>The connection to the instance is now secure. (Notice the lock icon at top left corner, in front of the URL)</p>
+          <p>How to check if Route53 distribute the traffic evenly to two load balancers? Go to <a href="dnschecker.org" target="_blank">DNS checker</a> and type in www.theyuancheng.com. And you will see that half of the traffic ending in one IP.</p>
+          <img src="30.png">
+          <h4>Active-passive Redundancy using Failover Resource Records</h4>
+          <ul>
+          	<li>Primary region services all requests</li>
+          	<li>Secondary region does not service any requests unless the primary fails</li>
+          	<li>Also called active-standby architecture</li>
+          </ul>
+          <p>Two ways to run this architecture</p>
+          <p>Pilot Light: Secondary region runs minimal amount of resources to keep costs down. (in our case, maybe only one instance in the web tier and one instance in the app tier (normally should be 2 and 2)). When we need the secondary region, Auto Scaling can increase the instance number when needed.</p>
+          <p>Warm Standby: Secondary region has roughly the same capacity as the primary region. Quicker to start, doesn't need Auto Scanling.</p>
+          <img src="31.png">
+          <p>Similar to what we did before, this time we create two records, one pointing to app-stack-1 and the other is pointing to app-stack-2. As long as app-stack-1 is healthy, Route 53 will not send any traffic to app-stack-2.</p>
+          <img src="32.png">
+          <p>For the Routing policy we choose Failover and Failover Record Type is Primary for the first record.(Secondary for the second record).</p>
+          <img src="33.png">
+          <p>Now both records are created. We can go the <a href="dnschecker.org" target="_blank">DNS checker</a> and check the differences.</p>
+          <img src="34.png">
+          <p>Now they all resolve to the same set of IP addresses.</p>
+          <p>Now let us try to shut down app-stack-1.</p>
+          <pre>aws cloudformation delete-stack --stack-name "app-stack-1"</pre>
+          <img src="35.png">
+          <img src="36.png">
+          <p>Now the DNS checker returns a different set of ip addresses over time. (from 236, 12 to 252, 207)</p>
+          <h4>Route 53 Health Checks</h4>
+          <p>We are going to use the two instances in app-stack-2, use below command to get the IPs</p>
+          <pre>aws ec2 describe-instances --query "Reservations[*].Instances[*].PublicIpAddress" --output=text</pre>
+          <p>Create Route 53 health checks. Type in the IPs of the instances.</p>
+          <img src="37.png">
+          <p>Once both health checks have been created, we can try to shut down one of them.</p>
+          <img src="38.png">
+          <p>Create another record with instance IP and health check.</p>
+          <img src="39.png">
+          <img src="40.png">
+          <p>Route 53 will distribute traffic evenly to both instances, if one of the instances fail, the Route 53 health check will detect that and Route 53 will stop sending traffic to it. If you don't need <b>ELB</b>, DNS based load balancing is a cost-effective option.</p>
+          <h4>Course Summary</h4>
+          <ol>
+          	<li>Architecture for availability</li>
+          	<li>Setting up AWS environment</li>
+          	<li>VPC(Subnets, NAT Gateways, Direct Connect, VPN, Transit Gateways)</li>
+          	<li>CloudFormation, Elastic Load Balancing, Auto Scaling</li>
+          	<li>Multi-region Applications(Route 53, Active-active weighted records, Active-passive failover records)</li>
+          </ol>
         </div>
       </article>
     </div>
