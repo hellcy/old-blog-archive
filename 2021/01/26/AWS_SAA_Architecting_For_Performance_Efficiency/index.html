@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="X-UA-Compatible" content="IE=edge">
+  <title>AWS SAA - Architecting for Performance Efficiency</title>
+  <meta name="description" content="System Design - hellcy">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="short icon" href="/sitelogo.jpg">
+  <link rel="stylesheet" href="/css/apollo.css">
+</head>
+<body>
+  <header>
+    <a href="/" class="logo-link"><img src="/sitelogo.jpg"></a>
+    <ul class="nav nav-list">
+      <li class="nav-list-item">
+        <a href="/" target="_self" class="nav-list-link">Blog</a>
+      </li>
+      <li class="nav-list-item">
+        <a href="https://github.com/hellcy" target="_blank" class="nav-list-link">Github</a>
+      </li>
+    </ul>
+  </header>
+  <section class="container">
+    <div class="post">
+      <article class="post-block">
+        <h1 class="post-title">AWS SAA - Architecting for Performance Efficiency</h1>
+        <div class="post-time">Jan 26, 2021</div>
+        <div class="post-content">
+          <ol id="title">
+            <li><a href="#Part1">Part One: Understanding the Design Principles</a></li>
+            <li><a href="#Part2">Part Two: Considering Compute Performance Options</a></li>
+            <li><a href="#Part3">Part Three: Reviewing Storage Performance Options</a></li>
+            <li><a href="#Part4">Part Five: Examing Database Performance Options</a></li>
+            <li><a href="#Part5">Part Six: Evaluating Network Performance Options</a></li>
+            <li><a href="#Part6">Part Seven: Preparing to Improve Your Architecture</a></li>
+            <li><a href="#Part7">Part Eight: Monitoring Your Architecture</a></li>
+            <li><a href="#Part8">Part Nine: Understanding the Trade-offs</a></li>
+          </ol>
+          <h2 id="Part1">
+            <a href="#title" class="headerlink" title="Part 1">Part One: Understanding the Design Principles</a>
+          </h2>
+          <p>There are three main differences compare traditional on premises application and cloud application. 1. Cost. 2. Security and 3. Performance. We are going to focus on number three. Performance.</p>
+          <p>Cloud services are changing fast.</p>
+          <p>Go global: AWS have many regions, deploy application to the region that close to the user to reduce the latancy.</p>
+          <p>Go global: local region will comply to the laws and regulations</p>
+          <ol>
+            <li>Go global</li>
+            <li>Think serverless</li>
+            <li>Use new technologies</li>
+            <li>Experiment often</li>
+            <li>Right tool for the task</li>
+          </ol>
+          <h2 id="Part2">
+            <a href="#title" class="headerlink" title="Part 2">Part Two: Considering Compute Performance Options</a>
+          </h2>
+          <p>What does compute performance includes?</p>
+          <p>Processing -> CPU</p>
+          <p>Capacity -> Storage</p>
+          <p>Scaling</p>
+          <p>Responsive</p>
+          <p>Economical</p>
+          <p>Understand your workload</p>
+          <p>Undetstand AWS compute</p>
+          <p>Need to gather and analyze data, and testing</p>
+          <h3>AWS compute options</h3>
+          <h4>EC2 Elastic Cloud Compute</h4>
+          <p>The default option, virtualized servers. IssA (infrustructure as a service)</p>
+          <p>Choose resources. You own the OS.(You are responsible for patching the OS and config all aspects of it.)</p>
+          <p>EC2 General resources</p>
+          <ol>
+            <li>vCPUs</li>
+            <li>Memory</li>
+            <li>Storage</li>
+            <li>Network</li>
+          </ol>
+          <p>EC2 extra features</p>
+          <ol>
+            <li>Burstable: if your EC2 is not using its full compute power, you gain credits which you can use in the future when you need it to burst the compute power of your instance for a short period of time.</li>
+            <li>GPU</li>
+            <li>FPGA (Filled Programmable Gate Arrays): Allows you to create customized hardware accelerators</li>
+          </ol>
+          <p>Instance Types</p>
+          <ol>
+            <li>General Purpose: Standard, balanced</li>
+            <li>Compute optimized: high compute power</li>
+            <li>Memory optimized: for memory intensive workloads</li>
+            <li>Accelerated computing: GPU or FPGA</li>
+            <li>Storage optimized: high storage</li>
+            <li>Bare metal</li>
+          </ol>
+          <p>EC2 Auto Scaling</p>
+          <ol>
+            <li>Metrics based: scale up or down based on the metric you choose</li>
+            <li>Schedule based: scale up or down for a booked time</li>
+            <li>Health based: replace unhealthy instances</li>
+          </ol>
+          <h4>ECS Elastic Container Service</h4>
+          <p>Similar workloads as EC2</p>
+          <p>Migrate apps to the cloud, long running apps, batch processing, Microservices</p>
+          <p>Better utilize resources. Can run multiple containers on a single instance. ELB, balance traffic to each container, Autoscaling.</p>
+          <p>AWS Fargate: manages the instances on which your containers run. you don't need to manage the server instances.</p>
+          <h4>AWS Lambda</h4>
+          <p>FaaS (Function as a service). Serverless computing.</p>
+          <p>Backend processing, Event processing, Stream processing, Data processing</p>
+          <p>AWS resource triggers: other resources can trigger Lambda functions</p>
+          <p>You can choose memory needed for a lambda function</p>
+          <p>Advantages: Simply execute code. We don't need to worry about the servers that run our Lambda codes.</p>
+          <p>Automatic scaling for Lambda function.</p>
+          <p>Fault tolerant: if a function fails, AWS will trigger the function again</p>
+          <p>Pay for usage</p>
+          <h4>Applying our knowledge</h4>
+          <p>1. A company called Globomantics wants to move their application to cloud. They have customers globally.</p>
+          <p>The first application they want to move to cloud is an app that collections data from clinical trails. Doctors enter information each time they do checkings.</p>
+          <p>Considerations for Choice</p>
+          <ol>
+            <li>First app of many</li>
+            <li>Time should be fast</li>
+            <li>Predicatable usage</li>
+          </ol>
+          <p>They want to use ECS. Lift and shift: Easy to containerize the app. Able to scale. Able to choose instance sizes.</p>
+          <p>Allows them to leverage for future applications. Different containers in a single instance. Save costs</p>
+          <p>2. They also want to build a new web application for the cloud. Allow people to register medical devices. Share medical devices globally.</p>
+          <p>Considerations for Choice</p>
+          <ol>
+            <li>Manage costs</li>
+            <li>Global reach</li>
+            <li>Minimal maintenance</li>
+          </ol>
+          <p>They want to go with Lambda. Services behind a static site to save costs. Only pay for runtime.</p>
+          <p>Lambda scales besed on demand. Can be deployed to multiple regions. No servers to maintain.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <footer>
+    <div class="paginator">
+      <a href="/2020/10/15/AWS_Solutions_Architect_Associate" class="next">下一篇</a>
+    </div>
+  </footer>
+    <div id="disqus_thread"></div>
+    <script>
+  var disqus_shortname = 'hellcy';
+  
+  var disqus_url = 'https://hellcy.github.io/2020/01/26/AWS_SAA_Architecting_For_Performance_Efficiency';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script id="dsq-count-scr" src="//https-hellcy-github-io.disqus.com/count.js" async></script>
+    <script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>
