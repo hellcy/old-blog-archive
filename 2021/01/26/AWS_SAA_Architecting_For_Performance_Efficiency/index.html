@@ -129,150 +129,150 @@
           </ol>
           <p>They want to go with Lambda. Services behind a static site to save costs. Only pay for runtime.</p>
           <p>Lambda scales besed on demand. Can be deployed to multiple regions. No servers to maintain.</p>
+          <h2 id="Part3">
+            <a href="#title" class="headerlink" title="Part 3">Part Three: Reviewing Storage Performance Options</a>
+          </h2>
+          <h3>S3</h3>
+          <p>data is encrypted. Access Managemenet(IAM), Lifecycle management. Query in place.(Don't need to move the data to query it using SQL like command)</p>
+          <ol>
+            <li>Shared Access</li>
+            <li>Low latency</li>
+            <li>High thoughput: move data in or out S3 quickly</li>
+            <li>High Availability: available for multiple availability zones</li>
+            <li>High durability: data is duplicated across multiple availability zones</li>
+          </ol>
+          <ol>
+            <li>Standard</li>
+            <li>Intelligent Tier</li>
+            <li>Standard Infrequent Access(IA)(high latency)</li>
+            <li>One-Zone Infrequent Access(low availability, low durability)</li>
+          </ol>
+          <h3>Glacier</h3>
+          <p>Immutable, data do not change once they are in Glacier.</p>
+          <p>Durable</p>
+          <p>Query stored data without retrieval.</p>
+          <ol>
+            <li>Archival storage</li>
+            <li>Encrypted</li>
+            <li>Access Control</li>
+            <li>Audit logging</li>
+          </ol>
+          <p>Latency options.</p>
+          <ol>
+            <li>Expedited. latency in minutes.</li>
+            <li>Standard. Default, number of hours to get data back.</li>
+            <li>Bulk. cheaper and takes longer.</li>
+          </ol>
+          <p>Economical, put data in Glacier is cheap and high durable.</p>
+          <p>Deep Archive. The cheapest and longest. normally 6-12 hours. Do not access data frequently, 2-3 times a year.</p>
+          <h3>EBS (Elastic Block Storage)</h3>
+          <p>Attached to EC2 instances.</p>
+          <p>Multi-Attach, storage volumn can be attached to up to 16 instances. Instances must be in same availability zone.</p>
+          <p>Data is Replicated to multiple availbility zones. high availability and durability</p>
+          <p>Access control.</p>
+          <ol>
+            <li>Provisioned IOPS SSD</li>
+            <li>Standard Purpose IOPS SSD</li>
+            <li>Cold HDD</li>
+            <li>Thoughput optimized HDD</li>
+          </ol>
+          <p>Snapshots: a snapshots of a storage in that time and can be shared to other zones.</p>
+          <p>Elastic volumes. pay for what actually stored.</p>
+          <h3>EFS</h3>
+          <p></p>
+          <ol>
+            <li>General Purpose</li>
+            <li>MAX I/O</li>
+          </ol>
+          <p>Same example as before. Migrating to AWS storage. It is one of the web applications. It requires global access. Data will be collected from clinical trials. And some data will be entered on daliy basis.</p>
+          <p>They need shared access of data.</p>
+          <p>Data must be durable.</p>
+          <p>Data will be stored in a long term basis.</p>
+          <p>S3 and Glacier: high durable. Access from ECS containers. Multiple access. Long term storage.</p>
+          <p>New application. Provide medical devices to people who need it. Global user base.</p>
+          <p>Lower cost. Local access. Non-critical images(could be lost, no big problem).</p>
+          <p>S3: single region. Reduced Redundancy Storage(RRD).</p>
+          <h2 id="Part4">
+            <a href="#title" class="headerlink" title="Part 4">Part Four: Examing Database Performance Options</a>
+          </h2>
+          <h3>Install on EC2</h3>
+          <p>we could choose to install a Database on a EC2 instance. But that means we need to do all the backup, restore ourselves. We are not using the serverless managed services provided by AWS. But in some cases, we have to choose this way. Situations like: 1. Control Environment. we want to control everything. 2. Certified. Maybe the services in AWS are not certified by the customer. 3. Specific tools. Our application needs some tools that have to work with standalone database.</p>
+          <ol>
+            <li>RDS</li>
+            <li>DynamoDB</li>
+            <li>Redshift</li>
+          </ol>
+          <h3>RDS</h3>
+          <p>Default choice. Complex queries. Consistent transactions.</p>
+          <ol>
+            <li>Multi-AZ</li>
+            <li>Read replicas</li>
+            <li>Encryption</li>
+            <li>Backups and snapshots</li>
+          </ol>
+          <ol>
+            <li>Instance type</li>
+            <li>Storage type</li>
+            <li>Network setup</li>
+            <li>Backup</li>
+          </ol>
+          <h3>DynamoDB</h3>
+          <p>Flexible structure</p>
+          <ol>
+            <li>Flexible structure</li>
+            <li>Less complex queries: You are able to query on particular keys, the partition key and any secondary keys that you define. Can't join tables.</li>
+            <li>Low latency</li>
+            <li>Transactions</li>
+            <li>Global tables: store data in multiple regions</li>
+            <li>Encryption</li>
+            <li>Evolving schema: supports changes and growth in your application(add/remove columns...)</li>
+            <li>Integration with Lambda</li>
+          </ol>
+          <p>Partition key: store data on different nodes of the database</p>
+          <p>Secondary indexes</p>
+          <p>Provisioned capacity: number of reads and writes. Dynamodb will auto scale</p>
+          <p>on-demand capacity: pay for what you use. No auto scaling.</p>
+          <h3>Redshift</h3>
+          <p>Large scale analytics</p>
+          <p>Setup in minutes</p>
+          <p>Warehouse and data lake</p>
+          <ol>
+            <li>Encryption</li>
+            <li>Scale to petabytes</li>
+            <li>Query S3</li>
+            <li>Economical</li>
+          </ol>
+          <p>Node type</p>
+          <ol>
+            <li>Dense compute: fast CPUs, large RAM and SSD for fast performance</li>
+            <li>Dense storage</li>
+          </ol>
+          <p>Same example as before.</p>
+          <p>They want to have minimum effort to do the migration</p>
+          <p>They want to leverage managed services</p>
+          <p>Improve availability</p>
+          <p>They have decided to use RDS. Using SQL server. Structured data. No servers to manage. High availability</p>
+          <p>New application.</p>
+          <p>DynamoDB. Flexible data structure(NoSQL). Trigger action(Lambda integration). Flexible cost structure(On-demand pricing). Global tables.</p>
+          <h3></h3>
+          <p></p>
+          <ol>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ol>
+          <h3></h3>
+          <p></p>
+          <ol>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ol>
         </div>
-        <h2 id="Part3">
-          <a href="#title" class="headerlink" title="Part 3">Part Three: Reviewing Storage Performance Options</a>
-        </h2>
-        <h3>S3</h3>
-        <p>data is encrypted. Access Managemenet(IAM), Lifecycle management. Query in place.(Don't need to move the data to query it using SQL like command)</p>
-        <ol>
-          <li>Shared Access</li>
-          <li>Low latency</li>
-          <li>High thoughput: move data in or out S3 quickly</li>
-          <li>High Availability: available for multiple availability zones</li>
-          <li>High durability: data is duplicated across multiple availability zones</li>
-        </ol>
-        <ol>
-          <li>Standard</li>
-          <li>Intelligent Tier</li>
-          <li>Standard Infrequent Access(IA)(high latency)</li>
-          <li>One-Zone Infrequent Access(low availability, low durability)</li>
-        </ol>
-        <h3>Glacier</h3>
-        <p>Immutable, data do not change once they are in Glacier.</p>
-        <p>Durable</p>
-        <p>Query stored data without retrieval.</p>
-        <ol>
-          <li>Archival storage</li>
-          <li>Encrypted</li>
-          <li>Access Control</li>
-          <li>Audit logging</li>
-        </ol>
-        <p>Latency options.</p>
-        <ol>
-          <li>Expedited. latency in minutes.</li>
-          <li>Standard. Default, number of hours to get data back.</li>
-          <li>Bulk. cheaper and takes longer.</li>
-        </ol>
-        <p>Economical, put data in Glacier is cheap and high durable.</p>
-        <p>Deep Archive. The cheapest and longest. normally 6-12 hours. Do not access data frequently, 2-3 times a year.</p>
-        <h3>EBS (Elastic Block Storage)</h3>
-        <p>Attached to EC2 instances.</p>
-        <p>Multi-Attach, storage volumn can be attached to up to 16 instances. Instances must be in same availability zone.</p>
-        <p>Data is Replicated to multiple availbility zones. high availability and durability</p>
-        <p>Access control.</p>
-        <ol>
-          <li>Provisioned IOPS SSD</li>
-          <li>Standard Purpose IOPS SSD</li>
-          <li>Cold HDD</li>
-          <li>Thoughput optimized HDD</li>
-        </ol>
-        <p>Snapshots: a snapshots of a storage in that time and can be shared to other zones.</p>
-        <p>Elastic volumes. pay for what actually stored.</p>
-        <h3>EFS</h3>
-        <p></p>
-        <ol>
-          <li>General Purpose</li>
-          <li>MAX I/O</li>
-        </ol>
-        <p>Same example as before. Migrating to AWS storage. It is one of the web applications. It requires global access. Data will be collected from clinical trials. And some data will be entered on daliy basis.</p>
-        <p>They need shared access of data.</p>
-        <p>Data must be durable.</p>
-        <p>Data will be stored in a long term basis.</p>
-        <p>S3 and Glacier: high durable. Access from ECS containers. Multiple access. Long term storage.</p>
-        <p>New application. Provide medical devices to people who need it. Global user base.</p>
-        <p>Lower cost. Local access. Non-critical images(could be lost, no big problem).</p>
-        <p>S3: single region. Reduced Redundancy Storage(RRD).</p>
-        <h2 id="Part4">
-          <a href="#title" class="headerlink" title="Part 4">Part Four: Examing Database Performance Options</a>
-        </h2>
-        <h3>Install on EC2</h3>
-        <p>we could choose to install a Database on a EC2 instance. But that means we need to do all the backup, restore ourselves. We are not using the serverless managed services provided by AWS. But in some cases, we have to choose this way. Situations like: 1. Control Environment. we want to control everything. 2. Certified. Maybe the services in AWS are not certified by the customer. 3. Specific tools. Our application needs some tools that have to work with standalone database.</p>
-        <ol>
-          <li>RDS</li>
-          <li>DynamoDB</li>
-          <li>Redshift</li>
-        </ol>
-        <h3>RDS</h3>
-        <p>Default choice. Complex queries. Consistent transactions.</p>
-        <ol>
-          <li>Multi-AZ</li>
-          <li>Read replicas</li>
-          <li>Encryption</li>
-          <li>Backups and snapshots</li>
-        </ol>
-        <ol>
-          <li>Instance type</li>
-          <li>Storage type</li>
-          <li>Network setup</li>
-          <li>Backup</li>
-        </ol>
-        <h3>DynamoDB</h3>
-        <p>Flexible structure</p>
-        <ol>
-          <li>Flexible structure</li>
-          <li>Less complex queries: You are able to query on particular keys, the partition key and any secondary keys that you define. Can't join tables.</li>
-          <li>Low latency</li>
-          <li>Transactions</li>
-          <li>Global tables: store data in multiple regions</li>
-          <li>Encryption</li>
-          <li>Evolving schema: supports changes and growth in your application(add/remove columns...)</li>
-          <li>Integration with Lambda</li>
-        </ol>
-        <p>Partition key: store data on different nodes of the database</p>
-        <p>Secondary indexes</p>
-        <p>Provisioned capacity: number of reads and writes. Dynamodb will auto scale</p>
-        <p>on-demand capacity: pay for what you use. No auto scaling.</p>
-        <h3>Redshift</h3>
-        <p>Large scale analytics</p>
-        <p>Setup in minutes</p>
-        <p>Warehouse and data lake</p>
-        <ol>
-          <li>Encryption</li>
-          <li>Scale to petabytes</li>
-          <li>Query S3</li>
-          <li>Economical</li>
-        </ol>
-        <p>Node type</p>
-        <ol>
-          <li>Dense compute: fast CPUs, large RAM and SSD for fast performance</li>
-          <li>Dense storage</li>
-        </ol>
-        <p>Same example as before.</p>
-        <p>They want to have minimum effort to do the migration</p>
-        <p>They want to leverage managed services</p>
-        <p>Improve availability</p>
-        <p>They have decided to use RDS. Using SQL server. Structured data. No servers to manage. High availability</p>
-        <p>New application.</p>
-        <p>DynamoDB. Flexible data structure(NoSQL). Trigger action(Lambda integration). Flexible cost structure(On-demand pricing). Global tables.</p>
-        <h3></h3>
-        <p></p>
-        <ol>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ol>
-        <h3></h3>
-        <p></p>
-        <ol>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ol>
       </article>
     </div>
   </section>
