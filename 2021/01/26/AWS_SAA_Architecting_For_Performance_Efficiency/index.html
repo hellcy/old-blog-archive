@@ -31,11 +31,11 @@
             <li><a href="#Part1">Part One: Understanding the Design Principles</a></li>
             <li><a href="#Part2">Part Two: Considering Compute Performance Options</a></li>
             <li><a href="#Part3">Part Three: Reviewing Storage Performance Options</a></li>
-            <li><a href="#Part4">Part Five: Examing Database Performance Options</a></li>
-            <li><a href="#Part5">Part Six: Evaluating Network Performance Options</a></li>
-            <li><a href="#Part6">Part Seven: Preparing to Improve Your Architecture</a></li>
-            <li><a href="#Part7">Part Eight: Monitoring Your Architecture</a></li>
-            <li><a href="#Part8">Part Nine: Understanding the Trade-offs</a></li>
+            <li><a href="#Part4">Part Four: Examing Database Performance Options</a></li>
+            <li><a href="#Part5">Part Five: Evaluating Network Performance Options</a></li>
+            <li><a href="#Part6">Part Six: Preparing to Improve Your Architecture</a></li>
+            <li><a href="#Part7">Part Seven: Monitoring Your Architecture</a></li>
+            <li><a href="#Part8">Part Eight: Understanding the Trade-offs</a></li>
           </ol>
           <h2 id="Part1">
             <a href="#title" class="headerlink" title="Part 1">Part One: Understanding the Design Principles</a>
@@ -254,23 +254,156 @@
           <p>They have decided to use RDS. Using SQL server. Structured data. No servers to manage. High availability</p>
           <p>New application.</p>
           <p>DynamoDB. Flexible data structure(NoSQL). Trigger action(Lambda integration). Flexible cost structure(On-demand pricing). Global tables.</p>
-          <h3></h3>
-          <p></p>
+          <h2 id="Part5">
+            <a href="#title" class="headerlink" title="Part 5">Part Five: Evaluating Network Performance Options</a>
+          </h2>
+          <h3>Region and AZ</h3>
+          <p>Regions are geographical area. One region may have multiple AZs that are also isolated to each other.</p>
+          <p>While the AZs are isolated geographically, they are connected by AWS that allows data to be transferred between each zones.</p>
+          <h4>Local Zones</h4>
+          <p>Some users still think the regions provided by AWS have high latency. They can choose to use local zones. They are built in large cities and connected to near by regions with low latency, high throughput connectivity. Local zones don't have all the services provided by AWS as normal AZs.</p>
+          <p>Why do we choose one region over another?</p>
           <ol>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>Laws and Regulations: e.g. Some governments required that any data of their citizens remain in their countries</li>
+            <li>User location: put application closer to your end users.</li>
+            <li>Data location</li>
+            <li>Cost</li>
           </ol>
-          <h3></h3>
+          <h3>CloudFront</h3>
+          <p>Global network: CloudFront is outside of AWS regions, that deliver our applications to end users</p>
+          <p>Content delivery: Similar to CDN</p>
+          <ol>
+            <li>Static content: static content is cached to the place closer to end users to reduce latency</li>
+            <li>Dynamic content: AWS also supported Dynamic content (intelligent caching)</li>
+            <li>Intelligent: you can setup geo-restrictions to not allow edge content to deliver content to certain geo-locations</li>
+            <li>Programmable: Lambda at edge: create serverless functions at edge locations. Put compute power closer to your end users.</li>
+          </ol>
+          <h3>Route53</h3>
+          <p>DNS solution for AWS: translate a user-friendly URL to the IP address</p>
+          <p>Private DNS: Route53 supports private DNS, you can setup friendly names for your internal services</p>
+          <h4>Traffic flow</h4>
+          <p>If you deploy your solution to multiple regions, you can config so that your users only send requests to their regions.</p>
+          <ol>
+            <li>Latency routing: Traffic flow will determine the region that will be serving the content with the least latency</li>
+            <li>Geographic routing: route users to the cloest region.</li>
+            <li>Health based routing: not route users to a region that with unhealthy status.</li>
+            <li>Round robin routing: route user to the next region available. Route traffic evenly to all regions.</li>
+          </ol>
+          <h3>Direct Connect</h3>
+          <p>Instead of going through public internet, AWS will create a dedicated line for users to connect from AWS to your data center. It is encrypted and you can config the speed.</p>
+          <h3>VPC endpoints</h3>
+          <p>Normally, if your VPC wants to connect to other AWS services, it can only go through public internet, but with VPC endpoints, it can connect to other AWS services directly through the private internet AWS network</p>
+          <h3>EC2 instance types</h3>
+          <p>some EC2 instance types have better internet performance than others. Pay attention to it before you launch the EC2 instance. Choose the type that suitable for your applications.</p>
+          <h3>Apply our knowledge</h3>
+          <p>They want their application to be deployed in a single region but to multiple AZs. They use AWS ECS(elastic container service) to manage their application. And use AWS Fargate to manage their containers. They also choose to use Multi-AZ RDS for their DB. They also want their Data to be stored in S3. So they want a VPC endpoint for S3 to reduce latency. So when they want to access data in S3. they don't need to go through public internet.</p>
+          <p>They also have a new application that they want to have a friendly domain name. Reduced latency and managed cost. So they have decided to use Route53. because the application is hosted on S3 buckets. They need to register domain names for each S3 bucket. And configure Route 53 to route traffic to right S3 bucket using their domain names. They also want to have a global portal that has links to each deployed regions.</p>
+          <h2 id="Part6">
+            <a href="#title" class="headerlink" title="Part 6">Part Six: Preparing to Improve Your Architecture</a>
+          </h2>
+          <h3>CI/CD pipeline (Continuous Integration/ Continuous Deployment)</h3>
+          <p>We need to have repeatable builds, repeatable infrastructrue and Controlled tests</p>
+          <img src="1.png">
+          <h3>CloudFormation</h3>
+          <ol>
+            <li>Infrastructure template(JSON or YAML)</li>
+            <li>Automate creation</li>
+            <li>Ensure consistency</li>
+          </ol>
+          <h3>CloudFormation templates</h3>
+          <img src="2.png">
+          <img src="3.png">
+          <img src="4.png">
+          <ol>
+            <li>Format version</li>
+            <li>Description</li>
+            <li>Parameters</li>
+            <li>Resources</li>
+            <li>Output</li>
+          </ol>
+          <h2 id="Part7">
+            <a href="#title" class="headerlink" title="Part 7">Part Seven: Monitoring Your Architecture</a>
+          </h2>
+          <h3>Monitor</h3>
+          <ol>
+            <li>Resources</li>
+            <li>Application</li>
+            <li>Operations</li>
+          </ol>
+          <h3>Respond</h3>
+          <ol>
+            <li>Ignore</li>
+            <li>Manually</li>
+            <li>Automate</li>
+            <li>Modify</li>
+          </ol>
+          <h3>CloudWatch</h3>
+          <p>Metrics</p>
+          <ol>
+            <li>Application</li>
+            <li>Infrastructure</li>
+            <li>AWS or on-premises</li>
+          </ol>
+          <p>Actions: Autoscaling.</p>
+          <p>Actions: Messages</p>
+          <p>Actions: Lambda functions can be triggered from CloudWatch</p>
+          <p>Analytics: CloudWatch can store months of histoical data for you to analyse</p>
+          <h3>Create a log to delete S3 object</h3>
+          <ol>
+            <li>Create CloudTrail Trail</li>
+            <li>Create Lambda function</li>
+            <li>Create CloudWatch Rule</li>
+          </ol>
+          <p>Create a CloudTrail Trail</p>
+          <img src="5.png">
+          <p>Create a Lambda function</p>
+          <img src="6.png">
+          <p>Create CloudWatch Rule</p>
+          <img src="7.png">
+          <h2 id="Part8">
+            <a href="#title" class="headerlink" title="Part 8">Part Eight: Understanding the Trade-offs</a>
+          </h2>
+          <ol>
+            <li>Time</li>
+            <li>Cost</li>
+            <li>Memory</li>
+            <li>Efficiency</li>
+            <li>Complexity</li>
+          </ol>
+          <h3>Possible Trade-offs</h3>
+          <ol>
+            <li>Queuing</li>
+            <li>Partitioning</li>
+            <li>Caching</li>
+            <li>Compression</li>
+          </ol>
+          <h3>Queuing</h3>
+          <p>AWS SQS (simple queuing service)</p>
+          <ol>
+            <li>Decouple (producer, consumer)</li>
+            <li>Scale independently (add producer or delete consumer)</li>
+            <li>Acceptable delay</li>
+            <li>Time vs Efficiency</li>
+          </ol>
+          <h3>Data Paritioning</h3>
+          <p>For example: RDBMS doesn't have partition. so we need to consider what data goes into which instance of database, that increase complexity. Whereas many NoSQL DB already has partition. In DynamoDB, we have partition key for each table. The data that has the same partition key will go into the same node. So when choose a partition key, choose a key that roughly evenly distributed across the data.</p>
+          <ol>
+            <li>Complexity / consistency vs Time</li>
+            <li>RDBMS vs NoSQL</li>
+            <li>Distribution</li>
+            <li>Maintenance</li>
+          </ol>
+          <h3>Caching</h3>
+          <p>Cache: heavliy used data will be stored in memory.</p>
+          <p>Read Replics: if you have a read replica of your DB, users can go into read replica if they only read. Reduce the traffic of your primary server.</p>
+          <p>CDN: take data and store data closer to users place.</p>
+          <p>Memory/ consistency vs Time</p>
+          <h3>Compression</h3>
           <p></p>
           <ol>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>Code assets: reduce the size of source code to reduce the time to load the application</li>
+            <li>Files: same. redurce the size of file will reduce the transfer time</li>
+            <li>Time vs memory</li>
           </ol>
         </div>
       </article>
