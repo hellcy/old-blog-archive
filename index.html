@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="short icon" href="sitelogo.jpg">
 	<link rel="stylesheet" href="css\apollo.css">
+	<link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
 	<header>
@@ -23,300 +24,318 @@
 			</li>
 		</ul>
 	</header>
+	<div class="tab">
+	  <button class="tablinks" onclick="switchYear(event, '2021')">2021</button>
+	  <button class="tablinks" onclick="switchYear(event, '2020')">2020</button>
+	  <button class="tablinks" onclick="switchYear(event, '2019')">2019</button>
+	</div>
 	<section class="container">
-		<ul class="home post-list">
-			<!-- 	This comment is a template, don't delete		
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/path" class="post-title-link">title</a>
-					</h2>
-					<div class="post-time">Date</div>
-					<div class="post-content">
-						<p>
-							<img src="image" alt="image">
-						</p>
-						<h2 id="u80CC_u666F">
-							<a href="#u80CC_u666F" class="headerlink" title="背景"></a>
-							背景
+		<div id="2021" class="tabContent">
+			<ul class="home post-list">
+				<!-- 	This comment is a template, don't delete		
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/path" class="post-title-link">title</a>
 						</h2>
-						<p></p>
-					</div>
-					<a href="/" class="read-more">...阅读全文</a>
-				</article>
-			</li> -->
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2021/01/26/AWS_SAA_Architecting_For_Performance_Efficiency/" class="post-title-link">AWS SAA Architecting for Performance Efficiency</a>
-					</h2>
-					<div class="post-time">Jan 26, 2021</div>
-					<div class="post-content">
-						<p>My learning path to get AWS Solutions Architect Associate</p>
-					</div>
-					<a href="/2021/01/26/AWS_SAA_Architecting_For_Performance_Efficiency/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2020/10/15/AWS_Solutions_Architect_Associate/" class="post-title-link">AWS Solutions Architect Associate</a>
-					</h2>
-					<div class="post-time">Oct 15, 2020</div>
-					<div class="post-content">
-						<p>My learning path to get AWS Solutions Architect Associate</p>
-					</div>
-					<a href="/2020/10/15/AWS_Solutions_Architect_Associate/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2020/10/07/AWS_SAM_and_CloudFront/" class="post-title-link">AWS SAM and CloudFront</a>
-					</h2>
-					<div class="post-time">Oct 07, 2020</div>
-					<div class="post-content">
-						<p>Introduction to AWS SAM and CloudFront...</p>
-					</div>
-					<a href="/2020/10/07/AWS_SAM_and_CloudFront/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2020/10/06/Wishlist_2021/" class="post-title-link">Wishlist 2021</a>
-					</h2>
-					<div class="post-time">Oct 06, 2020</div>
-					<div class="post-content">
-						<p>Something I want to do in the following year...</p>
-					</div>
-					<a href="/2020/10/06/Wishlist_2021/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2020/08/27/Dynamic_Programming/" class="post-title-link">Dynamic Programming</a>
-					</h2>
-					<div class="post-time">Aug 27, 2020</div>
-					<div class="post-content">
-						<p>Notes about Dynamic Programming</p>
-					</div>
-					<a href="/2020/08/27/Dynamic_Programming/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2020/06/30/Harvard_CS75_Web_Development/" class="post-title-link">Harvard CS75 Web Development</a>
-					</h2>
-					<div class="post-time">June 30, 2020</div>
-					<div class="post-content">
-						<p>Notes for the Harvard CS75 Web Development course</p>
-					</div>
-					<a href="/2020/06/30/Harvard_CS75_Web_Development/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2020/06/12/System_Design/" class="post-title-link">System Design</a>
-					</h2>
-					<div class="post-time">June 12, 2020</div>
-					<div class="post-content">
-						<p>Notes from The System Design Primer</p>
-					</div>
-					<a href="/2020/06/12/System_Design/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2020/05/10/Data_Structures_Advanced/" class="post-title-link">Data Structures Advanced</a>
-					</h2>
-					<div class="post-time">May 10, 2020</div>
-					<div class="post-content">
-						<p>More about data structure and algorithms, and advanced problems</p>
-					</div>
-					<a href="/2020/05/10/Data_Structures_Advanced/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2020/04/03/Think_Python/" class="post-title-link">Think Python</a>
-					</h2>
-					<div class="post-time">April 03, 2020</div>
-					<div class="post-content">
-						<p>Python basics</p>
-					</div>
-					<a href="/2020/04/03/Think_Python/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2020/03/02/Data_Structures/" class="post-title-link">Data Structures and Algorithms</a>
-					</h2>
-					<div class="post-time">Mar 02, 2020</div>
-					<div class="post-content">
-						<p>Learning data structures and algorithms</p>
-					</div>
-					<a href="/2020/03/02/Data_Structures/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2019/10/24/Single_sign_on/" class="post-title-link">What is Single-sign-on</a>
-					</h2>
-					<div class="post-time">Oct 24, 2019</div>
-					<div class="post-content">
-						<p>什么是Single-sign-on? 什么又是SAML? 让我们来简单的介绍一下。。。</p>
-					</div>
-					<a href="/2019/10/24/Single_sign_on/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2019/09/02/Android_Apprentice/" class="post-title-link">Learn Android Apprentice in 10 days</a>
-					</h2>
-					<div class="post-time">Sep 02, 2019</div>
-					<div class="post-content">
-						<p>又一本来自RayWenderlich的教材，这回使用了最新的Kotlin语言和Android Studio，最近在刷Leetcode，希望可以快速看完吧。。。</p>
-					</div>
-					<a href="/2019/09/02/Android_Apprentice/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2019/08/16/Swift_Tips_And_Tricks/" class="post-title-link">Notes for Stanford University cs193p open course</a>
-					</h2>
-					<div class="post-time">Aug 16, 2019</div>
-					<div class="post-content">
-						<p>斯坦福大学cs193p公开课的笔记。。。</p>
-					</div>
-					<a href="/2019/08/16/Swift_Tips_And_Tricks/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2019/08/05/AWS_Overview/" class="post-title-link">AWS Overview</a>
-					</h2>
-					<div class="post-time">Aug 05, 2019</div>
-					<div class="post-content">
-						<p>什么是AWS，以及如何使用它。。。</p>
-					</div>
-					<a href="/2019/08/05/AWS_Overview/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2019/07/23/Payment_gateway/" class="post-title-link">Payment Gateway API</a>
-					</h2>
-					<div class="post-time">Jul 23, 2019</div>
-					<div class="post-content">
-						<p>什么是Payment Gateway，以及如何在app上实现它。。。</p>
-					</div>
-					<a href="/2019/07/23/Payment_gateway/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2019/07/03/iOS_Apprentice/" class="post-title-link">Learn iOS apprentice in 10 days</a>
-					</h2>
-					<div class="post-time">Jul 3, 2019</div>
-					<div class="post-content">
-						<p>在10天内学完raywenderlich的经典教材iOS apprentice。。。</p>
-					</div>
-					<a href="/2019/07/03/iOS_Apprentice/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2019/06/24/Mifare_card_read_and_write/" class="post-title-link">Mifare card read and write</a>
-					</h2>
-					<div class="post-time">Jun 24, 2019</div>
-					<div class="post-content">
-						<p>关于Mifare card读写的基本信息。。</p>
-					</div>
-					<a href="/2019/06/24/Mifare_card_read_and_write/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2019/06/21/PrintMyID_Kiosk_Program_Overview/" class="post-title-link">PrintMyId Kiosk program overview</a>
-					</h2>
-					<div class="post-time">Jun 21, 2019</div>
-					<div class="post-content">
-						<p>一个新的project，关于学生如何自助打印自己的学生卡。。。</p>
-					</div>
-					<a href="/2019/06/21/PrintMyID_Kiosk_Program_Overview/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2019/06/20/Deploy_api_to_IIS_manager/" class="post-title-link">Deploy API to IIS manager</a>
-					</h2>
-					<div class="post-time">Jun 20, 2019</div>
-					<div class="post-content">
-						<p>API写完之后，我们还需要把它deploy到client server side。。。</p>
-					</div>
-					<a href="/2019/06/20/Deploy_api_to_IIS_manager/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2019/06/18/How_to_use_Gatling_load_testing_tools/" class="post-title-link">How to use Gatling load testing tools</a>
-					</h2>
-					<div class="post-time">Jun 18, 2019</div>
-					<div class="post-content">
-						<p>在测试Rest api的时候，我需要用到一个load testing tool，于是。。。</p>
-					</div>
-					<a href="/2019/06/18/How_to_use_Gatling_load_testing_tools/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="/2019/06/13/Create_a_Restful_api/" class="post-title-link">Create Restful api using C#</a>
-					</h2>
-					<div class="post-time">Jun 13, 2019</div>
-					<div class="post-content">
-						<p>今天拿到了一个任务</p>
-					</div>
-					<a href="/2019/06/13/Create_a_Restful_api/" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-			<li class="post-list-item">
-				<article class="post-block">
-					<h2 class="post-title">
-						<a href="AllRelated/allrelated.html" class="post-title-link">All Related</a>
-					</h2>
-					<div class="post-time">Jun 12, 2019</div>
-					<div class="post-content">
-						<p>所有跟IT有关的东西都会被放到这里，你会看到很多名词的解释，涉及IT的方方面面，以后也会不断的补充...</p>
-					</div>
-					<a href="AllRelated/allrelated.html" class="read-more">...阅读全文</a>
-				</article>
-			</li>
-		</ul>
+						<div class="post-time">Date</div>
+						<div class="post-content">
+							<p>
+								<img src="image" alt="image">
+							</p>
+							<h2 id="u80CC_u666F">
+								<a href="#u80CC_u666F" class="headerlink" title="背景"></a>
+								背景
+							</h2>
+							<p></p>
+						</div>
+						<a href="/" class="read-more">...阅读全文</a>
+					</article>
+				</li> -->
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2021/01/26/AWS_SAA_Architecting_For_Performance_Efficiency/" class="post-title-link">AWS SAA Architecting for Performance Efficiency</a>
+						</h2>
+						<div class="post-time">Jan 26, 2021</div>
+						<div class="post-content">
+							<p>My learning path to get AWS Solutions Architect Associate</p>
+						</div>
+						<a href="/2021/01/26/AWS_SAA_Architecting_For_Performance_Efficiency/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+			</ul>
+		</div>
+		<div id="2020" class="tabContent">
+			<ul class="home post-list">
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2020/10/15/AWS_Solutions_Architect_Associate/" class="post-title-link">AWS Solutions Architect Associate</a>
+						</h2>
+						<div class="post-time">Oct 15, 2020</div>
+						<div class="post-content">
+							<p>My learning path to get AWS Solutions Architect Associate</p>
+						</div>
+						<a href="/2020/10/15/AWS_Solutions_Architect_Associate/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2020/10/07/AWS_SAM_and_CloudFront/" class="post-title-link">AWS SAM and CloudFront</a>
+						</h2>
+						<div class="post-time">Oct 07, 2020</div>
+						<div class="post-content">
+							<p>Introduction to AWS SAM and CloudFront...</p>
+						</div>
+						<a href="/2020/10/07/AWS_SAM_and_CloudFront/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2020/10/06/Wishlist_2021/" class="post-title-link">Wishlist 2021</a>
+						</h2>
+						<div class="post-time">Oct 06, 2020</div>
+						<div class="post-content">
+							<p>Something I want to do in the following year...</p>
+						</div>
+						<a href="/2020/10/06/Wishlist_2021/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2020/08/27/Dynamic_Programming/" class="post-title-link">Dynamic Programming</a>
+						</h2>
+						<div class="post-time">Aug 27, 2020</div>
+						<div class="post-content">
+							<p>Notes about Dynamic Programming</p>
+						</div>
+						<a href="/2020/08/27/Dynamic_Programming/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2020/06/30/Harvard_CS75_Web_Development/" class="post-title-link">Harvard CS75 Web Development</a>
+						</h2>
+						<div class="post-time">June 30, 2020</div>
+						<div class="post-content">
+							<p>Notes for the Harvard CS75 Web Development course</p>
+						</div>
+						<a href="/2020/06/30/Harvard_CS75_Web_Development/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2020/06/12/System_Design/" class="post-title-link">System Design</a>
+						</h2>
+						<div class="post-time">June 12, 2020</div>
+						<div class="post-content">
+							<p>Notes from The System Design Primer</p>
+						</div>
+						<a href="/2020/06/12/System_Design/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2020/05/10/Data_Structures_Advanced/" class="post-title-link">Data Structures Advanced</a>
+						</h2>
+						<div class="post-time">May 10, 2020</div>
+						<div class="post-content">
+							<p>More about data structure and algorithms, and advanced problems</p>
+						</div>
+						<a href="/2020/05/10/Data_Structures_Advanced/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2020/04/03/Think_Python/" class="post-title-link">Think Python</a>
+						</h2>
+						<div class="post-time">April 03, 2020</div>
+						<div class="post-content">
+							<p>Python basics</p>
+						</div>
+						<a href="/2020/04/03/Think_Python/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2020/03/02/Data_Structures/" class="post-title-link">Data Structures and Algorithms</a>
+						</h2>
+						<div class="post-time">Mar 02, 2020</div>
+						<div class="post-content">
+							<p>Learning data structures and algorithms</p>
+						</div>
+						<a href="/2020/03/02/Data_Structures/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+			</ul>
+		</div>
+		<div id="2019" class="tabContent">
+			<ul class="home post-list">
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2019/10/24/Single_sign_on/" class="post-title-link">What is Single-sign-on</a>
+						</h2>
+						<div class="post-time">Oct 24, 2019</div>
+						<div class="post-content">
+							<p>什么是Single-sign-on? 什么又是SAML? 让我们来简单的介绍一下。。。</p>
+						</div>
+						<a href="/2019/10/24/Single_sign_on/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2019/09/02/Android_Apprentice/" class="post-title-link">Learn Android Apprentice in 10 days</a>
+						</h2>
+						<div class="post-time">Sep 02, 2019</div>
+						<div class="post-content">
+							<p>又一本来自RayWenderlich的教材，这回使用了最新的Kotlin语言和Android Studio，最近在刷Leetcode，希望可以快速看完吧。。。</p>
+						</div>
+						<a href="/2019/09/02/Android_Apprentice/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2019/08/16/Swift_Tips_And_Tricks/" class="post-title-link">Notes for Stanford University cs193p open course</a>
+						</h2>
+						<div class="post-time">Aug 16, 2019</div>
+						<div class="post-content">
+							<p>斯坦福大学cs193p公开课的笔记。。。</p>
+						</div>
+						<a href="/2019/08/16/Swift_Tips_And_Tricks/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2019/08/05/AWS_Overview/" class="post-title-link">AWS Overview</a>
+						</h2>
+						<div class="post-time">Aug 05, 2019</div>
+						<div class="post-content">
+							<p>什么是AWS，以及如何使用它。。。</p>
+						</div>
+						<a href="/2019/08/05/AWS_Overview/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2019/07/23/Payment_gateway/" class="post-title-link">Payment Gateway API</a>
+						</h2>
+						<div class="post-time">Jul 23, 2019</div>
+						<div class="post-content">
+							<p>什么是Payment Gateway，以及如何在app上实现它。。。</p>
+						</div>
+						<a href="/2019/07/23/Payment_gateway/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2019/07/03/iOS_Apprentice/" class="post-title-link">Learn iOS apprentice in 10 days</a>
+						</h2>
+						<div class="post-time">Jul 3, 2019</div>
+						<div class="post-content">
+							<p>在10天内学完raywenderlich的经典教材iOS apprentice。。。</p>
+						</div>
+						<a href="/2019/07/03/iOS_Apprentice/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2019/06/24/Mifare_card_read_and_write/" class="post-title-link">Mifare card read and write</a>
+						</h2>
+						<div class="post-time">Jun 24, 2019</div>
+						<div class="post-content">
+							<p>关于Mifare card读写的基本信息。。</p>
+						</div>
+						<a href="/2019/06/24/Mifare_card_read_and_write/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2019/06/21/PrintMyID_Kiosk_Program_Overview/" class="post-title-link">PrintMyId Kiosk program overview</a>
+						</h2>
+						<div class="post-time">Jun 21, 2019</div>
+						<div class="post-content">
+							<p>一个新的project，关于学生如何自助打印自己的学生卡。。。</p>
+						</div>
+						<a href="/2019/06/21/PrintMyID_Kiosk_Program_Overview/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2019/06/20/Deploy_api_to_IIS_manager/" class="post-title-link">Deploy API to IIS manager</a>
+						</h2>
+						<div class="post-time">Jun 20, 2019</div>
+						<div class="post-content">
+							<p>API写完之后，我们还需要把它deploy到client server side。。。</p>
+						</div>
+						<a href="/2019/06/20/Deploy_api_to_IIS_manager/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2019/06/18/How_to_use_Gatling_load_testing_tools/" class="post-title-link">How to use Gatling load testing tools</a>
+						</h2>
+						<div class="post-time">Jun 18, 2019</div>
+						<div class="post-content">
+							<p>在测试Rest api的时候，我需要用到一个load testing tool，于是。。。</p>
+						</div>
+						<a href="/2019/06/18/How_to_use_Gatling_load_testing_tools/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="/2019/06/13/Create_a_Restful_api/" class="post-title-link">Create Restful api using C#</a>
+						</h2>
+						<div class="post-time">Jun 13, 2019</div>
+						<div class="post-content">
+							<p>今天拿到了一个任务</p>
+						</div>
+						<a href="/2019/06/13/Create_a_Restful_api/" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+				<li class="post-list-item">
+					<article class="post-block">
+						<h2 class="post-title">
+							<a href="AllRelated/allrelated.html" class="post-title-link">All Related</a>
+						</h2>
+						<div class="post-time">Jun 12, 2019</div>
+						<div class="post-content">
+							<p>所有跟IT有关的东西都会被放到这里，你会看到很多名词的解释，涉及IT的方方面面，以后也会不断的补充...</p>
+						</div>
+						<a href="AllRelated/allrelated.html" class="read-more">...阅读全文</a>
+					</article>
+				</li>
+			</ul>
+		</div>
 	</section>
-<footer>
-	<div class="paginator"></div>
-</footer>
+	<footer>
+		<div class="paginator"></div>
+	</footer>
+</body>
+<script src="index.js"></script>
 <script>
 (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-72406781-1",'auto');ga('send','pageview');
 </script>
 <script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-	</body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </html>
