@@ -28,18 +28,133 @@
         <div class="post-time">Feb 15, 2021</div>
         <div class="post-content">
           <ol id="title">
-            <li><a href="#Part1">Part One: Understanding the Design Principles</a></li>
-            <li><a href="#Part2">Part Two: Considering Compute Performance Options</a></li>
-            <li><a href="#Part3">Part Three: Reviewing Storage Performance Options</a></li>
-            <li><a href="#Part4">Part Four: Examing Database Performance Options</a></li>
-            <li><a href="#Part5">Part Five: Evaluating Network Performance Options</a></li>
-            <li><a href="#Part6">Part Six: Preparing to Improve Your Architecture</a></li>
-            <li><a href="#Part7">Part Seven: Monitoring Your Architecture</a></li>
-            <li><a href="#Part8">Part Eight: Understanding the Trade-offs</a></li>
+            <li><a href="#Part1">Part One: Protecting AWS Credentials</a></li>
+            <li><a href="#Part2">Part Two: Capturing and Analyzing Logs</a></li>
+            <li><a href="#Part3">Part Three: Protecting Network and Host-level Boundaries</a></li>
+            <li><a href="#Part4">Part Four: Protecting Data at Rest</a></li>
+            <li><a href="#Part5">Part Five: Protecting Data in Transit</a></li>
+            <li><a href="#Part6">Part Six: Configuring Data Backup, Replication, and Recovery</a></li>
           </ol>
           <h2 id="Part1">
-            <a href="#title" class="headerlink" title="Part 1">Part One: Understanding the Design Principles</a>
+            <a href="#title" class="headerlink" title="Part 1">Part One: Protecting AWS Credentials</a>
           </h2>
+          <p>Security is about protecting data.</p>
+          <p>The CIA Triad</p>
+          <ol>
+            <li>Confidentiality</li>
+            <li>Integrity</li>
+            <li>Availability</li>
+          </ol>
+          <p>Confidentiality: Only authorized parties can access data. (ACLs and encryption)</p>
+          <p>Integrity: Data has not been improperly modified. Includes knowing if data has been modified.</p>
+          <p>Availability: Authorized parties have access to data when they need it. Includes protecting systems that store, process, and deliver data.</p>
+          <p>Defense in depth: Protecting the confidentiality, integrity, and availability of data by securing everything that touches the data, including storage, compute and networking</p>
+          <p>Levels of Architecture: AWS services, Operating systems, Applications</p>
+          <h4>AWS Credentials</h4>
+          <p>Root User: Full access to all AWS resources. Only one root user per account.</p>
+          <p>IAM principal: Any entity(could be a user or an application) that can perform actions on AWS services and resources. Policies determine what permissions a principal has</p>
+          <p>Locking down the Root user: Enable MFA. Don't use the root user for administrative tasks. Use a non-root IAM user with administrative permissions</p>
+          <p>IAM Principal: The foundation of IAM. An entity that can take an action on an AWS service. Often used as a synonym for identity. Principles include users and roles</p>
+          <p>A non-root principal has no permissions by default. Policies determine what permission a principal has</p>
+          <p>You must grant permissions to a principal by associating it with a policy.</p>
+          <p>Policy and Permission: A policy consists of multiple permission statements. A permission statement consists of 4 elements.</p>
+          <ol>
+            <li>Effect (allow or deny)</li>
+            <li>Service (etc: EC2)</li>
+            <li>Action/Operation (RunInstances)</li>
+            <li>Resource (image/ami-fjdfjfsdk)</li>
+            <li>Request condition(MFA, IP range, time...) (198.51.100.0/24)</li>
+          </ol>
+          <p>This permission will allow a principal to run an EC2 instance with certain AMI, when it is in certain IP range.</p>
+          <p>AWS managed policies: AWS has many managed policies created for us to use. (they are updated regularly to include new services)</p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
         </div>
       </article>
     </div>
