@@ -67,11 +67,14 @@
           </ol>
           <p>This permission will allow a principal to run an EC2 instance with certain AMI, when it is in certain IP range.</p>
           <p>AWS managed policies: AWS has many managed policies created for us to use. (they are updated regularly to include new services)</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>The deny effect always takes precedence over the allow effect (deny > allow)</p>
+          <img src="1.png">
+          <p>We can create inline policy for a user to deny he's access to terminate any EC2 instances.</p>
+          <img src="2.png">
+          <p>This is the JSON representation of the policy</p>
+          <img src="3.png">
+          <p>We could use policy simulator to check the effectiveness of the policy.</p>
+          <p>We could also create inline policy for a group.</p>
           <p></p>
           <p></p>
           <p></p>
