@@ -85,19 +85,34 @@
             <li>A group policy is embedded in a group</li>
             <li>Customer Managed policies work like AWS managed policies, but are created and managed by you</li>
           </ol>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <h2 id="Part1">
+            <a href="#title" class="headerlink" title="Part 1">Part Two: Capturing and Analyzing Logs</a>
+          </h2>
+          <h4>Module Overview</h4>
+          <ol>
+            <li>Capturing events with CloudTrail</li>
+            <li>Viewing Logs with CloudWatch Logs</li>
+            <li>Creating alerts with CloudWatch Alarms</li>
+            <li>Searching logs with Athena</li>
+            <li>Tracking changes with AWS config</li>
+          </ol>
+          <p>CloudTrail logs are stored in S3. Limit what you log to control costs</p>
+          <p>CloudTrail event types</p>
+          <p>Management: Configuration changes to AWS services. Reading resources. Logging into the management console. Assuming a role.</p>
+          <p>Data: Access to S3 objects. Lambda function execution</p>
+          <p>CloudTrail: Logs AWS actions. Stores logs in S3</p>
+          <p>CloudWatch Logs: Aggregates logs from CloudTrail and non-AWS sources. Provides interface to view and search logs</p>
+          <h4>Create IAM service role</h4>
+          <p>Contains inline service policy that grants CloudTrail permissions to send logs to CloudWatch Logs</p>
+          <p>Contains trust policy that allows CloudTrail to assume the role</p>
+          <p>Role is an IAM principal for CloudTrail to use to authenticate to CloudWatch Logs</p>
+          <h4>Demo</h4>
+          <img src="5.png">
+          <p>Create a log group in CloudWatch Logs</p>
+          <p>Create an IAM role for CloudTrail to assume. The Role will have two permission statements. It can create log streams and it can put the log into CloudWatch Log groups.</p>
+          <img src="6.png">
+          <img src="7.png">
+          <p>The CloudTrail and the Role have a trusted relationship. If we have a look at the JSON policy. It will allow CloudTrail to assume the Role. The Role will give its permissions to CloudTrail.</p>
           <p></p>
           <p></p>
           <p></p>
