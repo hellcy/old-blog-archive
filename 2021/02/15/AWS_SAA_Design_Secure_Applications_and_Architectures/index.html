@@ -107,17 +107,23 @@
           <p>Contains trust policy that allows CloudTrail to assume the role</p>
           <p>Role is an IAM principal for CloudTrail to use to authenticate to CloudWatch Logs</p>
           <h4>Demo</h4>
-          <img src="5.png">
+          <img src="4.PNG">
+          <img src="5.PNG">
           <p>Create a log group in CloudWatch Logs</p>
           <p>Create an IAM role for CloudTrail to assume. The Role will have two permission statements. It can create log streams and it can put the log into CloudWatch Log groups.</p>
-          <img src="6.png">
-          <img src="7.png">
+          <img src="6.PNG">
+          <img src="7.PNG">
           <p>The CloudTrail and the Role have a trusted relationship. If we have a look at the JSON policy. It will allow CloudTrail to assume the Role. The Role will give its permissions to CloudTrail.</p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <img src="8.png">
+          <img src="9.png">
+          <p>Create CloudWatch Alarm we need to select a metric, in this case, IncomingLogEvents. We define the alarm so that it triggers the alarm if CloudTrail send more than 1 log to CloudWatch Logs within 1 minute period of time.</p>
+          <img src="10.png">
+          <p>We also created new topic with an email address so I will get notified if this happens.</p>
+          <img src="11.png">
+          <p>After the alarm has been created, the status is OK because we didn't receive any logs in the last 1 minutes. And we treat missing logs as Good.</p>
+          <img src="12.png">
+          <p>When there is logs coming in, the status will be changed to In alarm for that 1 minute period and will be changed back to OK the next minute.</p>
+          <p>Notice the alarm logs are not in real time. There maybe a couple of minutes delay.</p>
           <p></p>
           <p></p>
           <p></p>
